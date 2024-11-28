@@ -1,0 +1,27 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.about-page {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4rem;
+  background-color: $clay-pink;
+  color: $baby-grey;
+
+  &__image {
+    width: 30%;
+  }
+
+  &__text {
+    font-size: 1rem;
+    line-height: 2.1rem;
+    padding-left: 4rem;
+    text-align: left;
+  }
+  &__description {
+    padding-bottom: 1.5rem;
+  }
+}

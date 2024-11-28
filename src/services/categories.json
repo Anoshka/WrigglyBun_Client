@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "period": "Maternity",
+      "age": "28-35 weeks",
+      "aligned_name": "Little Bun Moments/ Bun in the Oven",
+      "description": "Celebrate the journey of life as it begins, capturing the glow of motherhood and the anticipation of meeting your little one. These timeless maternity portraits honor the love, strength, and beauty of this special chapter."
+    },
+    {
+      "id": 2,
+      "period": "Newborn",
+      "age": "7 - 40 days",
+      "aligned_name": "First Wriggles",
+      "description": "The tiniest fingers, softest yawns, and the pure wonder of your newborn’s first days—each moment is a treasure. Let us capture these irreplaceable memories so you can hold onto them forever."
+    },
+    {
+      "id": 3,
+      "period": "Milestones",
+      "age": "3 to 9 months",
+      "aligned_name": "Tiny Triumphs",
+      "description": "From the first laugh to tiny milestones like sitting up or crawling, these joyful phases of growth deserve to be remembered. Our milestone sessions beautifully document your baby’s journey, one triumph at a time."
+    },
+    {
+      "id": 4,
+      "period": "Theme Shoots",
+      "age": "10 months – 3 years",
+      "aligned_name": "Wriggly Explorers",
+      "description": "As they toddle into a world of adventure and curiosity, these playful sessions capture the charm and imagination of your little one. Let’s bring their personality to life in vibrant, creative themes!"
+    },
+    {
+      "id": 5,
+      "period": "Kids Portraits",
+      "age": "3 – 18 years",
+      "aligned_name": "Youthful Charms",
+      "description": "From childhood giggles to teenage confidence, every phase of growing up tells a unique story. These portraits freeze the moments you’ll cherish, reflecting your child’s personality and spirit."
+    },
+    {
+      "id": 6,
+      "period": "Family Portraits",
+      "age": "N/A",
+      "aligned_name": "Forever Frames",
+      "description": "The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share."
+    },
+    {
+      "id": 7,
+      "period": "Events",
+      "age": "N/A",
+      "aligned_name": "Bun-tastic Celebrations",
+      "description": "Every celebration is filled with love, joy, and unforgettable memories. From birthdays to special gatherings, we capture the heart of your events, turning those moments into vibrant keepsakes."
+    },
+    {
+      "id": 8,
+      "period": "Hospital Session",
+      "age": "Birth & Fresh48",
+      "aligned_name": "Birth & Beyond",
+      "description": "The first hours with your newborn are filled with raw, beautiful emotions. Our hospital sessions capture the awe, love, and connection of welcoming your baby into the world, preserving the magic of those first moments."
+    },
+    {
+      "id": 9,
+      "period": "Commercial Brand Work",
+      "age": "N/A",
+      "aligned_name": "Styled Stories",
+      "description": "Whether it’s showcasing a brand, product, or campaign, our creative photography transforms your vision into impactful visuals. Let us help you tell your story with style and substance."
+    }
+  ]
+}

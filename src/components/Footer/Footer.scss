@@ -1,0 +1,86 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.footer {
+  background-color: $clay-pink;
+  color: $baby-grey;
+  padding: 6rem 1rem 3rem;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+
+  .footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    .footer__social {
+      margin-bottom: 1.5rem;
+
+      .footer__icon {
+        font-size: 2rem;
+        color: $baby-grey;
+        margin: 0 1rem;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $baby-grey;
+        }
+      }
+    }
+
+    .footer__contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 2rem;
+      }
+
+      .footer__contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+
+        a {
+          color: $baby-grey;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            color: $baby-grey;
+          }
+
+          span {
+            font-size: 1rem;
+            font-weight: 400;
+          }
+        }
+
+        .footer__icon {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .footer__copyright {
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: $mid-blue;
+
+    @media (min-width: 768px) {
+      margin-top: 1.5rem;
+    }
+  }
+}

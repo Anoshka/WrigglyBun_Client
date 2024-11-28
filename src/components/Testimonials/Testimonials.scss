@@ -1,0 +1,115 @@
+// Testimonials.scss
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.testimonials {
+  padding: 2rem;
+  background-color: $light-mint;
+  box-sizing: border-box;
+
+  &__title {
+    font-size: 2rem;
+    text-align: center;
+    padding: 3rem 0 5rem;
+    color: $baby-grey;
+  }
+
+  &__link {
+    padding: 4rem 0 2rem;
+    text-decoration: none;
+    color: $baby-grey;
+    text-align: center;
+    width: 100%;
+    align-self: start;
+    display: inline-block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-items: center;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .testimonial__card {
+    background: $clay-pink;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 30rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    line-height: 1.8rem;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+
+    .testimonial__image {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .testimonial__content {
+      margin-top: 1rem;
+
+      .testimonial__name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $baby-grey;
+      }
+
+      .testimonial__rating {
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+        color: $sunshine; // Gold color for stars
+      }
+
+      .star {
+        margin-right: 0.2rem;
+      }
+
+      .testimonial__review {
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: $baby-grey;
+      }
+    }
+  }
+}
+
+// Responsive Styles for tablet and desktop
+@include tablet {
+  .testimonial__card {
+    max-width: 320px;
+  }
+}
+
+@include desktop {
+  .testimonial__card {
+    max-width: 350px;
+  }
+}

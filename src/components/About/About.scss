@@ -1,0 +1,28 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.about {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 3rem 3rem;
+  align-items: center;
+  text-align: center;
+  background-color: $clay-pink;
+  color: $black;
+  font-size: 1.25rem;
+
+  @include tablet {
+    padding: 6rem 12rem 3rem;
+  }
+
+  &__contact {
+    padding-top: 4.5rem;
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,113 @@
+// Slide.scss
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 30rem; // Adjust this to your desired height
+  overflow: visible;
+  background-color: $clay-pink; // Default background color
+
+  .slide__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+    padding-bottom: 2rem;
+  }
+
+  .slide__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    transition: opacity 1s ease-in-out;
+    @include desktop {
+      padding: 2rem 15rem;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+
+  // Arrow controls
+  .slide__arrow {
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+    @include tablet {
+      top: 40%;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--left {
+      left: 10px;
+    }
+
+    &--right {
+      right: 10px;
+    }
+  }
+
+  // Randomize slide alignment in tablet and desktop
+  &.random-align .slide__container {
+    display: flex;
+    justify-content: space-between;
+
+    &:nth-child(even) {
+      justify-content: flex-start; // Align left for even slides
+    }
+
+    &:nth-child(odd) {
+      justify-content: flex-end; // Align right for odd slides
+    }
+  }
+
+  // Optional: Background color in tablet and desktop mode
+  @include tablet {
+    background-color: $clay-pink; // Change background color on tablet
+
+    .slide__container {
+      height: 300px;
+      background-color: $clay-pink; // Different color for tablet
+    }
+  }
+
+  @include desktop {
+    background-color: $clay-pink; // Change background color on desktop
+
+    .slide__container {
+      height: 450px;
+      background-color: $clay-pink; // Different color for desktop
+    }
+  }
+}
+
+// Optional: Responsive styling for mobile devices
+@include tablet {
+  .slide {
+    height: 300px;
+  }
+}
+
+@include desktop {
+  .slide {
+    height: 450px;
+  }
+}

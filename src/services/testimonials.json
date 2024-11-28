@@ -1,0 +1,22 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Moon Bhandari",
+      "rating": "5",
+      "review": "Anandita is an exceptionally talented and creative photographer. She has done an outstanding job with my portraits. I am extremely pleased with her work and highly recommend her to anyone seeking potraits, maternity, newborn, or family photography sessions."
+    },
+    {
+      "id": 2,
+      "name": "Roma Doshi",
+      "rating": "5",
+      "review": "In May I visited Bangalore for my Holidays and needed some interesting photos of me and my Son. I approached Anandita and we had lots of fun shooting with her. She is a professional and understands your requirements. She made my 5-year-old comfortable while clicking photos  ( he generally doesn't allow anyone to click his pictures but he was smiling). Thank you for such wonderful clicks and the warmth. All the best for future projects."
+    },
+    {
+      "id": 3,
+      "name": "Soumyaa Menon",
+      "rating": "5",
+      "review": "Anandita is a very compassionate and creative person to have around. Recently, for capturing my son's birthday event we got in touch with her and she made sure that everything & possibly everyone was captured by her lens. She is a superb professional, very punctual and gives her complete best. Amazing portrait captures by her that will surely make you go back to the sweet memories. Would, definitely recommend her to anyone who wishes to have there beautiful  moments etched into forever frames."
+    }
+  ]
+}
