@@ -1,0 +1,54 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.blog-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; // Space between blog posts
+  padding: 2rem;
+}
+
+.blog-post {
+  padding-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap; // Allows items to stack on smaller screens
+  margin-bottom: 2rem;
+
+  &__link {
+    text-decoration: none;
+    color: $dark-brown;
+
+    &:hover {
+      color: $sunshine;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+    line-height: 4rem;
+  }
+
+  &__image {
+    flex: 1;
+    max-width: 50%;
+    img {
+      width: 100%;
+      max-height: 40rem;
+      object-fit: cover;
+      border-radius: 10px; // Optional styling
+    }
+  }
+
+  &.left {
+    flex-direction: row; // Content on the left, image on the right
+  }
+
+  &.right {
+    flex-direction: row-reverse; // Content on the right, image on the left
+  }
+}

@@ -1,11 +1,14 @@
-// Slide.jsx
 import React, { useState, useEffect } from "react";
-import "./Slide.scss"; // Import the SCSS file
+import "./Slide.scss";
 import slide1 from "../../assets/images/slide_01.jpg";
 import slide2 from "../../assets/images/slide_02.jpg";
+import slide3 from "../../assets/images/baby_1.jpg";
+import slide4 from "../../assets/images/baby_2.jpg";
+import slide5 from "../../assets/images/baby_3.jpg";
+import slide6 from "../../assets/images/baby_4.jpg";
 
 const Slide = () => {
-  const images = [slide1, slide2]; // Replace with your actual images
+  const images = [slide1, slide2, slide3, slide4, slide5, slide6];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -22,24 +25,29 @@ const Slide = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change slide every 5 seconds
-    return () => clearInterval(interval); // Cleanup on component unmount
+    }, 5000);
+    return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <section className="slide">
       <div className="slide__container">
-        <img src={images[currentIndex]} alt="Slide" className="slide__image" />
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Slide ${index + 1}`}
+            className={`slide__image ${currentIndex === index ? "active" : ""}`}
+          />
+        ))}
       </div>
 
-      {/* Left Arrow */}
       <button className="slide__arrow slide__arrow--left" onClick={prevSlide}>
-        &#10094; {/* Left arrow symbol */}
+        &#10094;
       </button>
 
-      {/* Right Arrow */}
       <button className="slide__arrow slide__arrow--right" onClick={nextSlide}>
-        &#10095; {/* Right arrow symbol */}
+        &#10095;
       </button>
     </section>
   );

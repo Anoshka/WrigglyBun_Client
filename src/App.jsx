@@ -7,8 +7,9 @@ import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import GalleryPage from "./pages/GalleryPage/GalleryPage.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import TestimonialsPage from "./pages/TestimonialsPage/TestimonialsPage.jsx";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
+import BlogPage from "./pages/BlogPage/BlogPage.jsx";
 import FAQPage from "./pages/FAQPage/FAQPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/gallery/:id" element={<GalleryPage />} />
         <Route path="/testimonials" element={<TestimonialsPage />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

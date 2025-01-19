@@ -1,14 +1,34 @@
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import logo from "../../assets/images/logo-placeholder_01.jpg";
+import { useState, useEffect, useRef } from "react";
+import logo from "../../assets/images/temp_logo.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null); // Reference for the menu
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Close the menu when clicking outside of it or on a nav link
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  // Close the menu when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="header">
@@ -17,7 +37,7 @@ function Header() {
         <div className="header__left">
           <NavLink to="/" className="header__logo">
             <img src={logo} alt="InStock-logo" className="header__img" />
-            WrigglyBun
+            <p className="header__title">WrigglyBun</p>
           </NavLink>
           <p className="header__description">
             Capturing joy, innocence, and everything in between!
@@ -35,21 +55,31 @@ function Header() {
         </div>
 
         {/* Navigation Links */}
-        <nav className={`header__nav ${isMenuOpen ? "open" : ""}`}>
-          <NavLink to="/about" className="header__link">
+        <nav
+          ref={menuRef}
+          className={`header__nav ${isMenuOpen ? "open" : ""}`}
+        >
+          <NavLink to="/about" className="header__link" onClick={closeMenu}>
             About
           </NavLink>
-          <NavLink to="/gallery" className="header__link">
+          <NavLink to="/gallery" className="header__link" onClick={closeMenu}>
             Gallery
           </NavLink>
-          <NavLink to="/testimonials" className="header__link">
+          <NavLink
+            to="/testimonials"
+            className="header__link"
+            onClick={closeMenu}
+          >
             Testimonials
           </NavLink>
-          <NavLink to="/contact" className="header__link">
+          <NavLink to="/contact" className="header__link" onClick={closeMenu}>
             Contact
           </NavLink>
-          <NavLink to="/faq" className="header__link">
+          <NavLink to="/faq" className="header__link" onClick={closeMenu}>
             FAQ
+          </NavLink>
+          <NavLink to="/blog" className="header__link" onClick={closeMenu}>
+            Blog
           </NavLink>
         </nav>
       </section>

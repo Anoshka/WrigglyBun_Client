@@ -2,8 +2,8 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .footer {
-  background-color: $clay-pink;
-  color: $baby-grey;
+  background-color: $cream;
+  color: $dark-brown;
   padding: 6rem 1rem 3rem;
   text-align: center;
   font-family: "Arial", sans-serif;
@@ -77,7 +77,7 @@
   .footer__copyright {
     margin-top: 2rem;
     font-size: 1rem;
-    color: $mid-blue;
+    color: $baby-grey;
 
     @media (min-width: 768px) {
       margin-top: 1.5rem;

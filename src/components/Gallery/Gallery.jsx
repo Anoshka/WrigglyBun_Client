@@ -1,83 +1,170 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import placeholder from "../../assets/images/Ishaan_jpeg.jpg";
 import "./Gallery.scss";
+import placeholder from "../../assets/images/Ishaan_jpeg.jpg";
+import little_bun from "../../assets/images/little_bun.jpg";
+import first_wriggles from "../../assets/images/first_wriggles.jpg";
+import tiny_triumphs from "../../assets/images/tiny_triumphs.jpg";
+import wriggly_explorers from "../../assets/images/wriggly_explorers.jpg";
+import youthful_charms from "../../assets/images/youthful_charms.jpg";
+import forever_frames from "../../assets/images/forever_frames.jpg";
+import buntastic_celebrations from "../../assets/images/bun-tastic_celebrations.jpg";
+import birth_and_beyond from "../../assets/images/birth_and_beyond.jpg";
+import styled_stories from "../../assets/images/temp_logo.png";
 
 const galleryData = [
   {
     id: 1,
     wrigglyBunAlignedName: "Little Bun Moments",
     age: "Maternity (28-35 weeks)",
-    description: "Celebrate the journey of life as it begins...",
+    description:
+      "Celebrate the journey of life as it begins, capturing the glow of motherhood and the anticipation of meeting your little one. These timeless maternity portraits honor the love, strength, and beauty of this special chapter.",
+    image: little_bun,
+    link: "https://wrigglybunphotography.pixieset.com/vishalihariharan/",
   },
   {
     id: 2,
     wrigglyBunAlignedName: "First Wriggles",
     age: "New Born (7-40 days)",
-    description: "The tiniest fingers, softest yawns...",
+    description:
+      "The tiniest fingers, softest yawns, and the pure wonder of your newborn’s first days—each moment is a treasure. Let us capture these irreplaceable memories so you can hold onto them forever.",
+    image: first_wriggles,
+    link: "https://wrigglybunphotography.pixieset.com/firstwrigglesnewborn/",
   },
   {
     id: 3,
     wrigglyBunAlignedName: "Tiny Triumphs",
     age: "Milestones (3 to 9 months)",
-    description: "From the first laugh to tiny milestones...",
+    description:
+      "From the first laugh to tiny milestones like sitting up or crawling, these joyful phases of growth deserve to be remembered. Our milestone sessions beautifully document your baby’s journey, one triumph at a time.",
+    image: tiny_triumphs,
+    link: "/",
   },
   {
     id: 4,
     wrigglyBunAlignedName: "Wriggly Explorers",
     age: "10 months – 3 years",
-    description: "These playful sessions capture the charm...",
+    description:
+      "As they toddle into a world of adventure and curiosity, these playful sessions capture the charm and imagination of your little one. Let’s bring their personality to life in vibrant, creative themes!",
+    image: wriggly_explorers,
+    link: "https://wrigglybunphotography.pixieset.com/youthfulcharms/",
   },
   {
     id: 5,
     wrigglyBunAlignedName: "Youthful Charms",
     age: "3 – 18 years",
-    description: "From childhood giggles to teenage confidence...",
+    description:
+      "From childhood giggles to teenage confidence, every phase of growing up tells a unique story. These portraits freeze the moments you’ll cherish, reflecting your child’s personality and spirit.",
+    image: youthful_charms,
+    link: "https://wrigglybunphotography.pixieset.com/youthfulcharms/",
   },
   {
     id: 6,
     wrigglyBunAlignedName: "Forever Frames",
     age: "All Ages",
-    description: "Our family portraits celebrate your bond...",
+    description:
+      "The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share.",
+    image: forever_frames,
+    link: "https://wrigglybunphotography.pixieset.com/familyportraits/",
   },
   {
     id: 7,
     wrigglyBunAlignedName: "Bun-tastic Celebrations",
     age: "All Ages",
-    description: "Every celebration is filled with love...",
+    description:
+      "Every celebration is filled with love, joy, and unforgettable memories. From birthdays to special gatherings, we capture the heart of your events, turning those moments into vibrant keepsakes.",
+    image: buntastic_celebrations,
+    link: "https://wrigglybunphotography.pixieset.com/bun-tasticcelebrations/",
   },
   {
     id: 8,
     wrigglyBunAlignedName: "Birth & Beyond",
-    age: "Birth & Fresh48",
-    description: "Our hospital sessions capture the awe...",
+    age: "Hospital Session",
+    description:
+      "The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share.",
+    image: birth_and_beyond,
+    link: "https://wrigglybunphotography.pixieset.com/familyportraits/",
   },
   {
     id: 9,
     wrigglyBunAlignedName: "Styled Stories",
-    age: "All Ages",
-    description: "Creative photography transforms your vision...",
+    age: "Commercial Brand Work",
+    description:
+      "Whether it’s showcasing a brand, product, or campaign, our creative photography transforms your vision into impactful visuals. Let us help you tell your story with style and substance.",
+    image: styled_stories,
+    link: "/",
   },
 ];
 
 const Gallery = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsPerPage = 3; // Show 3 items at a time
+
+  // Logic to handle arrow clicks
+  const nextPage = () => {
+    if (currentIndex + itemsPerPage < galleryData.length) {
+      setCurrentIndex(currentIndex + itemsPerPage);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentIndex - itemsPerPage >= 0) {
+      setCurrentIndex(currentIndex - itemsPerPage);
+    }
+  };
+
+  const visibleItems = galleryData.slice(
+    currentIndex,
+    currentIndex + itemsPerPage
+  );
+
+  const isPrevButtonVisible = currentIndex > 0;
+  const isNextButtonVisible = currentIndex + itemsPerPage < galleryData.length;
+
   return (
     <div className="gallery">
       <p className="gallery__title">GALLERY</p>
-      <div className="gallery__grid">
-        {galleryData.map((item) => (
-          <div key={item.id} className="gallery__item">
-            <Link to={`/gallery/${item.id}`}>
-              <div className="gallery__image">
-                {/* Replace with actual images */}
-                <img src={placeholder} alt={item.wrigglyBunAlignedName} />
-              </div>
-              <div className="gallery__text">
-                <h3>{item.wrigglyBunAlignedName}</h3>
-                <p>{item.age}</p>
-              </div>
-            </Link>
-          </div>
-        ))}
+      <div className="gallery__carousel">
+        {/* Left Arrow */}
+        <button
+          className={`gallery__arrow gallery__arrow--left ${
+            isPrevButtonVisible ? "gallery__arrow--visible" : ""
+          }`}
+          onClick={prevPage}
+        >
+          &#10094;
+        </button>
+
+        <div className="gallery__grid">
+          {visibleItems.map((item) => (
+            <div key={item.id} className="gallery__item">
+              <Link to={item.link} target="blank">
+                <div className="gallery__image">
+                  <img
+                    src={item.image}
+                    alt={item.wrigglyBunAlignedName}
+                    className="gallery__category-image"
+                  />
+                </div>
+                <div className="gallery__text">
+                  <h3>{item.wrigglyBunAlignedName}</h3>
+                  <p>{item.age}</p>
+                  <p>{item.description}</p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        {/* Right Arrow */}
+        <button
+          className={`gallery__arrow gallery__arrow--right ${
+            isNextButtonVisible ? "gallery__arrow--visible" : ""
+          }`}
+          onClick={nextPage}
+        >
+          &#10095;
+        </button>
       </div>
     </div>
   );

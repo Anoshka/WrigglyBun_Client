@@ -5,24 +5,25 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 6rem 3rem 3rem;
+  padding: 9rem 3rem 4rem;
   align-items: center;
   text-align: center;
-  background-color: $clay-pink;
+  background-color: $cream;
   color: $black;
   font-size: 1.25rem;
+  line-height: 3rem;
 
   @include tablet {
-    padding: 6rem 12rem 3rem;
+    padding: 9rem 12rem 1rem;
   }
 
   &__contact {
-    padding-top: 4.5rem;
+    padding-top: 3rem;
     text-decoration: none;
     color: $black;
 
     &:hover {
-      text-decoration: underline;
+      color: $sunshine;
     }
   }
 }

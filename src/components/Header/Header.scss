@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .header {
-  background-color: $clay-pink; /* Baby blue background */
+  background-color: $cream; /* Baby blue background */
   color: $black;
   width: 100%;
   padding: 3rem 1rem 0;
@@ -10,9 +10,12 @@
 
   &__description {
     font-family: $fancy-font;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     @include tablet {
       padding-bottom: 2rem;
+    }
+    @include desktop {
+      font-size: 1.8rem;
     }
   }
 
@@ -47,10 +50,17 @@
     }
   }
   &__img {
-    width: 4rem;
-    height: 4rem;
-    margin-right: 1rem;
+    width: 6rem;
+    height: 6rem;
+    //margin-right: 1rem;
     border-radius: 50%;
+  }
+  &__title {
+    padding-top: 1.5rem;
+
+    @include tablet {
+      padding-top: 0.9rem;
+    }
   }
 
   &__logo {
@@ -58,19 +68,23 @@
     font-family: $fancy-font;
     font-size: 2rem;
     font-weight: bold;
+    margin-left: -2rem;
     color: $black;
     text-decoration: none;
     //margin-bottom: 1rem;
+    @include tablet {
+      margin-left: 0;
+    }
   }
 
   &__nav {
     display: none; /* Hidden by default on mobile */
     flex-direction: column; /* Stack links vertically on mobile */
     position: absolute;
-    top: 60px;
+    top: 40px;
     left: 0;
     right: 0;
-    background-color: $clay-pink;
+    background-color: $cream;
     padding: 1rem;
     z-index: 2;
     margin-top: 7.5rem;
@@ -89,16 +103,16 @@
 
       &:hover {
         //color: #f6dae4; /* Baby pink on hover */
-        font-size: 1.3rem; /* Enlarge on hover */
-        border-top: 4px solid $sunshine;
+        //font-size: 1.3rem; /* Enlarge on hover */
+        color: $sunshine;
       }
 
       &:focus,
       &:active {
-        color: $black;
+        color: $sunshine;
         //background-color: $light-blue; /* Blue background on active/focus */
         //border-radius: 5px;
-        border-top: 4px solid $sunshine;
+        //border-top: 4px solid $sunshine;
         //border-bottom: none;
       }
 
@@ -130,16 +144,17 @@
     cursor: pointer;
     z-index: 3;
     padding-top: 1rem;
+    margin-top: 1.5rem;
 
     .line {
       width: 100%;
       height: 3px;
-      background-color: $mid-blue;
+      background-color: $dark-brown;
       transition: transform 0.3s ease-in-out;
     }
 
     &.open .line {
-      background-color: $yellow-white;
+      background-color: $baby-grey;
     }
   }
 
@@ -198,7 +213,7 @@
       text-align: center;
 
       &:hover {
-        font-size: 1.6rem;
+        //font-size: 1.6rem;
       }
     }
 

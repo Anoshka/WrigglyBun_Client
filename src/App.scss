@@ -4,6 +4,7 @@
 html {
   font-size: 100%;
   font-family: $primary-font;
+  background-color: $cream;
 }
 *,
 *::before,
@@ -19,5 +20,5 @@ a {
 .main {
   min-height: 70vh;
   width: 100%;
-  color: $black !important;
+  color: $dark-brown !important;
 }

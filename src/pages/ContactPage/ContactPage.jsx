@@ -110,7 +110,7 @@ const Contact = () => {
         </div>
 
         <button type="submit" className="contact-form__submit">
-          Submit
+          Get In Touch
         </button>
 
         {status && <p className="contact-form__status">{status}</p>}
