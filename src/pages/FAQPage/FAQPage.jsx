@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import faqData from "../../assets/JSON/faq.json"; // Importing the JSON data
 
 import "./FAQPage.scss";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Import arrow icons
 
 const FAQPage = () => {
+  // State to track expanded questions
+  const [expandedQuestion, setExpandedQuestion] = useState(null);
+
+  // Function to toggle the expanded state of a question
+  const toggleAnswer = (index) => {
+    setExpandedQuestion(expandedQuestion === index ? null : index);
+  };
+
   return (
     <div className="faq">
       <h2 className="faq__title">Frequently Asked Questions</h2>
@@ -14,8 +23,22 @@ const FAQPage = () => {
         <div className="faq__questions">
           {faqData.FAQ.MaternityPhotoshoot.questions.map((item, index) => (
             <div key={index} className="faq__item">
-              <h4 className="faq__question">{item.question}</h4>
-              <p className="faq__answer">{item.answer}</p>
+              <div
+                className="faq__question"
+                onClick={() => toggleAnswer(index)} // Toggle on click
+              >
+                <h4>{item.question}</h4>
+                <span className="faq__arrow">
+                  {expandedQuestion === index ? (
+                    <FaChevronUp />
+                  ) : (
+                    <FaChevronDown />
+                  )}
+                </span>
+              </div>
+              {expandedQuestion === index && (
+                <p className="faq__answer">{item.answer}</p>
+              )}
             </div>
           ))}
         </div>
@@ -27,8 +50,22 @@ const FAQPage = () => {
         <div className="faq__questions">
           {faqData.FAQ.NewbornPhotoshoot.questions.map((item, index) => (
             <div key={index} className="faq__item">
-              <h4 className="faq__question">{item.question}</h4>
-              <p className="faq__answer">{item.answer}</p>
+              <div
+                className="faq__question"
+                onClick={() => toggleAnswer(index)} // Toggle on click
+              >
+                <h4>{item.question}</h4>
+                <span className="faq__arrow">
+                  {expandedQuestion === index ? (
+                    <FaChevronUp />
+                  ) : (
+                    <FaChevronDown />
+                  )}
+                </span>
+              </div>
+              {expandedQuestion === index && (
+                <p className="faq__answer">{item.answer}</p>
+              )}
             </div>
           ))}
         </div>
@@ -40,8 +77,22 @@ const FAQPage = () => {
         <div className="faq__questions">
           {faqData.FAQ.Miscellaneous.questions.map((item, index) => (
             <div key={index} className="faq__item">
-              <h4 className="faq__question">{item.question}</h4>
-              <p className="faq__answer">{item.answer}</p>
+              <div
+                className="faq__question"
+                onClick={() => toggleAnswer(index)} // Toggle on click
+              >
+                <h4>{item.question}</h4>
+                <span className="faq__arrow">
+                  {expandedQuestion === index ? (
+                    <FaChevronUp />
+                  ) : (
+                    <FaChevronDown />
+                  )}
+                </span>
+              </div>
+              {expandedQuestion === index && (
+                <p className="faq__answer">{item.answer}</p>
+              )}
             </div>
           ))}
         </div>

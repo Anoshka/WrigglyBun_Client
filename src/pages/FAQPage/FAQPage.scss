@@ -56,11 +56,25 @@
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: #333;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      color: $sunshine;
+    }
+  }
+
+  &__arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease-in-out;
   }
 
   &__answer {
     font-size: 1rem;
     color: #555;
+    padding-top: 1rem;
+    padding-left: 1rem;
   }
 
   &__contact {
