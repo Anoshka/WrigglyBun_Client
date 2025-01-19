@@ -1,5 +1,5 @@
 import React from "react";
-import "./blog.scss";
+import "./Blog.scss";
 import { Link } from "react-router-dom";
 import BlogPage from "../../pages/BlogPage/BlogPage";
 
