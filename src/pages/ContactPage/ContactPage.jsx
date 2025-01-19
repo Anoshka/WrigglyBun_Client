@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "/emailjs-com";
 import "./ContactPage.scss";
 import {
   FaInstagram,
@@ -7,7 +7,7 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaWhatsapp,
-} from "react-icons/fa";
+} from "/react-icons/fa";
 import insta_icon from "../../assets/images/icons/instagram.jpg";
 import { Link } from "react-router-dom";
 
