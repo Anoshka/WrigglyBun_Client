@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import faqData from "../../assets/JSON/faq.json"; // Importing the JSON data
 
 import "./FAQPage.scss";
-import { FaChevronDown, FaChevronUp } from "/react-icons/fa"; // Import arrow icons
+import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Import arrow icons
 
 const FAQPage = () => {
   // State to track expanded questions

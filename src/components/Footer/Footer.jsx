@@ -6,7 +6,7 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaWhatsapp,
-} from "/react-icons/fa";
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
