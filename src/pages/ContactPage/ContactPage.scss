@@ -26,7 +26,11 @@
   flex-direction: column;
   align-items: space-between;
   background-color: $cream;
-  width: 50rem;
+  width: 100%;
+
+  @include tablet {
+    width: 50rem;
+  }
 
   .contact-form {
     display: flex;
