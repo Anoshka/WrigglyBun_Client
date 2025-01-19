@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import emailjs from "/emailjs-com";
+//import emailjs from "/emailjs-com";
 import "./ContactPage.scss";
 import {
   FaInstagram,
@@ -35,23 +35,23 @@ const Contact = () => {
     e.preventDefault();
 
     // EmailJS service configuration (change with your own service ID, template ID, and user ID)
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID", // Replace with your emailjs service ID
-        "YOUR_TEMPLATE_ID", // Replace with your emailjs template ID
-        e.target,
-        "YOUR_USER_ID" // Replace with your emailjs user ID
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setStatus("Your message has been sent successfully!");
-        },
-        (error) => {
-          console.log(error.text);
-          setStatus("There was an error. Please try again.");
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     "YOUR_SERVICE_ID", // Replace with your emailjs service ID
+    //     "YOUR_TEMPLATE_ID", // Replace with your emailjs template ID
+    //     e.target,
+    //     "YOUR_USER_ID" // Replace with your emailjs user ID
+    //   )
+    //   .then(
+    //     (result) => {
+    //       console.log(result.text);
+    //       setStatus("Your message has been sent successfully!");
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //       setStatus("There was an error. Please try again.");
+    //     }
+    //   );
   };
 
   return (
