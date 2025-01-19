@@ -1,0 +1,100 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.faq {
+  padding: 1rem;
+  background-color: $cream;
+
+  @include tablet {
+    padding: 6rem;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: $dark-brown;
+  }
+
+  &__section {
+    margin-bottom: 2rem;
+    padding-top: 4rem;
+  }
+
+  &__section-title {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    color: $dark-brown;
+    border-bottom: 2px solid $sunshine;
+    padding-bottom: 1rem;
+  }
+
+  &__questions {
+    margin-top: 1rem;
+  }
+
+  &__item {
+    margin-bottom: 3rem;
+    padding: 1rem;
+    background-color: $cream;
+    border: 1px solid $yellow-white;
+    border-radius: 8px;
+    line-height: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      border: 1px solid $sunshine;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__question {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+
+  &__answer {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  &__contact {
+    padding-top: 4rem;
+    font-size: 1.25rem;
+    color: $dark-brown;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $dark-brown;
+    font-weight: bold;
+
+    &:hover {
+      color: $sunshine;
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 768px) {
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__section-title {
+      font-size: 1.6rem;
+    }
+
+    &__question {
+      font-size: 1.1rem;
+    }
+
+    &__answer {
+      font-size: 0.95rem;
+    }
+  }
+}

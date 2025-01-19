@@ -122,7 +122,7 @@ const Gallery = () => {
   const isNextButtonVisible = currentIndex + itemsPerPage < galleryData.length;
 
   return (
-    <div className="gallery">
+    <div className="gallery gallery__comp">
       <p className="gallery__title">GALLERY</p>
       <div className="gallery__carousel">
         {/* Left Arrow */}

@@ -1,7 +1,15 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
 .blog {
   &__title {
-    text-align: center;
-    font-size: 2rem;
-    margin: 3rem 0 4rem;
+    display: none;
+    @include tablet {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      font-size: 2rem;
+      margin: 3rem 0 4rem;
+    }
   }
 }

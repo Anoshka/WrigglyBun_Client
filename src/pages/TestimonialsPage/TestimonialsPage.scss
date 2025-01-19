@@ -1,3 +1,8 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
 .google-reviews {
-  padding-top: 10rem;
+  @include tablet {
+    padding-top: 10rem;
+  }
 }

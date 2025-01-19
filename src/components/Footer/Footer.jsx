@@ -12,27 +12,26 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <div className="footer__social">
-          <a
-            href="https://www.instagram.com/wrigglybunphotography/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram className="footer__icon" />
-          </a>
-        </div>
+        <div className="footer__social"></div>
 
         <div className="footer__contact">
           <div className="footer__contact-item">
+            <a
+              href="https://www.instagram.com/wrigglybunphotography/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram className="footer__icon" />
+            </a>
+          </div>
+          <div className="footer__contact-item">
             <a href="tel:+919820591096">
               <FaPhoneAlt className="footer__icon" />
-              <span>+91 98205 91096</span>
             </a>
           </div>
           <div className="footer__contact-item">
             <a href="mailto:wrigglybun@gmail.com">
               <FaEnvelope className="footer__icon" />
-              <span>wrigglybun@gmail.com</span>
             </a>
           </div>
           <div className="footer__contact-item">
@@ -42,7 +41,6 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <FaMapMarkerAlt className="footer__icon" />
-              <span>Studio Location</span>
             </a>
           </div>
           <div className="footer__contact-item">
@@ -52,7 +50,6 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <FaWhatsapp className="footer__icon" />
-              <span>WhatsApp</span>
             </a>
           </div>
         </div>

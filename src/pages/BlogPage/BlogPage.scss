@@ -2,10 +2,13 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .blog-page {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem; // Space between blog posts
-  padding: 2rem;
+  display: none;
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; // Space between blog posts
+    padding: 2rem;
+  }
 }
 
 .blog-post {

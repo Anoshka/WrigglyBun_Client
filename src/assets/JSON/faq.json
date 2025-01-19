@@ -1,0 +1,76 @@
+{
+  "FAQ": {
+    "MaternityPhotoshoot": {
+      "questions": [
+        {
+          "question": "When is the best time for a maternity photoshoot?",
+          "answer": "The ideal time is between 30-34 weeks, when your baby bump is beautifully rounded, and you're usually comfortable for posing. However, every pregnancy is unique, and we’re happy to work with your timeline to create stunning images at any stage."
+        },
+        {
+          "question": "When should I book my maternity shoot?",
+          "answer": "We accept a limited number of sessions each month, so it’s best to book at least a month in advance. This ensures you secure your preferred date and gives us plenty of time to plan, discuss, and personalize your session for a truly memorable experience."
+        },
+        {
+          "question": "Are couple and sibling pictures included in the maternity session?",
+          "answer": "Absolutely! Couple portraits and sibling photos are included in all maternity sessions. We love capturing the love between expecting parents and the excitement of soon-to-be elder siblings, creating memories you’ll treasure forever."
+        },
+        {
+          "question": "Is hair and makeup included?",
+          "answer": "Hair and makeup services are not included, but we can recommend trusted professionals who specialize in maternity styling. A little pampering before the shoot can enhance your glow and make you feel radiant for the session!"
+        }
+      ]
+    },
+    "NewbornPhotoshoot": {
+      "questions": [
+        {
+          "question": "When should I book my newborn photoshoot?",
+          "answer": "It’s best to book your newborn session as a package with your maternity shoot or at least a month before your due date. This ensures we can reserve a spot for your little one’s first portraits."
+        },
+        {
+          "question": "What happens if I deliver before my due date and want to reschedule my newborn session?",
+          "answer": "No worries at all! Just give us a call as soon as your baby arrives, and we’ll adjust your session to the earliest available date to capture those precious early days."
+        },
+        {
+          "question": "What do I need to buy for my newborn photoshoot?",
+          "answer": "Nothing at all! We provide everything—from baby wraps, bonnets, and headbands to props like baskets, buckets, posing pillows, and more. All you need to do is bring your bundle of joy, and we’ll take care of the rest."
+        },
+        {
+          "question": "Where does a newborn session take place?",
+          "answer": "You can choose between our cozy studio or the comfort of your own home. Both options ensure a relaxed and stress-free environment for you and your baby."
+        },
+        {
+          "question": "When is the best time to get a newborn photoshoot done?",
+          "answer": "The ideal time is when your baby is under 2-3 weeks old. At this stage, they’re still sleepy, flexible, and accustomed to womb-like poses, making it easier to capture those dreamy moments in props like baskets and buckets."
+        },
+        {
+          "question": "Do you shoot older newborns (1 or 2 months old)?",
+          "answer": "Yes, we do! While the poses and style differ from a typical newborn session, we can still create beautiful images for 1-2 month-old babies. Reach out to us for details on what we can offer."
+        }
+      ]
+    },
+    "Miscellaneous": {
+      "questions": [
+        {
+          "question": "Do you travel outside Bangalore for photoshoots?",
+          "answer": "Yes, we’re happy to travel based on your requirements."
+        },
+        {
+          "question": "How long does a photoshoot take?",
+          "answer": "The duration depends on the type of session. Maternity, toddler, and cake smash sessions typically take 2-3 hours, while a newborn session can last up to 4 hours to accommodate breaks and the baby’s comfort."
+        },
+        {
+          "question": "Do you offer baby books or photo albums?",
+          "answer": "Yes, we create custom-designed baby books and photo albums upon request, helping you preserve these special memories beautifully."
+        },
+        {
+          "question": "Will my images be shared on social media or your website?",
+          "answer": "Yes, sharing our work allows us to showcase our photography. However, we respect your privacy and don’t tag or name your baby unless you request us to."
+        },
+        {
+          "question": "When will I receive my images?",
+          "answer": "Your carefully edited images will be delivered within 20-25 days from the date of your session."
+        }
+      ]
+    }
+  }
+}
