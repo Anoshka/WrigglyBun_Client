@@ -12,14 +12,24 @@
   color: $baby-grey;
 
   &__image {
-    width: 30%;
+    width: 100%;
+
+    @include tablet {
+      width: 30%;
+    }
   }
 
   &__text {
     font-size: 1rem;
     line-height: 2.1rem;
-    padding-left: 4rem;
-    text-align: left;
+    padding-top: 4rem;
+    text-align: center;
+
+    @include tablet {
+      text-align: left;
+      padding-top: 0;
+      padding-left: 4rem;
+    }
   }
   &__description {
     padding-bottom: 1.5rem;
