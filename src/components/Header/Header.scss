@@ -6,7 +6,6 @@
   color: $black;
   width: 100%;
   padding: 3rem 1rem 0;
-  font-family: $header-font;
 
   &__description {
     font-family: $fancy-font;
@@ -57,9 +56,13 @@
   }
   &__title {
     padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    font-family: $secondary-font;
+    font-weight: 300;
+    font-size: 2.7rem;
 
     @include tablet {
-      padding-top: 0.9rem;
+      //padding-top: 0.9rem;
     }
   }
 
@@ -88,6 +91,7 @@
     padding: 1rem;
     z-index: 2;
     margin-top: 7.5rem;
+    font-family: $primary-font;
 
     &.open {
       display: flex; /* Show menu when open */

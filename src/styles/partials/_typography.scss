@@ -9,14 +9,23 @@
 
 @font-face {
   font-family: $primary-font-fontface;
-  src: url("/src/assets/fonts/HappyMonkey-Regular.ttf") format("truetype");
+  src: url("/src/assets/fonts/Noto/NotoSans-VariableFont_wdth\,wght.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: $fancy-font-fontface;
-  src: url("/src/assets/fonts/Dawning_of_a_New_Day/DawningofaNewDay-Regular.ttf")
+  src: url("/src/assets/fonts/LeagueSpartan/LeagueSpartan-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $secondary-font-fontface;
+  src: url("/src/assets/fonts/Grandstander/Grandstander-VariableFont_wght.ttf")
     format("truetype");
   font-weight: 400;
   font-style: normal;
