@@ -8,7 +8,7 @@ import tiny_triumphs from "../../assets/images/tiny_triumphs.jpg";
 import wriggly_explorers from "../../assets/images/wriggly_explorers.jpg";
 import youthful_charms from "../../assets/images/youthful_charms.jpg";
 import forever_frames from "../../assets/images/forever_frames.jpg";
-import buntastic_celebrations from "../../assets/images/bun-tastic_celebrations.jpg";
+import buntastic_celebrations from "../../assets/images/buntastic_celebrations_03.jpg";
 import birth_and_beyond from "../../assets/images/birth_and_beyond.jpg";
 import styled_stories from "../../assets/images/temp_logo.png";
 
@@ -55,7 +55,7 @@ const galleryData = [
     age: "3 – 18 years",
     description:
       "From childhood giggles to teenage confidence, every phase of growing up tells a unique story. These portraits freeze the moments you’ll cherish, reflecting your child’s personality and spirit.",
-    image: youthful_charms,
+    image: forever_frames,
     link: "https://wrigglybunphotography.pixieset.com/youthfulcharms/",
   },
   {
@@ -64,7 +64,7 @@ const galleryData = [
     age: "All Ages",
     description:
       "The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share.",
-    image: forever_frames,
+    image: youthful_charms,
     link: "https://wrigglybunphotography.pixieset.com/familyportraits/",
   },
   {
