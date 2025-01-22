@@ -7,14 +7,20 @@
   width: 100%;
   padding: 3rem 1rem 0;
 
+  &__link--about {
+    text-decoration: none;
+    color: $dark-brown;
+  }
+
   &__description {
     font-family: $fancy-font;
-    font-size: 1.4rem;
+    font-size: 0.9rem;
     @include tablet {
       padding-bottom: 2rem;
+      font-size: 1.4rem;
     }
     @include desktop {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
     }
   }
 
@@ -59,12 +65,11 @@
     padding-bottom: 2rem;
     font-family: $header-font;
     font-weight: 300;
-    font-size: 2rem;
+    font-size: 1rem;
     letter-spacing: 0.3rem;
 
     @include tablet {
-      //padding-top: 0.9rem;
-      //word-spacing: 4rem;
+      font-size: 2rem;
     }
   }
 
@@ -92,7 +97,7 @@
     background-color: $cream;
     padding: 1rem;
     z-index: 2;
-    margin-top: 7.5rem;
+    margin-top: 10.5rem;
     font-family: $primary-font;
 
     &.open {
@@ -106,37 +111,14 @@
       padding: 0.5rem 1rem;
       font-size: 1.2rem;
       text-align: center;
+      width: 100%;
+
+      &--about {
+        text-align: center;
+      }
 
       &:hover {
-        //color: #f6dae4; /* Baby pink on hover */
-        //font-size: 1.3rem; /* Enlarge on hover */
         color: $sunshine;
-      }
-
-      &:focus,
-      &:active {
-        color: $sunshine;
-        //background-color: $light-blue; /* Blue background on active/focus */
-        //border-radius: 5px;
-        //border-top: 4px solid $sunshine;
-        //border-bottom: none;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: $hot-pink; /* Baby pink underline */
-        visibility: hidden;
-        transition: visibility 0.3s, opacity 0.3s linear;
-      }
-
-      &:hover::after {
-        visibility: visible;
-        opacity: 1;
       }
     }
   }
@@ -164,6 +146,38 @@
     }
   }
 
+  &__about {
+    position: relative;
+    display: inline-block; /* To maintain the width of the About link itself */
+  }
+
+  &__dropdown-content {
+    display: none;
+    position: absolute;
+    //top: 100%;
+    left: -50;
+    transform: translateX(-20%);
+    background-color: $cream;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    width: auto; /* Let the dropdown content take the width it needs */
+    min-width: 180px; /* Ensure the links are big enough */
+    text-align: left;
+
+    .header__link {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      display: flex;
+      text-align: center;
+      //justify-content: center;
+    }
+  }
+
+  .header__dropdown.open .header__dropdown-content {
+    display: flex;
+    justify-content: center;
+  }
+
   @include tablet {
     /* Tablet View */
     .header__logo {
@@ -185,14 +199,23 @@
       padding: 1rem 2rem;
       font-size: 1.4rem;
       text-align: left;
-
-      &:hover {
-        font-size: 1.5rem; /* Enlarge text on hover */
-      }
     }
 
     .header__hamburger {
       display: none; /* Hide hamburger menu on tablet and up */
+    }
+
+    .header__about {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header__dropdown-content {
+      display: none;
+    }
+
+    .header__about:hover .header__dropdown-content {
+      display: block;
     }
   }
 
@@ -200,15 +223,14 @@
     /* Desktop View */
     .header__logo {
       font-size: 3rem;
-      //margin-right: auto; /* Align logo to the left */
     }
 
     .header__nav {
       display: flex;
       flex-direction: row; /* Horizontal layout */
-      justify-content: space-around;
+      justify-content: space-evenly;
       width: 100%; /* Full width */
-      padding: 0 2rem;
+      padding: 0 20rem;
       max-width: none; /* Ensure full width, not constrained */
     }
 
@@ -217,14 +239,25 @@
       font-size: 1.5rem;
       padding: 1rem;
       text-align: center;
-
-      &:hover {
-        //font-size: 1.6rem;
-      }
+      text-decoration: none;
+      color: $dark-brown;
     }
 
     .header__container {
       justify-content: space-between; /* Spread out logo and nav */
+    }
+
+    .header__about {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header__dropdown-content {
+      display: none;
+    }
+
+    .header__about:hover .header__dropdown-content {
+      display: block;
     }
   }
 }

@@ -5,22 +5,28 @@ import logo from "../../assets/images/temp_logo.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for the dropdown on About
   const menuRef = useRef(null); // Reference for the menu
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Close the menu when clicking outside of it or on a nav link
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Close the menu when clicking outside of it
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false); // Close dropdown when closing the menu
+  };
+
+  // Close the menu when clicking outside of it or on a nav link
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
+        setIsDropdownOpen(false); // Close the dropdown if clicked outside
       }
     };
 
@@ -36,7 +42,7 @@ function Header() {
         {/* Logo */}
         <div className="header__left">
           <NavLink to="/" className="header__logo">
-            <img src={logo} alt="InStock-logo" className="header__img" />
+            <img src={logo} className="header__img" />
             <p className="header__title">WrigglyBun Photography</p>
           </NavLink>
           <p className="header__description">
@@ -59,19 +65,63 @@ function Header() {
           ref={menuRef}
           className={`header__nav ${isMenuOpen ? "open" : ""}`}
         >
-          <NavLink to="/about" className="header__link" onClick={closeMenu}>
-            About
+          <NavLink to="/" className="header__link" onClick={closeMenu}>
+            Home
           </NavLink>
+
+          {/* About Link with Dropdown on Tablet and Desktop */}
+          <div className=" header__link header__about">
+            <NavLink
+              to="/about"
+              className="header__link--about"
+              onClick={closeMenu}
+            >
+              About
+            </NavLink>
+            {/* Dropdown on Tablet and Desktop */}
+            <div
+              className={`header__dropdown ${isDropdownOpen ? "open" : ""}`}
+              onClick={toggleDropdown}
+            >
+              <div className="header__dropdown-content">
+                <NavLink
+                  to="/about"
+                  className="header__link"
+                  onClick={closeMenu}
+                >
+                  About Me
+                </NavLink>
+                <NavLink
+                  to="/the-studio"
+                  className="header__link"
+                  onClick={closeMenu}
+                >
+                  The Studio
+                </NavLink>
+                <NavLink
+                  to="/testimonials"
+                  className="header__link"
+                  onClick={closeMenu}
+                >
+                  Testimonials
+                </NavLink>
+              </div>
+            </div>
+          </div>
+
           <NavLink to="/gallery" className="header__link" onClick={closeMenu}>
             Gallery
           </NavLink>
-          <NavLink
-            to="/testimonials"
-            className="header__link"
-            onClick={closeMenu}
-          >
-            Testimonials
-          </NavLink>
+          {isMenuOpen && (
+            <NavLink
+              to="/testimonials"
+              className="header__link"
+              onClick={closeMenu}
+            >
+              Testimonials
+            </NavLink>
+          )}
+
           <NavLink to="/contact" className="header__link" onClick={closeMenu}>
             Contact
           </NavLink>
@@ -81,6 +131,17 @@ function Header() {
           <NavLink to="/blog" className="header__link" onClick={closeMenu}>
             Blog
           </NavLink>
+
+          {/* Add "The Studio" only in the mobile view */}
+          {isMenuOpen && (
+            <NavLink
+              to="/the-studio"
+              className="header__link"
+              onClick={closeMenu}
+            >
+              The Studio
+            </NavLink>
+          )}
         </nav>
       </section>
     </header>

@@ -95,12 +95,23 @@
   }
 
   .gallery__item {
-    max-width: 100%; /* Ensure it uses the full width in mobile */
-    width: 100%; /* Make sure each item is 100% wide */
+    max-width: 90%; /* Make the item narrower */
+    width: 90%; /* Ensure the item takes up only 90% of the container */
+    margin: 0 auto; /* Center the item */
+    border-radius: 12px; /* Round the edges */
+    overflow: hidden; /* Ensure content inside doesn't overflow */
   }
 
   .gallery__image {
-    height: 250px; /* Increase the image height for mobile */
+    height: 200px; /* Keep a consistent height for images */
+    overflow: hidden; /* Hide any part of the image that exceeds the container */
+  }
+
+  .gallery__image img {
+    width: 100%; /* Make image width 100% to fit within the container */
+    height: 100%; /* Adjust image height to cover the container */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    transition: transform 0.3s ease;
   }
 
   .gallery__text {

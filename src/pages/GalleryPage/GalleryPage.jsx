@@ -11,6 +11,7 @@ import forever_frames from "../../assets/images/forever_frames.jpg";
 import buntastic_celebrations from "../../assets/images/bun-tastic_celebrations.jpg";
 import birth_and_beyond from "../../assets/images/birth_and_beyond.jpg";
 import styled_stories from "../../assets/images/temp_logo.png";
+import seasonal_shoot from "../../assets/images/seasonal_shoot.jpg";
 
 const galleryData = [
   {
@@ -38,7 +39,7 @@ const galleryData = [
     description:
       "From the first laugh to tiny milestones like sitting up or crawling, these joyful phases of growth deserve to be remembered. Our milestone sessions beautifully document your baby’s journey, one triumph at a time.",
     image: tiny_triumphs,
-    link: "/",
+    link: "https://wrigglybunphotography.pixieset.com/tinytriumphs/",
   },
   {
     id: 4,
@@ -47,7 +48,7 @@ const galleryData = [
     description:
       "As they toddle into a world of adventure and curiosity, these playful sessions capture the charm and imagination of your little one. Let’s bring their personality to life in vibrant, creative themes!",
     image: wriggly_explorers,
-    link: "https://wrigglybunphotography.pixieset.com/youthfulcharms/",
+    link: "https://wrigglybunphotography.pixieset.com/wrigglyexplorers/",
   },
   {
     id: 5,
@@ -55,7 +56,7 @@ const galleryData = [
     age: "3 – 18 years",
     description:
       "From childhood giggles to teenage confidence, every phase of growing up tells a unique story. These portraits freeze the moments you’ll cherish, reflecting your child’s personality and spirit.",
-    image: youthful_charms,
+    image: forever_frames,
     link: "https://wrigglybunphotography.pixieset.com/youthfulcharms/",
   },
   {
@@ -64,7 +65,7 @@ const galleryData = [
     age: "All Ages",
     description:
       "The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share.",
-    image: forever_frames,
+    image: youthful_charms,
     link: "https://wrigglybunphotography.pixieset.com/familyportraits/",
   },
   {
@@ -83,16 +84,16 @@ const galleryData = [
     description:
       "The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share.",
     image: birth_and_beyond,
-    link: "https://wrigglybunphotography.pixieset.com/familyportraits/",
+    link: "https://wrigglybunphotography.pixieset.com/birthandbeyond/",
   },
   {
     id: 9,
-    wrigglyBunAlignedName: "Styled Stories",
-    age: "Commercial Brand Work",
+    wrigglyBunAlignedName: "Seasonal Shoot",
+    age: "All ages",
     description:
-      "Whether it’s showcasing a brand, product, or campaign, our creative photography transforms your vision into impactful visuals. Let us help you tell your story with style and substance.",
-    image: styled_stories,
-    link: "/",
+      "Capture a festival, an important event or even the essence of a season with our seasonal shoots!",
+    image: seasonal_shoot,
+    link: "https://wrigglybunphotography.pixieset.com/seasonalmix/",
   },
 ];
 

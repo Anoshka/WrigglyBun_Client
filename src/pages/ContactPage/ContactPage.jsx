@@ -143,7 +143,7 @@ const Contact = () => {
           <div className="socials__item">
             <Link to="tel:+919820591096" className="socials__link">
               <FaPhoneAlt className="socials__icon" />
-              <p className="socials__name">+91 (982) 059-1096</p>
+              <p className="socials__name">+91 982 059 1096</p>
             </Link>
           </div>
           <div className="socials__item">
@@ -176,7 +176,7 @@ const Contact = () => {
               className="socials__link"
             >
               <FaWhatsapp className="socials__icon" />
-              <p className="socials__name">+91 (982) 059-1096</p>
+              <p className="socials__name">+91 982 059 1096</p>
             </Link>
           </div>
         </div>

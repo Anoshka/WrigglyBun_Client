@@ -11,6 +11,7 @@ import forever_frames from "../../assets/images/forever_frames.jpg";
 import buntastic_celebrations from "../../assets/images/buntastic_celebrations_03.jpg";
 import birth_and_beyond from "../../assets/images/birth_and_beyond.jpg";
 import styled_stories from "../../assets/images/temp_logo.png";
+import seasonal_shoot from "../../assets/images/seasonal_shoot.jpg";
 
 const galleryData = [
   {
@@ -38,7 +39,7 @@ const galleryData = [
     description:
       "From the first laugh to tiny milestones like sitting up or crawling, these joyful phases of growth deserve to be remembered. Our milestone sessions beautifully document your baby’s journey, one triumph at a time.",
     image: tiny_triumphs,
-    link: "/",
+    link: "https://wrigglybunphotography.pixieset.com/tinytriumphs/",
   },
   {
     id: 4,
@@ -47,7 +48,7 @@ const galleryData = [
     description:
       "As they toddle into a world of adventure and curiosity, these playful sessions capture the charm and imagination of your little one. Let’s bring their personality to life in vibrant, creative themes!",
     image: wriggly_explorers,
-    link: "https://wrigglybunphotography.pixieset.com/youthfulcharms/",
+    link: "https://wrigglybunphotography.pixieset.com/wrigglyexplorers/",
   },
   {
     id: 5,
@@ -83,88 +84,41 @@ const galleryData = [
     description:
       "The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share.",
     image: birth_and_beyond,
-    link: "https://wrigglybunphotography.pixieset.com/familyportraits/",
+    link: "https://wrigglybunphotography.pixieset.com/birthandbeyond/",
   },
   {
     id: 9,
-    wrigglyBunAlignedName: "Styled Stories",
-    age: "Commercial Brand Work",
+    wrigglyBunAlignedName: "Seasonal Shoot",
+    age: "All ages",
     description:
-      "Whether it’s showcasing a brand, product, or campaign, our creative photography transforms your vision into impactful visuals. Let us help you tell your story with style and substance.",
-    image: styled_stories,
-    link: "/",
+      "Capture a festival, an important event or even the essence of a season with our seasonal shoots!",
+    image: seasonal_shoot,
+    link: "https://wrigglybunphotography.pixieset.com/seasonalmix/",
   },
 ];
 
 const Gallery = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 3; // Show 3 items at a time
-
-  // Logic to handle arrow clicks
-  const nextPage = () => {
-    if (currentIndex + itemsPerPage < galleryData.length) {
-      setCurrentIndex(currentIndex + itemsPerPage);
-    }
-  };
-
-  const prevPage = () => {
-    if (currentIndex - itemsPerPage >= 0) {
-      setCurrentIndex(currentIndex - itemsPerPage);
-    }
-  };
-
-  const visibleItems = galleryData.slice(
-    currentIndex,
-    currentIndex + itemsPerPage
-  );
-
-  const isPrevButtonVisible = currentIndex > 0;
-  const isNextButtonVisible = currentIndex + itemsPerPage < galleryData.length;
-
   return (
-    <div className="gallery gallery__comp">
+    <div className="gallery">
       <p className="gallery__title">GALLERY</p>
-      <div className="gallery__carousel">
-        {/* Left Arrow */}
-        <button
-          className={`gallery__arrow gallery__arrow--left ${
-            isPrevButtonVisible ? "gallery__arrow--visible" : ""
-          }`}
-          onClick={prevPage}
-        >
-          &#10094;
-        </button>
-
-        <div className="gallery__grid">
-          {visibleItems.map((item) => (
-            <div key={item.id} className="gallery__item">
-              <Link to={item.link} target="blank">
-                <div className="gallery__image">
-                  <img
-                    src={item.image}
-                    alt={item.wrigglyBunAlignedName}
-                    className="gallery__category-image"
-                  />
-                </div>
-                <div className="gallery__text">
-                  <h3>{item.wrigglyBunAlignedName}</h3>
-                  <p>{item.age}</p>
-                  <p>{item.description}</p>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-
-        {/* Right Arrow */}
-        <button
-          className={`gallery__arrow gallery__arrow--right ${
-            isNextButtonVisible ? "gallery__arrow--visible" : ""
-          }`}
-          onClick={nextPage}
-        >
-          &#10095;
-        </button>
+      <div className="gallery__grid">
+        {galleryData.map((item) => (
+          <div key={item.id} className="gallery__item">
+            <Link to={item.link} target="blank">
+              <div className="gallery__image">
+                <img
+                  src={item.image}
+                  alt={item.wrigglyBunAlignedName}
+                  className="gallery__category-image"
+                />
+              </div>
+              <div className="gallery__text">
+                <h3>{item.wrigglyBunAlignedName}</h3>
+                <p>{item.age}</p>
+              </div>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );

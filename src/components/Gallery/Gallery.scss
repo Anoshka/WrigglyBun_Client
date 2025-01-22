@@ -2,7 +2,6 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .gallery {
-  //display: none;
   &__comp {
     display: none;
   }
@@ -20,39 +19,47 @@
       margin: 3rem 0 4rem;
     }
 
-    &__carousel {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-
+    // Grid Layout for Tablet and Desktop
     &__grid {
-      display: none;
+      display: grid; /* Make sure it uses grid layout */
+      grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+      gap: 2rem; /* Add space between items */
+      justify-items: center;
+      grid-template-rows: auto; /* Rows will automatically adjust to content */
+
+      /* Tablet view adjustments (for smaller screens) */
       @include tablet {
-        display: flex;
-        gap: 2rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        width: 100%;
-        position: relative;
-        transition: transform 0.5s ease;
+        grid-template-columns: repeat(
+          3,
+          1fr
+        ); /* Ensure 3 items per row for tablet */
+      }
+
+      /* Desktop view adjustments (larger screens) */
+      @include desktop {
+        grid-template-columns: repeat(
+          3,
+          1fr
+        ); /* Ensure 3 items per row for desktop */
+        //padding: 1rem;
       }
     }
 
+    // Each Item styling
     &__item {
-      width: 30%;
+      width: 100%; /* Ensure each item takes full width within the grid cell */
       text-align: center;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       transition: transform 0.3s ease;
+      max-width: 30rem; /* Keep items consistent in size */
+      margin-bottom: 2rem;
     }
 
     &__image {
-      width: 100%;
+      width: 25rem;
+      height: 14rem;
       position: relative;
       overflow: hidden;
       border-radius: 10px;
@@ -113,26 +120,17 @@
     &__arrow--visible {
       visibility: visible;
     }
+  }
 
-    @include tablet {
-      &__grid {
-        flex-direction: column;
-        gap: 1rem;
-
-        @include tablet {
-          flex-direction: row;
-        }
-
-        &__item {
-          width: 100%;
-        }
-      }
+  // Mobile View Adjustments (single column)
+  @include mobile {
+    &__grid {
+      //grid-template-columns: 1fr; /* Single column for mobile */
+      gap: 1rem; /* Adjust gap for mobile */
     }
 
-    @include desktop {
-      &__grid {
-        gap: 2rem;
-      }
+    &__item {
+      width: 100%; /* Each item will take up full width */
     }
   }
 }

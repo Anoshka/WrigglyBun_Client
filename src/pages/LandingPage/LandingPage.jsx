@@ -10,7 +10,7 @@ function LandingPage() {
       <Slide />
       <About />
       <Gallery />
-      <Blog />
+      {/* <Blog /> */}
       <Testimonials />
     </div>
   );
