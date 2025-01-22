@@ -20,6 +20,9 @@
       border-radius: 50%;
       overflow: hidden;
 
+      &--ayushi {
+        object-fit: cover 80%;
+      }
       @include tablet {
         width: 15rem;
         height: 15rem;

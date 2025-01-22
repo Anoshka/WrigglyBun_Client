@@ -1,6 +1,6 @@
 import React from "react";
 import "./BlogPage.scss";
-import forever_frames from "../../assets/images/forever_frames.jpg";
+import forever_frames from "../../assets/images/forever_frames_01.jpg";
 import youthful_charms from "../../assets/images/youthful_charms.jpg";
 
 const blogs = [

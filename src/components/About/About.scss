@@ -10,8 +10,18 @@
   text-align: justify;
   background-color: $cream;
   color: $black;
-  font-size: 1remrem;
+  font-size: 1rem;
   line-height: 1.5rem;
+
+  &__description {
+    font-size: 1rem;
+    line-height: 1.8rem;
+
+    @include desktop {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
 
   &-page {
     display: flex;

@@ -128,9 +128,9 @@ function Header() {
           <NavLink to="/faq" className="header__link" onClick={closeMenu}>
             FAQ
           </NavLink>
-          <NavLink to="/blog" className="header__link" onClick={closeMenu}>
+          {/* <NavLink to="/blog" className="header__link" onClick={closeMenu}>
             Blog
-          </NavLink>
+          </NavLink> */}
 
           {/* Add "The Studio" only in the mobile view */}
           {isMenuOpen && (

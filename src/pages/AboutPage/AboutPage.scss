@@ -20,15 +20,22 @@
   }
 
   &__text {
-    font-size: 1rem;
-    line-height: 2.1rem;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
     padding-top: 4rem;
-    text-align: justify;
+    text-align: center;
 
     @include tablet {
       text-align: justify;
       padding-top: 0;
       padding-left: 4rem;
+      text-align: justify;
+      font-size: 1rem;
+    }
+
+    @include desktop {
+      font-size: 1rem;
+      line-height: 1.4rem;
     }
   }
   &__description {

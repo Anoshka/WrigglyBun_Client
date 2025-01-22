@@ -1,10 +1,10 @@
 import React from "react";
 import "./TestimonialsPage.scss";
 import Anumeha from "../../assets/images/testimonial_images/1 Anumeha.jpg";
-import Ayushi from "../../assets/images/testimonial_images/3 Ayushi.jpg";
+import Ayushi from "../../assets/images/testimonial_images/ayushi_mishra_01.jpg";
 import Vishali from "../../assets/images/testimonial_images/3 Vishali.jpg";
 import Sonal from "../../assets/images/testimonial_images/4 Sonal.jpg";
-import Sapna from "../../assets/images/testimonial_images/5 Sapna.jpg";
+import Sapna from "../../assets/images/testimonial_images/sapna_soni_01.jpg";
 import Anu from "../../assets/images/testimonial_images/6 Anu Roy.jpg";
 import Swarna from "../../assets/images/testimonial_images/7 Swarna.jpg";
 
@@ -41,7 +41,7 @@ const testimonials = [
   },
   {
     name: "Swarna Gowri",
-    text: "It was amazing experience to shoot with Anadita. She made it really comfortable for the kids to pose and click. We had a wonderful time and those memories got captured forever. The photos were amazing 🤩",
+    text: "It was amazing experience to shoot with Anandita. She made it really comfortable for the kids to pose and click. We had a wonderful time and those memories got captured forever. The photos were amazing 🤩",
     image: Swarna,
   },
 ];
@@ -55,10 +55,25 @@ const TestimonialsPage = () => {
           className={`testimonial ${index % 2 === 0 ? "right" : "left"}`}
         >
           <div className="testimonial__image">
-            <img src={testimonial.image} alt={testimonial.name} />
+            {(testimonial.name == "Ayushi Mishra" && (
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="testimonial__image testimonial__image--ayushi"
+              />
+            )) || (
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="testimonial__image"
+              />
+            )}
           </div>
           <div className="testimonial__content">
-            <h3 className="testimonial__name">{testimonial.name}</h3>
+            <h3 className="testimonial__name testimonial__name--ayushi">
+              {testimonial.name}
+            </h3>
+
             <p className="testimonial__text">{`" ${testimonial.text} "`}</p>
           </div>
         </div>

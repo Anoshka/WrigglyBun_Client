@@ -141,10 +141,10 @@ const Contact = () => {
             </Link>
           </div>
           <div className="socials__item">
-            <Link to="tel:+919820591096" className="socials__link">
+            {/* <Link to="tel:+919820591096" className="socials__link">
               <FaPhoneAlt className="socials__icon" />
               <p className="socials__name">+91 982 059 1096</p>
-            </Link>
+            </Link> */}
           </div>
           <div className="socials__item">
             <Link to="mailto:wrigglybun@gmail.com" className="socials__link">
