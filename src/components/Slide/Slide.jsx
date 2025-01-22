@@ -1,14 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "./Slide.scss";
-import slide1 from "../../assets/images/slide_01.jpg";
-import slide2 from "../../assets/images/slide_02.jpg";
-import slide3 from "../../assets/images/baby_1.jpg";
-import slide4 from "../../assets/images/baby_2.jpg";
-import slide5 from "../../assets/images/baby_3.jpg";
-import slide6 from "../../assets/images/baby_4.jpg";
+import slide1 from "../../assets/images/landscapes/1.jpg";
+import slide2 from "../../assets/images/landscapes/2.jpg";
+import slide3 from "../../assets/images/landscapes/3.jpg";
+import slide4 from "../../assets/images/landscapes/4.jpg";
+import slide5 from "../../assets/images/landscapes/5.jpg";
+import slide6 from "../../assets/images/landscapes/6.jpg";
+import slide7 from "../../assets/images/landscapes/7.jpg";
+import slide8 from "../../assets/images/landscapes/8.jpg";
+import slide9 from "../../assets/images/landscapes/9.jpg";
+import slide10 from "../../assets/images/landscapes/10.jpg";
+import slide11 from "../../assets/images/landscapes/11.jpg";
+import slide12 from "../../assets/images/landscapes/12.jpg";
 
 const Slide = () => {
-  const images = [slide1, slide2, slide3, slide4, slide5, slide6];
+  const images = [
+    slide1,
+    slide2,
+    slide3,
+    slide4,
+    slide5,
+    slide6,
+    slide7,
+    slide8,
+    slide9,
+    slide10,
+    slide11,
+    slide12,
+  ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
