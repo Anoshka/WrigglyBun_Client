@@ -45,7 +45,7 @@ const BlogPage = () => {
             </a>
           </div>
           <div className="blog-post__image">
-            <img src={blog.image} alt={blog.title} />
+            <img src={blog.image} alt={blog.title} loading="lazy" />
           </div>
         </div>
       ))}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import emailjs from "/emailjs-com";
+import emailjs from "emailjs-com";
 import "./ContactPage.scss";
 import {
   FaInstagram,
@@ -8,13 +8,13 @@ import {
   FaMapMarkerAlt,
   FaWhatsapp,
 } from "react-icons/fa";
-import insta_icon from "../../assets/images/icons/instagram.jpg";
 import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "", // New phone number field
     session: "",
     message: "",
   });
@@ -34,24 +34,34 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // EmailJS service configuration (change with your own service ID, template ID, and user ID)
-    // emailjs
-    //   .sendForm(
-    //     "YOUR_SERVICE_ID", // Replace with your emailjs service ID
-    //     "YOUR_TEMPLATE_ID", // Replace with your emailjs template ID
-    //     e.target,
-    //     "YOUR_USER_ID" // Replace with your emailjs user ID
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text);
-    //       setStatus("Your message has been sent successfully!");
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //       setStatus("There was an error. Please try again.");
-    //     }
-    //   );
+    // Your EmailJS public key (replace with your actual public key)
+    const publicKey = "-FQ3LMsQUsN-_egwm";
+
+    // Using EmailJS service to send the form data
+    emailjs
+      .sendForm(
+        "service_dzpjw1k", // Replace with your EmailJS service ID
+        "template_g8pe1fh", // Replace with your EmailJS template ID
+        e.target,
+        publicKey // Use the public key instead of the user ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setStatus("Your message has been sent successfully!");
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            session: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.log(error.text);
+          setStatus("There was an error. Please try again.");
+        }
+      );
   };
 
   return (
@@ -81,6 +91,18 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+              />
+            </div>
+
+            {/* Optional phone number field */}
+            <div className="contact-form__field">
+              <label htmlFor="phone">Phone (Optional):</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
               />
             </div>
 
@@ -141,12 +163,6 @@ const Contact = () => {
             </Link>
           </div>
           <div className="socials__item">
-            {/* <Link to="tel:+919820591096" className="socials__link">
-              <FaPhoneAlt className="socials__icon" />
-              <p className="socials__name">+91 982 059 1096</p>
-            </Link> */}
-          </div>
-          <div className="socials__item">
             <Link to="mailto:wrigglybun@gmail.com" className="socials__link">
               <FaEnvelope className="socials__icon" />
               <p className="socials__name">wrigglybun@gmail.com</p>
@@ -161,10 +177,10 @@ const Contact = () => {
               <FaMapMarkerAlt className="socials__icon" />
               <div className="socials__address">
                 <p className="socials__name">
-                  Tower 2, Prestige Dolce, Ecc Rd, near Prestige
+                  Tower 2, Prestige Dolce Vita, Ecc Rd, near Prestige
                 </p>
                 <p className="socials__name">
-                  Bougainvillea, Dodsworth Layout, Whitefield, Vita, Bengaluru,
+                  Bougainvillea, Dodsworth Layout, Whitefield, Bengaluru,
                 </p>
                 <p className="socials__name">Karnataka 560066, India</p>
               </div>

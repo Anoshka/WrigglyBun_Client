@@ -57,6 +57,18 @@ const Footer = () => {
       <div className="footer__copyright">
         <p>&copy; {new Date().getFullYear()} WrigglyBun Photography</p>
       </div>
+
+      {/* Floating WhatsApp Icon */}
+      <div className="whatsapp-floating">
+        <a
+          href="https://wa.me/919820591096?text=Hi%20Anandita,%20I'd%20like%20to%20book%20a%20photoshoot!"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whatsapp-link"
+        >
+          <FaWhatsapp className="whatsapp-icon" />
+        </a>
+      </div>
     </footer>
   );
 };

@@ -42,7 +42,7 @@ function Header() {
         {/* Logo */}
         <div className="header__left">
           <NavLink to="/" className="header__logo">
-            <img src={logo} className="header__img" />
+            <img src={logo} className="header__img" loading="lazy" />
             <p className="header__title">WrigglyBun Photography</p>
           </NavLink>
           <p className="header__description">

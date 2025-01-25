@@ -8,6 +8,7 @@ function AboutPage() {
         className="about-page__image"
         src={placeholder}
         alt="Anandita's photo"
+        loading="lazy"
       />
       <div className="about-page__text">
         <p className="about-page__description">

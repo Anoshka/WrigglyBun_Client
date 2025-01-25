@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css"; // Optional: Blur effect while loading
 import "./GalleryPage.scss";
 import placeholder from "../../assets/images/Ishaan_jpeg.jpg";
 import little_bun from "../../assets/images/little_bun_01.jpg";
@@ -106,10 +107,12 @@ const GalleryPage = () => {
           <div key={item.id} className="gallery__item">
             <Link to={item.link} target="blank">
               <div className="gallery__image">
-                <img
+                <LazyLoadImage
                   src={item.image}
                   alt={item.wrigglyBunAlignedName}
                   className="gallery__category-image"
+                  loading="lazy" // Added lazy loading
+                  effect="blur" // Optional: Blur effect while loading
                 />
               </div>
               <div className="gallery__text">

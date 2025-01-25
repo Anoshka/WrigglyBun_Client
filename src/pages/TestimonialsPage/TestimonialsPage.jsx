@@ -52,28 +52,26 @@ const TestimonialsPage = () => {
       {testimonials.map((testimonial, index) => (
         <div
           key={index}
-          className={`testimonial ${index % 2 === 0 ? "right" : "left"}`}
+          className={`testimonial ${index % 2 === 0 ? "left" : "right"}`}
         >
-          <div className="testimonial__image">
-            {(testimonial.name == "Ayushi Mishra" && (
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="testimonial__image testimonial__image--ayushi"
-              />
-            )) || (
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="testimonial__image"
-              />
-            )}
+          <div
+            className={`testimonial__image-container testimonial__image-container--${
+              testimonial.name.split(" ")[0]
+            }`}
+          >
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className={`testimonial__image testimonial__image--${
+                testimonial.name.split(" ")[0]
+              }`}
+              loading="lazy"
+            />
           </div>
           <div className="testimonial__content">
             <h3 className="testimonial__name testimonial__name--ayushi">
               {testimonial.name}
             </h3>
-
             <p className="testimonial__text">{`" ${testimonial.text} "`}</p>
           </div>
         </div>
