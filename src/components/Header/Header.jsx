@@ -1,7 +1,7 @@
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import logo from "../../assets/images/temp_logo.png";
+import logo from "../../assets/images/icons/camera_icon _01.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +35,25 @@ function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Handle dropdown open and close on hover
+  const handleMouseEnter = () => {
+    if (!isMenuOpen) {
+      setIsDropdownOpen(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMenuOpen) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  // Close dropdown and menu when clicking a dropdown item
+  const closeDropdownAndMenu = () => {
+    setIsDropdownOpen(false);
+    setIsMenuOpen(false); // Close menu after selecting an option
+  };
 
   return (
     <header className="header">
@@ -70,7 +89,11 @@ function Header() {
           </NavLink>
 
           {/* About Link with Dropdown on Tablet and Desktop */}
-          <div className=" header__link header__about">
+          <div
+            className="header__link header__about"
+            onMouseEnter={handleMouseEnter} // Open dropdown on hover
+            onMouseLeave={handleMouseLeave} // Close dropdown on hover leave
+          >
             <NavLink
               to="/about"
               className="header__link--about"
@@ -79,29 +102,26 @@ function Header() {
               About
             </NavLink>
             {/* Dropdown on Tablet and Desktop */}
-            <div
-              className={`header__dropdown ${isDropdownOpen ? "open" : ""}`}
-              onClick={toggleDropdown}
-            >
+            <div className={`header__dropdown ${isDropdownOpen ? "open" : ""}`}>
               <div className="header__dropdown-content">
                 <NavLink
                   to="/about"
                   className="header__link"
-                  onClick={closeMenu}
+                  onClick={closeDropdownAndMenu} // Close both dropdown and menu
                 >
                   About Me
                 </NavLink>
                 <NavLink
                   to="/the-studio"
                   className="header__link"
-                  onClick={closeMenu}
+                  onClick={closeDropdownAndMenu} // Close both dropdown and menu
                 >
                   The Studio
                 </NavLink>
                 <NavLink
                   to="/testimonials"
                   className="header__link"
-                  onClick={closeMenu}
+                  onClick={closeDropdownAndMenu} // Close both dropdown and menu
                 >
                   Testimonials
                 </NavLink>
@@ -128,9 +148,6 @@ function Header() {
           <NavLink to="/faq" className="header__link" onClick={closeMenu}>
             FAQ
           </NavLink>
-          {/* <NavLink to="/blog" className="header__link" onClick={closeMenu}>
-            Blog
-          </NavLink> */}
 
           {/* Add "The Studio" only in the mobile view */}
           {isMenuOpen && (
