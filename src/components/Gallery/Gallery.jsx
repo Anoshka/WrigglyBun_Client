@@ -23,7 +23,7 @@ const galleryData = [
     description:
       "Celebrate the journey of life as it begins, capturing the glow of motherhood and the anticipation of meeting your little one. These timeless maternity portraits honor the love, strength, and beauty of this special chapter.",
     image: little_bun,
-    link: "https://wrigglybunphotography.pixieset.com/vishalihariharan/",
+    link: "https://wrigglybunphotography.pixieset.com/littlebunmoments/",
   },
   {
     id: 2,
