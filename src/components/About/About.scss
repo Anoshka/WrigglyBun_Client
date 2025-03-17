@@ -7,7 +7,7 @@
   flex-direction: column;
   padding: 9rem 3rem 4rem;
   align-items: center;
-  text-align: justify;
+  text-align: left;
   background-color: $cream;
   color: $black;
   font-size: 1rem;
@@ -16,6 +16,7 @@
   &__description {
     font-size: 1rem;
     line-height: 1.8rem;
+    text-align: center;
 
     @include desktop {
       font-size: 1.2rem;

@@ -7,6 +7,7 @@ import {
   FaMapMarkerAlt,
   FaWhatsapp,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -25,14 +26,14 @@ const Footer = () => {
             </a>
           </div>
           <div className="footer__contact-item">
-            <a href="tel:+919820591096">
+            <Link to="tel:+919820591096">
               <FaPhoneAlt className="footer__icon" />
-            </a>
+            </Link>
           </div>
           <div className="footer__contact-item">
-            <a href="mailto:wrigglybun@gmail.com">
+            <Link to="mailto:wrigglybun@gmail.com">
               <FaEnvelope className="footer__icon" />
-            </a>
+            </Link>
           </div>
           <div className="footer__contact-item">
             <a
@@ -60,14 +61,14 @@ const Footer = () => {
 
       {/* Floating WhatsApp Icon */}
       <div className="whatsapp-floating">
-        <a
-          href="https://wa.me/919820591096?text=Hi%20Anandita,%20I'd%20like%20to%20book%20a%20photoshoot!"
+        <Link
+          to="https://wa.me/919820591096?text=Hi%20Anandita,%20I'd%20like%20to%20book%20a%20photoshoot!"
           target="_blank"
           rel="noopener noreferrer"
           className="whatsapp-link"
-        >
-          <FaWhatsapp className="whatsapp-icon" />
-        </a>
+        />
+
+        <FaWhatsapp className="whatsapp-icon" />
       </div>
     </footer>
   );

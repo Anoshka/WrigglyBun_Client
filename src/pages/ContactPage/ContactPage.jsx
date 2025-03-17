@@ -35,13 +35,13 @@ const Contact = () => {
     e.preventDefault();
 
     // Your EmailJS public key (replace with your actual public key)
-    const publicKey = "-FQ3LMsQUsN-_egwm";
+    const publicKey = "ibCMc6CKU4ANFipwI";
 
     // Using EmailJS service to send the form data
     emailjs
       .sendForm(
-        "service_dzpjw1k", // Replace with your EmailJS service ID
-        "template_g8pe1fh", // Replace with your EmailJS template ID
+        "service_hbu5nye", // Replace with your EmailJS service ID
+        "template_kxg7j9d", // Replace with your EmailJS template ID
         e.target,
         publicKey // Use the public key instead of the user ID
       )

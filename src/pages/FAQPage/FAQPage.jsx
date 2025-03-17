@@ -3,6 +3,7 @@ import faqData from "../../assets/JSON/faq.json"; // Importing the JSON data
 
 import "./FAQPage.scss";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // Import arrow icons
+import { Link } from "react-router-dom";
 
 const FAQPage = () => {
   // State to track expanded questions
@@ -101,10 +102,10 @@ const FAQPage = () => {
       <p className="faq__contact">
         Got more questions? We’re here to help! Reach out to us anytime at +91
         9820591096 via call or WhatsApp, or
-        <a href="/contact" className="faq__link">
+        <Link to="/contact" className="faq__link">
           {" "}
           click here.
-        </a>
+        </Link>
       </p>
     </div>
   );
