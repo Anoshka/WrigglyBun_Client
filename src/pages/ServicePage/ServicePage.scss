@@ -1,0 +1,558 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.service-page {
+  color: $dark-brown;
+
+  &__hero {
+    position: relative;
+    width: calc(100% - 2rem);
+    margin-inline: auto;
+    min-height: 18rem;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    overflow: hidden;
+
+    @include tablet {
+      width: calc(100% - 4rem);
+      min-height: 24rem;
+    }
+    @include desktop {
+      width: calc(100% - 4rem);
+      min-height: 28rem;
+    }
+  }
+
+  &__hero-overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 2rem 1rem 2.5rem;
+
+    @include tablet {
+      padding: 2.5rem 2rem 3rem;
+    }
+    @include desktop {
+      padding: 3rem 3rem 3.5rem;
+    }
+
+    &.is-centered {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @include tablet {
+        padding: 0 2rem;
+      }
+      @include desktop {
+        padding: 0 3rem;
+      }
+
+      .service-page__title {
+        margin-bottom: 0.5rem;
+      }
+      .service-page__back {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        padding-bottom: 0.25rem;
+      }
+    }
+  }
+
+  &__title {
+    color: $white;
+    font-family: $secondary-header-fontface;
+    font-size: 1.75rem;
+    letter-spacing: 0.12rem;
+    @include tablet {
+      font-size: 2rem;
+    }
+    @include desktop {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: $white;
+    font-family: $primary-font;
+    font-size: 0.9rem;
+  }
+
+  &__breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: $white;
+    text-decoration: none;
+    font-family: $primary-font;
+    font-size: 1.1rem;
+    opacity: 0.95;
+    padding-bottom: 0.2rem;
+  }
+  &__breadcrumb-icon {
+    font-size: 0.8rem;
+  }
+
+  // Section header under hero (left-aligned): Our Service + Service name
+  &__section-head {
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  &__kicker-outside {
+    margin: 0 0 0.5rem;
+    font-family: $secondary-header-fontface;
+    font-size: 1rem;
+    letter-spacing: 0.06rem;
+    color: $dark-brown;
+    @include tablet {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__h2 {
+    font-family: $secondary-header-fontface;
+    color: $dark-brown;
+    font-size: 1.8rem;
+    padding-bottom: 3rem;
+
+    @include tablet {
+      font-size: 2.1rem;
+    }
+    @include desktop {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__wrap {
+    padding: 2rem 1rem 3rem;
+    @include tablet {
+      padding: 2.5rem 2rem 3.5rem;
+    }
+    @include desktop {
+      padding: 3rem 3rem 4rem;
+    }
+  }
+
+  &__carousel {
+    position: relative;
+    margin: 0 auto 3rem;
+    max-width: 72rem;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    border-radius: 1rem;
+    --spv: 1; // slides per view
+    --drag-offset: 0;
+    padding: 0.25rem;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.35s ease;
+    will-change: transform;
+  }
+
+  &__slide {
+    flex: 0 0 calc(100% / var(--spv));
+    padding: 0.5rem;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include desktop {
+      aspect-ratio: 16/12;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    border: none;
+    color: $white;
+    background-color: transparent;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.55);
+    }
+  }
+
+  &__nav--prev {
+    left: 0.5rem;
+  }
+  &__nav--next {
+    right: 0.5rem;
+  }
+  @include tablet {
+    &__nav--prev {
+      left: 0.75rem;
+    }
+    &__nav--next {
+      right: 0.75rem;
+    }
+  }
+  @include desktop {
+    &__nav--prev {
+      left: 1rem;
+    }
+    &__nav--next {
+      right: 1rem;
+    }
+  }
+
+  &__dots {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  &__dot {
+    flex: 0 0 auto;
+    width: 0.5rem;
+    height: 0.75rem;
+    border: none;
+    border-radius: 50%;
+    background-color: $mid-blue;
+    cursor: pointer;
+
+    &.is-active {
+      background-color: $sunshine;
+    }
+  }
+
+  /* PRICING */
+  &__pricing {
+    margin: 2.5rem auto 2rem;
+    max-width: 72rem;
+  }
+
+  &__plans {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    @include tablet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+    @include desktop {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  &__plan {
+    border: 1px solid rgba($dark-brown, 0.25);
+    background-color: $white;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    font-family: $primary-font; /* standard site font */
+    box-shadow: 0 1px 0 rgba($dark-brown, 0.05);
+  }
+
+  &__plan-name {
+    font-family: $primary-font;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: $baby-grey;
+    margin: 0 0 0.75rem;
+  }
+
+  &__plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  &__price {
+    font-family: $primary-font;
+    font-weight: 600;
+    font-size: 2.25rem;
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+    @include desktop {
+      font-size: 2.75rem;
+    }
+  }
+
+  &__period {
+    font-size: 0.9375rem;
+    color: $baby-grey;
+    opacity: 0.9;
+  }
+
+  /* CTA button inside each card (pill outline like screenshot) */
+  &__plan-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid rgba($dark-brown, 0.6);
+    background: $white;
+    color: $dark-brown;
+    font-family: $primary-font;
+    font-size: 0.875rem;
+    text-decoration: none;
+    margin: 0.25rem 0 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background: $dark-brown;
+      color: $white;
+    }
+  }
+
+  &__whats-included {
+    margin: 0.25rem 0 0.5rem;
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.04rem;
+    color: $baby-grey;
+  }
+
+  &__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  &__feature {
+    position: relative;
+    padding-left: 1.5rem;
+    font-family: $primary-font;
+    font-size: 0.975rem;
+    color: $baby-grey;
+
+    &::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: 1;
+      color: $dark-brown;
+      font-weight: 600;
+    }
+  }
+
+  &__custom {
+    margin-top: 2rem;
+    max-width: 72rem;
+    display: grid;
+
+    @include tablet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  &__custom-link {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    letter-spacing: 0.03rem;
+
+    width: 100%;
+    padding: 1.2rem 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+
+    background-color: $dark-brown;
+    color: $white;
+    font-family: $primary-font;
+    font-size: 0.95rem;
+
+    &:hover {
+      background-color: darken($dark-brown, 6%);
+    }
+  }
+
+  /* Align section headers to the same left as carousel (max-width) */
+  &__section-head--container,
+  &__section-head--row,
+  &__h2 {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  &__section-head--row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 0 0.125rem;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__section-head--container {
+    padding: 0 0.125rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Kicker "OUR SERVICE" / "PRICING PLAN" */
+  &__kicker-outside {
+    margin: 0 0 0.5rem;
+    font-family: $secondary-header-fontface;
+    font-size: 0.95rem;
+    letter-spacing: 0.12rem;
+    color: $dark-brown;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &.is-uppercase {
+      text-transform: uppercase;
+    }
+
+    /* line to the right */
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 3.5rem;
+      background: rgba($dark-brown, 0.7);
+    }
+  }
+
+  &__h2 {
+    font-family: $secondary-header-fontface;
+    color: $dark-brown;
+    font-size: 1.8rem;
+    margin: 0.25rem 0 0;
+    @include tablet {
+      font-size: 2.1rem;
+    }
+    @include desktop {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__nav {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    &:hover {
+      background-color: rgba($dark-brown, 0.05);
+    }
+  }
+
+  /* Small outlined button at pricing header right */
+  &__mini-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: $primary-font;
+    font-size: 0.8rem;
+    color: $dark-brown;
+    border: 1px solid rgba($dark-brown, 0.7);
+    background: transparent;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      background: $dark-brown;
+      color: $white;
+    }
+  }
+
+  /* Container alignment like carousel/pricing */
+  &__notes,
+  &__faqs,
+  &__pricing,
+  &__section-head--container,
+  &__section-head--row,
+  &__h2 {
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__notes {
+    margin-top: 2rem; /* sits right below the full-width quote bar neatly */
+    padding: 0 0.125rem;
+  }
+
+  &__notes-title {
+    font-family: $primary-font;
+    font-size: 1.75rem;
+    font-weight: 200;
+    //text-align: center;
+    margin: 2rem 0 1.5rem;
+    //border-bottom: 2px solid rgba($dark-brown, 0.3);
+    text-decoration: underline;
+    color: $dark-brown;
+  }
+
+  &__notes-list {
+    list-style: disc;
+    padding-left: 1.25rem;
+    color: $baby-grey;
+    display: grid;
+    gap: 0.5rem;
+    text-align: left; /* ensure bullets stay left-aligned even when centered container */
+  }
+}

@@ -1,13 +1,17 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .elfsight-instagram-widget {
   display: flex;
   justify-content: center;
 }
 
 .insta__title {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 2rem;
+  font-family: $secondary-header-font;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  padding: 2rem 2rem 0 2rem;
+  color: $dark-brown;
   text-align: center;
-  font-size: 2rem;
-  //margin: 3rem 0 4rem;
 }

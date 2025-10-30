@@ -119,3 +119,17 @@
   font-size: 2rem;
   //margin: 3rem 0 4rem;
 }
+
+.google-reviews__link {
+  text-decoration: none;
+  color: $dark-brown;
+  font-family: $primary-font;
+  font-size: 0.75rem;
+  border: 1px solid $dark-brown;
+  border-radius: 1.5rem;
+  letter-spacing: 0.06rem;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 4rem;
+  padding: 0.5rem 1rem;
+}

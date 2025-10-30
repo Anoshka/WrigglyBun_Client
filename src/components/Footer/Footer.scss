@@ -83,15 +83,20 @@
     bottom: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1rem 1rem; // Adjusting padding for mobile screens
+    padding: 1rem 1rem;
   }
 
   // Floating WhatsApp Button
   .whatsapp-floating {
     position: fixed;
-    bottom: 2rem; // Adjust the distance from the bottom of the screen
-    right: 2rem; // Adjust the distance from the right side of the screen
+    bottom: 2rem;
+    right: 2rem;
     z-index: 999;
+
+    @include tablet {
+      bottom: 1rem;
+      right: 1rem;
+    }
 
     .whatsapp-link {
       display: flex;

@@ -66,9 +66,9 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="whatsapp-link"
-        />
-
-        <FaWhatsapp className="whatsapp-icon" />
+        >
+          <FaWhatsapp className="whatsapp-icon" />
+        </Link>
       </div>
     </footer>
   );

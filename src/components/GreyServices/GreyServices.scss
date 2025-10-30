@@ -1,0 +1,88 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.grey-services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 3rem;
+  background-color: $dark-brown;
+  border-radius: 1.5rem;
+  color: $white;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__title {
+    font-family: $secondary-header-fontface;
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
+    padding-bottom: 2rem;
+    color: $white;
+  }
+
+  &__card {
+    border: 1px solid $white;
+    border-radius: 1.5rem;
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    width: 18.6rem;
+
+    @include tablet {
+      margin: 1rem 2rem;
+    }
+
+    &--id {
+      font-family: $secondary-header-font;
+      font-weight: 300;
+      font-size: 1rem;
+      color: $dark-brown;
+      background-color: $white;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      padding: 1rem 0 0 1rem;
+      margin-bottom: 4.5rem;
+    }
+  }
+
+  &__service {
+    font-family: $primary-font;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.09rem;
+  }
+
+  &__description {
+    font-family: $primary-font;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    color: $white;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $white;
+    font-family: $primary-font;
+    font-size: 0.75rem;
+    border-bottom: 1px solid $white;
+    letter-spacing: 0.06rem;
+    padding-bottom: 0.3rem;
+
+    &:hover {
+      background-color: $white;
+      color: $dark-brown;
+    }
+  }
+}

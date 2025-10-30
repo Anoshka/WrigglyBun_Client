@@ -64,9 +64,9 @@ function Header() {
             <img src={logo} className="header__img" loading="lazy" />
             <p className="header__title">WrigglyBun Photography</p>
           </NavLink>
-          <p className="header__description">
+          {/* <p className="header__description">
             Capturing joy, innocence, and everything in between!
-          </p>
+          </p> */}
         </div>
 
         {/* Hamburger Icon for Mobile */}
@@ -102,7 +102,7 @@ function Header() {
               About
             </NavLink>
             {/* Dropdown on Tablet and Desktop */}
-            <div className={`header__dropdown ${isDropdownOpen ? "open" : ""}`}>
+            {/* <div className={`header__dropdown ${isDropdownOpen ? "open" : ""}`}>
               <div className="header__dropdown-content">
                 <NavLink
                   to="/about"
@@ -126,12 +126,9 @@ function Header() {
                   Testimonials
                 </NavLink>
               </div>
-            </div>
+            </div> */}
           </div>
 
-          <NavLink to="/gallery" className="header__link" onClick={closeMenu}>
-            Gallery
-          </NavLink>
           {isMenuOpen && (
             <NavLink
               to="/testimonials"
@@ -141,12 +138,37 @@ function Header() {
               Testimonials
             </NavLink>
           )}
-
-          <NavLink to="/contact" className="header__link" onClick={closeMenu}>
-            Contact
+          <NavLink to="/newborn" className="header__link" onClick={closeMenu}>
+            New Born
+          </NavLink>
+          <NavLink to="/maternity" className="header__link" onClick={closeMenu}>
+            Maternity
+          </NavLink>
+          <NavLink to="/6months" className="header__link" onClick={closeMenu}>
+            6 Months & Above
+          </NavLink>
+          <NavLink to="/family" className="header__link" onClick={closeMenu}>
+            Family
+          </NavLink>
+          <NavLink
+            to="/special-occasions"
+            className="header__link"
+            onClick={closeMenu}
+          >
+            Special Occasions
+          </NavLink>
+          <NavLink to="/events" className="header__link" onClick={closeMenu}>
+            Events
           </NavLink>
           <NavLink to="/faq" className="header__link" onClick={closeMenu}>
             FAQ
+          </NavLink>
+          <NavLink to="/blog" className="header__link" onClick={closeMenu}>
+            Blog
+          </NavLink>
+
+          <NavLink to="/contact" className="header__link" onClick={closeMenu}>
+            Contact
           </NavLink>
 
           {/* Add "The Studio" only in the mobile view */}

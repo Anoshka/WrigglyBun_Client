@@ -9,12 +9,16 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import {
+  trackFormSubmission,
+  trackSocialClick,
+} from "../../services/analytics";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "", // New phone number field
+    phone: "",
     session: "",
     message: "",
   });
@@ -49,6 +53,8 @@ const Contact = () => {
         (result) => {
           console.log(result.text);
           setStatus("Your message has been sent successfully!");
+          // Track successful submission
+          trackFormSubmission("contact", "success", formData.session);
           setFormData({
             name: "",
             email: "",
@@ -60,14 +66,21 @@ const Contact = () => {
         (error) => {
           console.log(error.text);
           setStatus("There was an error. Please try again.");
+          // Track failed submission
+          trackFormSubmission("contact", "error", formData.session);
         }
       );
   };
 
+  // Add social click tracking
+  const handleSocialClick = (platform, url) => {
+    trackSocialClick(platform, url);
+  };
+
   return (
-    <div>
+    <main>
       <h2 className="contact__title">Contact Us</h2>
-      <div className="contact">
+      <section className="contact">
         <div className="contact-page">
           <form onSubmit={handleSubmit} className="contact-form">
             <div className="contact-form__field">
@@ -157,13 +170,25 @@ const Contact = () => {
               to="https://www.instagram.com/wrigglybunphotography/"
               className="socials__link"
               target="blank"
+              onClick={() =>
+                handleSocialClick(
+                  "Instagram",
+                  "https://www.instagram.com/wrigglybunphotography/"
+                )
+              }
             >
               <FaInstagram className="socials__icon" />
               <p className="socials__name">wrigglybunphotography</p>
             </Link>
           </div>
           <div className="socials__item">
-            <Link to="mailto:wrigglybun@gmail.com" className="socials__link">
+            <Link
+              to="mailto:wrigglybun@gmail.com"
+              className="socials__link"
+              onClick={() =>
+                handleSocialClick("Email", "mailto:wrigglybun@gmail.com")
+              }
+            >
               <FaEnvelope className="socials__icon" />
               <p className="socials__name">wrigglybun@gmail.com</p>
             </Link>
@@ -196,8 +221,8 @@ const Contact = () => {
             </Link>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

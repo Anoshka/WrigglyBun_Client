@@ -1,0 +1,217 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.services {
+  padding: 2rem 0;
+  background: #fff;
+  width: 100%;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.2rem;
+  }
+
+  &__card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    display: flex;
+    flex-direction: center;
+    background: #fff;
+
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      .services__overlay {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    display: block;
+    border-radius: 1.2rem;
+    transition: transform 0.3s;
+    background: #f8f8f8;
+    object-position: center 23%;
+
+    @include tablet {
+      height: auto;
+      object-fit: contain;
+    }
+
+    &--stretch {
+      height: 10rem;
+      object-fit: cover;
+      @include tablet {
+        height: 100%;
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(30, 20, 10, 0.5);
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 1;
+    border-radius: 0 0 1.2rem 1.2rem;
+    pointer-events: none;
+    padding-bottom: 1.2rem;
+    @include tablet {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 6rem;
+      width: 100%;
+      background: rgba(30, 20, 10, 0.5);
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.3s, transform 0.3s;
+      border-radius: 0 0 1.2rem 1.2rem;
+      pointer-events: none;
+      padding-bottom: 1.2rem;
+      transform: translateY(0);
+    }
+  }
+
+  &__title {
+    font-family: $fancy-font;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    width: 100%;
+    line-height: 1.3;
+
+    @include tablet {
+      font-size: 1.4rem;
+      font-weight: 700;
+      padding: 0 1rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @include tablet {
+    &__container {
+      width: 100%;
+      grid-template-columns: repeat(4, 2fr);
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0 2rem;
+    }
+  }
+
+  @include desktop {
+    &__container {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding: 0 2.5rem;
+    }
+    &__title {
+      font-size: 2.5rem;
+      padding-bottom: 0.2rem;
+    }
+    &__overlay {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(30%);
+    }
+    &__card:hover .services__overlay,
+    &__card:focus .services__overlay {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+  }
+
+  &__packages {
+    padding: 3rem 2rem;
+    &--start {
+      font-family: $secondary-header-fontface;
+      font-size: 0.75rem;
+      letter-spacing: 0.3rem;
+      padding-bottom: 2rem;
+    }
+
+    &--title {
+      font-family: $primary-font;
+      font-weight: 300;
+      font-size: 2.1rem;
+      padding: 0 0 1rem;
+    }
+
+    &--contact {
+      text-decoration: none;
+      color: $dark-brown;
+      font-family: $primary-font;
+      font-size: 0.75rem;
+      border: 1px solid $dark-brown;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4rem;
+      letter-spacing: 0.05rem;
+
+      &-outside {
+        display: none;
+      }
+    }
+
+    &--container {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid $dark-brown;
+      padding: 2rem 0;
+      border-radius: 1rem;
+      height: 12rem;
+    }
+
+    &--subtitle {
+      font-family: $secondary-header-fontface;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: $dark-brown;
+      line-height: 1.8rem;
+      padding-bottom: 1.2rem;
+    }
+
+    &--link {
+      text-decoration: none;
+      color: $dark-brown;
+      font-family: $primary-font;
+      font-size: 0.75rem;
+      border: 1px solid $dark-brown;
+      padding: 0.5rem 4rem;
+      border-radius: 4rem;
+    }
+  }
+}

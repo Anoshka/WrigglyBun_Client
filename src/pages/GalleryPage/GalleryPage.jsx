@@ -13,6 +13,7 @@ import buntastic_celebrations from "../../assets/images/buntastic_celebrations_0
 import birth_and_beyond from "../../assets/images/birth_and_beyond.jpg";
 import styled_stories from "../../assets/images/temp_logo.png";
 import seasonal_shoot from "../../assets/images/christmas_shoot.jpg";
+import { trackGalleryClick } from "../../services/analytics";
 
 const galleryData = [
   {
@@ -29,7 +30,7 @@ const galleryData = [
     wrigglyBunAlignedName: "First Wriggles",
     age: "New Born (7-40 days)",
     description:
-      "The tiniest fingers, softest yawns, and the pure wonder of your newborn’s first days—each moment is a treasure. Let us capture these irreplaceable memories so you can hold onto them forever.",
+      "The tiniest fingers, softest yawns, and the pure wonder of your newborn's first days—each moment is a treasure. Let us capture these irreplaceable memories so you can hold onto them forever.",
     image: first_wriggles,
     link: "https://wrigglybunphotography.pixieset.com/firstwrigglesnewborn/",
   },
@@ -38,7 +39,7 @@ const galleryData = [
     wrigglyBunAlignedName: "Tiny Triumphs",
     age: "Milestones (3 to 9 months)",
     description:
-      "From the first laugh to tiny milestones like sitting up or crawling, these joyful phases of growth deserve to be remembered. Our milestone sessions beautifully document your baby’s journey, one triumph at a time.",
+      "From the first laugh to tiny milestones like sitting up or crawling, these joyful phases of growth deserve to be remembered. Our milestone sessions beautifully document your baby's journey, one triumph at a time.",
     image: tiny_triumphs,
     link: "https://wrigglybunphotography.pixieset.com/tinytriumphs/",
   },
@@ -47,7 +48,7 @@ const galleryData = [
     wrigglyBunAlignedName: "Wriggly Explorers",
     age: "10 months – 3 years",
     description:
-      "As they toddle into a world of adventure and curiosity, these playful sessions capture the charm and imagination of your little one. Let’s bring their personality to life in vibrant, creative themes!",
+      "As they toddle into a world of adventure and curiosity, these playful sessions capture the charm and imagination of your little one. Let's bring their personality to life in vibrant, creative themes!",
     image: wriggly_explorers,
     link: "https://wrigglybunphotography.pixieset.com/wrigglyexplorers/",
   },
@@ -56,7 +57,7 @@ const galleryData = [
     wrigglyBunAlignedName: "Youthful Charms",
     age: "3 – 18 years",
     description:
-      "From childhood giggles to teenage confidence, every phase of growing up tells a unique story. These portraits freeze the moments you’ll cherish, reflecting your child’s personality and spirit.",
+      "From childhood giggles to teenage confidence, every phase of growing up tells a unique story. These portraits freeze the moments you'll cherish, reflecting your child's personality and spirit.",
     image: youthful_charms,
     link: "https://wrigglybunphotography.pixieset.com/youthfulcharms/",
   },
@@ -99,32 +100,36 @@ const galleryData = [
 ];
 
 const GalleryPage = () => {
+  const handleGalleryClick = (item) => {
+    trackGalleryClick(item.wrigglyBunAlignedName, item.age);
+  };
+
   return (
-    <div className="gallery">
+    <main className="gallery">
       <p className="gallery__title">GALLERY</p>
-      <div className="gallery__grid">
+      <section className="gallery__grid">
         {galleryData.map((item) => (
-          <div key={item.id} className="gallery__item">
+          <article key={item.id} className="gallery__item">
             <Link to={item.link} target="blank">
               <div className="gallery__image">
                 <LazyLoadImage
                   src={item.image}
-                  alt={item.wrigglyBunAlignedName}
+                  alt={`${item.wrigglyBunAlignedName} - ${item.age} photography in Bangalore`}
                   className="gallery__category-image"
-                  loading="lazy" // Added lazy loading
-                  effect="blur" // Optional: Blur effect while loading
+                  loading="lazy"
+                  effect="blur"
                 />
               </div>
               <div className="gallery__text">
-                <h3>{item.wrigglyBunAlignedName}</h3>
+                <h2>{item.wrigglyBunAlignedName}</h2>
                 <p>{item.age}</p>
                 <p>{item.description}</p>
               </div>
             </Link>
-          </div>
+          </article>
         ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

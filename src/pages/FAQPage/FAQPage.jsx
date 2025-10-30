@@ -16,10 +16,10 @@ const FAQPage = () => {
 
   return (
     <div className="faq">
+      <h3 className="faq__top">----- FAQS -----</h3>
       <h2 className="faq__title">Frequently Asked Questions</h2>
-
       {/* Maternity Photoshoot Section */}
-      <section className="faq__section">
+      {/* <section className="faq__section">
         <h3 className="faq__section-title">FAQs for Maternity Photoshoots</h3>
         <div className="faq__questions">
           {faqData.FAQ.MaternityPhotoshoot.questions.map((item, index) => (
@@ -43,10 +43,9 @@ const FAQPage = () => {
             </div>
           ))}
         </div>
-      </section>
-
+      </section> */}
       {/* Newborn Photoshoot Section */}
-      <section className="faq__section">
+      {/* <section className="faq__section">
         <h3 className="faq__section-title">FAQs for Newborn Photoshoots</h3>
         <div className="faq__questions">
           {faqData.FAQ.NewbornPhotoshoot.questions.map((item, index) => (
@@ -70,11 +69,10 @@ const FAQPage = () => {
             </div>
           ))}
         </div>
-      </section>
-
+      </section> */}
       {/* Miscellaneous Section */}
       <section className="faq__section">
-        <h3 className="faq__section-title">Miscellaneous</h3>
+        {/* <h3 className="faq__section-title">Miscellaneous</h3> */}
         <div className="faq__questions">
           {faqData.FAQ.Miscellaneous.questions.map((item, index) => (
             <div key={index} className="faq__item">
@@ -98,7 +96,6 @@ const FAQPage = () => {
           ))}
         </div>
       </section>
-
       <p className="faq__contact">
         Got more questions? We’re here to help! Reach out to us anytime at +91
         9820591096 via call or WhatsApp, or

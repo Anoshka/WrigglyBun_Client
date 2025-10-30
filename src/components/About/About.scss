@@ -5,18 +5,26 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 9rem 3rem 4rem;
-  align-items: center;
+  padding: 0 1rem 4rem 3rem;
+  align-items: top;
   text-align: left;
   background-color: $cream;
   color: $black;
   font-size: 1rem;
   line-height: 1.5rem;
 
+  &__title {
+    font-family: $secondary-header-fontface;
+    font-size: 0.75rem;
+    letter-spacing: 0.3rem;
+    padding-bottom: 1rem;
+  }
+
   &__description {
-    font-size: 1rem;
-    line-height: 1.8rem;
-    text-align: center;
+    font-family: $fancy-font;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    text-align: left;
 
     @include desktop {
       font-size: 1.2rem;
@@ -44,9 +52,16 @@
   }
 
   &__contact {
-    padding-top: 3rem;
     text-decoration: none;
-    color: $black;
+    text-align: center;
+    color: $dark-brown;
+    font-family: $primary-font;
+    font-size: 0.7rem;
+    border: 1px solid $dark-brown;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4rem;
+    letter-spacing: 0.05rem;
+    margin-top: 1.5rem;
 
     &:hover {
       color: $sunshine;
