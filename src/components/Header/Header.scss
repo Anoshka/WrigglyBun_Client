@@ -109,6 +109,7 @@
     z-index: 10;
     font-family: $primary-font;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    gap: 1.2rem;
 
     &.open {
       display: flex; /* Show menu when open, sticks right below header */
@@ -118,10 +119,11 @@
       color: $black;
       text-decoration: none;
       margin: 0.5rem 0;
-      padding: 0.5rem 1rem;
+      //padding: 0.5rem 1rem;
       font-size: 1.2rem;
       text-align: center;
-      width: 100%;
+      //width: 100%;
+      
 
       &--about {
         text-align: center;
