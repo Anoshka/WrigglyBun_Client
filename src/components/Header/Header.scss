@@ -5,7 +5,7 @@
   background-color: $cream; /* Baby blue background */
   color: $black;
   width: 100%;
-  padding: 3rem 1rem 0;
+  padding: 3rem 3rem 0 1rem;
   position: relative;
 
   &__link--about {
@@ -229,23 +229,23 @@
     .header__nav {
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       position: initial;
       margin: 0;
-      padding: 0 2rem  0 15rem;
-      width: 70%;
+      width: 75%;
       max-width: none;
       white-space: nowrap;
       background: transparent;
       box-shadow: none;
+      padding: 0 1rem 0 0;
     }
 
     .header__link {
       margin: 0 0rem;
       font-size: 1rem;
       padding: 1rem 1rem 0 0;
-      text-align: center;
+      text-align: right;
       text-decoration: none;
       color: $dark-brown;
     }
