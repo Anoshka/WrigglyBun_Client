@@ -260,6 +260,7 @@ const ServicePage = ({ data }) => {
             {data?.ourServiceHeading || "Our Service"}
           </p>
           <h2 className="service-page__h2">{data?.title}</h2>
+          <h3 className="service-page__h3">{data?.subtitle}</h3>
         </div>
 
         {/* Carousel */}
@@ -354,7 +355,14 @@ const ServicePage = ({ data }) => {
               Get a Quote
             </a>
           </div>
-          <h2 className="service-page__h2">Pricing Packages</h2>
+
+          <div className="service-page__title-container">
+          <h4 className="service-page__h4">Pricing Packages 
+          </h4>
+          {data?.slug !== "special-events" && (
+            <h5 className="service-page__h5">(In Studio)</h5>
+          )}
+          </div>
 
           <div className="service-page__plans">
             {(data?.pricingPlans || []).map((plan, i) => (

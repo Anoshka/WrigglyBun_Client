@@ -43,17 +43,45 @@ const Services = () => {
 
       <div className="services__packages">
         <div className="services__packages--header">
-          <h3 className="services__packages--start">YEARLY PLANS ------</h3>
-          <Link
+          {/* <Link
             to="https://wa.me/919820591096?text=Hi%20Anandita,%20I'd%20like%20to%20book%20a%20photoshoot!"
             target="_blank"
             rel="noopener noreferrer"
             className="services__packages--contact services__packages--contact-outside"
           >
             GET A QUOTE
-          </Link>
+          </Link> */}
         </div>
-        <h1 className="services__packages--title">Best Selling Packages</h1>
+        <h1 className="services__packages--title">BEST SELLING PACKAGES</h1>
+        
+        <div className="services__packages--cards">
+        <div className="services__packages--container">
+            <h2 className="services__packages--subtitle">Maternity Yearly Plan</h2>
+            <Link to="/maternity" className="services__packages--link">
+              KNOW MORE
+            </Link>
+          </div>
+          <div className="services__packages--container services__packages--contact-inside">
+            <h2 className="services__packages--subtitle">
+              Newborn Yearly Plan
+            </h2>
+            <Link to="/newborn" className="services__packages--link">
+              KNOW MORE
+            </Link>
+          </div>
+          <div className="services__packages--container">
+            <h2 className="services__packages--subtitle">6 Months and Above Yearly Plan</h2>
+            <Link to="/6months" className="services__packages--link">
+              KNOW MORE
+            </Link>
+          </div>
+          <div className="services__packages--container">
+            <h2 className="services__packages--subtitle">Family Plan</h2>
+            <Link to="/family" className="services__packages--link">
+              KNOW MORE
+            </Link>
+          </div>
+        </div>
         <Link
           to="https://wa.me/919820591096?text=Hi%20Anandita,%20I'd%20like%20to%20book%20a%20photoshoot!"
           target="_blank"
@@ -62,22 +90,6 @@ const Services = () => {
         >
           GET A QUOTE
         </Link>
-        <div className="services__packages--cards">
-          <div className="services__packages--container services__packages--contact-inside">
-            <h2 className="services__packages--subtitle">
-              Newborn Yearly Plan (Studio)
-            </h2>
-            <Link to="/newborn" className="services__packages--link">
-              KNOW MORE
-            </Link>
-          </div>
-          <div className="services__packages--container">
-            <h2 className="services__packages--subtitle">Maternity + Newborn</h2>
-            <Link to="/maternity" className="services__packages--link">
-              KNOW MORE
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );

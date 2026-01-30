@@ -11,7 +11,7 @@ const services = [
     title: "Newborn",
     link: "/newborn",
     description:
-      "The tiniest fingers, softest yawns, and the pure wonder of your newborn’s first days—each moment is a treasure. Let us capture these irreplaceable memories so you can hold onto them forever.",
+      "Each moment, from the tiniest fingers, softest yawns, and the pure wonder of your newborn’s first days, is a treasure. Let us capture these irreplaceable memories so you can hold onto them forever.",
   },
   {
     id: "02",
@@ -33,6 +33,13 @@ const services = [
     link: "/family",
     description:
       "The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share.",
+  },
+  {
+    id: "05",
+    title: "Special Events",
+    link: "/special-events",
+    description:
+      "Preserve the memories of your special events with stunning photos that capture the joy, emotion, and celebration.",
   },
 ];
 

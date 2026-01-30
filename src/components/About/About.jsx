@@ -4,7 +4,7 @@ import "./About.scss";
 function About() {
   return (
     <div className="about">
-      <h3 className="about__title">ABOUT US -----</h3>
+      <h3 className="about__title">ABOUT US</h3>
       {/* <p className="about__description">
         WrigglyBun Photography is a Bangalore-based studio dedicated to
         celebrating the beauty of motherhood and childhood. Every session is
@@ -19,7 +19,7 @@ function About() {
         rel="noopener noreferrer"
         className="about__description"
       >
-        At WrigglyBun, we go beyond photography—it’s about honoring your
+        At WrigglyBun, we go beyond photography. It’s about honoring your
         journey, celebrating your story, and creating an experience as special
         as the memories themselves.
       </p>
