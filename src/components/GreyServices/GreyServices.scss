@@ -14,10 +14,10 @@
     display: flex;
     flex-direction: column;
 
-    /* 1280–1400px: 2x2 grid so cards don’t overflow (Newborn, Maternity | 6 Months, Family) */
+    /* 1280–1400px: 3 on top, 2 on bottom don’t overflow (Newborn, Maternity | 6 Months, Family) */
     @media (min-width: 80rem) and (max-width: 87.5rem) {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 1.5rem;
     }
 

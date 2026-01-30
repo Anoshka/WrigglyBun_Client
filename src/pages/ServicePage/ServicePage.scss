@@ -308,9 +308,9 @@
     @include tablet {
       font-size: 2.5rem;
     }
-    @include desktop {
-      font-size: 2.75rem;
-    }
+    // @include desktop {
+    //   //font-size: 2.75rem;
+    // }
   }
 
   &__period {
