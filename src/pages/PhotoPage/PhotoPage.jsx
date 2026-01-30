@@ -8,7 +8,7 @@ import img4 from "../../assets/images/forever_frames_01.jpg";
 
 const photopage = [
   {
-    title: "New Born",
+    title: "Newborn",
     link: "/services/newborn",
     img: img1,
   },

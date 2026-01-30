@@ -1,0 +1,33 @@
+.landing-testimonials {
+  padding: 2rem 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.landing-testimonials__title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.landing-testimonials__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.landing-testimonial {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.landing-testimonial__img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.landing-testimonial__name {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.landing-testimonial__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

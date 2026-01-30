@@ -8,12 +8,14 @@ import GalleryPage from "./pages/GalleryPage/GalleryPage.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import TestimonialsPage from "./pages/TestimonialsPage/TestimonialsPage.jsx";
 import BlogPage from "./pages/BlogPage/BlogPage.jsx";
+import BlogPostPage from "./pages/BlogPage/BlogPostPage.jsx";
 import FAQPage from "./pages/FAQPage/FAQPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import { useEffect } from "react";
 import { initGA, trackPageView } from "./services/analytics";
-import PhotoPage from "./pages/PhotoPage/PhotoPage.jsx";
 import ServiceRoute from "./pages/ServicePage/ServiceRoute.jsx";
+import EventsPage from "./pages/EventsPage/EventsPage.jsx";
+import EventDetailPage from "./pages/EventsPage/EventDetailPage.jsx";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -35,11 +37,13 @@ const AppRoutes = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/events" element={<PhotoPage />} />
         <Route path="/gallery/:id" element={<GalleryPage />} />
         <Route path="/testimonials" element={<TestimonialsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:slug" element={<EventDetailPage />} />
         <Route path="/newborn" element={<ServiceRoute slug="newborn" />} />
         <Route path="/maternity" element={<ServiceRoute slug="maternity" />} />
         <Route path="/6months" element={<ServiceRoute slug="6months" />} />

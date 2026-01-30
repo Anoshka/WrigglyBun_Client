@@ -7,9 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:cms": "node scripts/verify-sanity.js",
+    "seed:cms": "node scripts/seed-sanity.cjs"
   },
   "dependencies": {
+    "@sanity/client": "^6.22.0",
+    "@sanity/image-url": "^1.0.2",
     "@emailjs/browser": "^4.4.1",
     "emailjs": "^4.0.3",
     "emailjs-com": "^3.2.0",

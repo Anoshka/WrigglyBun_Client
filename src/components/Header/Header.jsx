@@ -5,55 +5,28 @@ import logo from "../../assets/images/icons/camera_icon _01.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for the dropdown on About
-  const menuRef = useRef(null); // Reference for the menu
+  const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
   const closeMenu = () => {
     setIsMenuOpen(false);
-    setIsDropdownOpen(false); // Close dropdown when closing the menu
   };
 
-  // Close the menu when clicking outside of it or on a nav link
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
-        setIsDropdownOpen(false); // Close the dropdown if clicked outside
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Handle dropdown open and close on hover
-  const handleMouseEnter = () => {
-    if (!isMenuOpen) {
-      setIsDropdownOpen(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isMenuOpen) {
-      setIsDropdownOpen(false);
-    }
-  };
-
-  // Close dropdown and menu when clicking a dropdown item
-  const closeDropdownAndMenu = () => {
-    setIsDropdownOpen(false);
-    setIsMenuOpen(false); // Close menu after selecting an option
-  };
+  const handleMouseEnter = () => {};
+  const handleMouseLeave = () => {};
 
   return (
     <header className="header">
@@ -62,7 +35,14 @@ function Header() {
         <div className="header__left">
           <NavLink to="/" className="header__logo">
             <img src={logo} className="header__img" loading="lazy" />
-            <p className="header__title">WrigglyBun Photography</p>
+            <p className="header__title">
+              <p className="header__title-line header__title-line__one">
+              WrigglyBun
+              </p>
+              <p className="header__title-line header__title-line__two">
+              Photography
+              </p>
+            </p>
           </NavLink>
           {/* <p className="header__description">
             Capturing joy, innocence, and everything in between!
@@ -129,20 +109,18 @@ function Header() {
             </div> */}
           </div>
 
-          {isMenuOpen && (
-            <NavLink
-              to="/testimonials"
-              className="header__link"
-              onClick={closeMenu}
-            >
-              Testimonials
-            </NavLink>
-          )}
-          <NavLink to="/newborn" className="header__link" onClick={closeMenu}>
-            New Born
-          </NavLink>
+          {/* <NavLink
+            to="/testimonials"
+            className="header__link"
+            onClick={closeMenu}
+          >
+            Testimonials
+          </NavLink> */}
           <NavLink to="/maternity" className="header__link" onClick={closeMenu}>
             Maternity
+          </NavLink>
+          <NavLink to="/newborn" className="header__link" onClick={closeMenu}>
+            Newborn
           </NavLink>
           <NavLink to="/6months" className="header__link" onClick={closeMenu}>
             6 Months & Above
@@ -151,18 +129,15 @@ function Header() {
             Family
           </NavLink>
           <NavLink
-            to="/special-occasions"
+            to="/special-events"
             className="header__link"
             onClick={closeMenu}
           >
             Special Occasions
           </NavLink>
-          <NavLink to="/events" className="header__link" onClick={closeMenu}>
-            Events
-          </NavLink>
-          <NavLink to="/faq" className="header__link" onClick={closeMenu}>
-            FAQ
-          </NavLink>
+          {/* <NavLink to="/events" className="header__link" onClick={closeMenu}>
+            Upcoming Events
+          </NavLink> */}
           <NavLink to="/blog" className="header__link" onClick={closeMenu}>
             Blog
           </NavLink>
@@ -170,17 +145,6 @@ function Header() {
           <NavLink to="/contact" className="header__link" onClick={closeMenu}>
             Contact
           </NavLink>
-
-          {/* Add "The Studio" only in the mobile view */}
-          {isMenuOpen && (
-            <NavLink
-              to="/the-studio"
-              className="header__link"
-              onClick={closeMenu}
-            >
-              The Studio
-            </NavLink>
-          )}
         </nav>
       </section>
     </header>

@@ -8,7 +8,7 @@ import img4 from "../../assets/images/landingpage_images/family_01.png";
 const services = [
   {
     id: "01",
-    title: "New Born",
+    title: "Newborn",
     link: "/newborn",
     description:
       "The tiniest fingers, softest yawns, and the pure wonder of your newborn’s first days—each moment is a treasure. Let us capture these irreplaceable memories so you can hold onto them forever.",
