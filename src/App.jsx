@@ -18,6 +18,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import { useEffect } from "react";
 import { initGA, trackPageView } from "./services/analytics";
 import ThemeFromCms from "./components/ThemeFromCms";
+import VisualEditingBridge from "./components/VisualEditingBridge/VisualEditingBridge";
 import ServiceRoute from "./pages/ServicePage/ServiceRoute.jsx";
 import EventsPage from "./pages/EventsPage/EventsPage.jsx";
 import EventDetailPage from "./pages/EventsPage/EventDetailPage.jsx";
@@ -39,6 +40,7 @@ const AppRoutes = () => {
     <>
       <ThemeFromCms />
       <PreviewBanner />
+      <VisualEditingBridge />
       <Header />
       <Routes>
         <Route path="/preview/enable" element={<PreviewEnable />} />

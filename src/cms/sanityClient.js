@@ -1,11 +1,18 @@
 // src/cms/sanityClient.js
 import { createClient } from "@sanity/client";
 
+const studioUrl =
+  import.meta.env.VITE_SANITY_STUDIO_URL || "https://wrigglybun.sanity.studio";
+
 const config = {
   projectId: "q7ct7sx2",
   dataset: "production",
   apiVersion: "2025-01-01",
   useCdn: false,
+  stega: {
+    enabled: false,
+    studioUrl,
+  },
 };
 
 /** Published content only (live site default). */
@@ -26,6 +33,10 @@ export function createPreviewClient() {
     token: token || undefined,
     perspective: "previewDrafts",
     ignoreBrowserTokenWarning: true,
+    stega: {
+      enabled: true,
+      studioUrl,
+    },
   });
 }
 
