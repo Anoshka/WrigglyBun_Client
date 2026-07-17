@@ -1,5 +1,9 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import "./App.scss";
+import { PreviewProvider } from "./cms/PreviewContext";
+import PreviewBanner from "./components/PreviewBanner/PreviewBanner";
+import PreviewEnable from "./pages/PreviewPage/PreviewEnable";
+import PreviewDisable from "./pages/PreviewPage/PreviewDisable";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AboutPage from "./pages/AboutPage/AboutPage.jsx";
@@ -13,6 +17,7 @@ import FAQPage from "./pages/FAQPage/FAQPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import { useEffect } from "react";
 import { initGA, trackPageView } from "./services/analytics";
+import ThemeFromCms from "./components/ThemeFromCms";
 import ServiceRoute from "./pages/ServicePage/ServiceRoute.jsx";
 import EventsPage from "./pages/EventsPage/EventsPage.jsx";
 import EventDetailPage from "./pages/EventsPage/EventDetailPage.jsx";
@@ -32,8 +37,12 @@ const AppRoutes = () => {
 
   return (
     <>
+      <ThemeFromCms />
+      <PreviewBanner />
       <Header />
       <Routes>
+        <Route path="/preview/enable" element={<PreviewEnable />} />
+        <Route path="/preview/disable" element={<PreviewDisable />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
@@ -60,9 +69,11 @@ const AppRoutes = () => {
 };
 
 const App = () => (
-  <BrowserRouter>
-    <AppRoutes />
-  </BrowserRouter>
+  <PreviewProvider>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  </PreviewProvider>
 );
 
 export default App;

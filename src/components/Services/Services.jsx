@@ -7,6 +7,7 @@ import img4 from "../../assets/images/landingpage_images/family_01.png";
 import img5 from "../../assets/images/landingpage_images/family_02_edit.jpg";
 import { useLanding } from "../../cms/useLanding";
 import { useSiteSettings } from "../../cms/useSiteSettings";
+import { trackQuoteClick } from "../../services/analytics";
 
 const FALLBACK_CARDS = [
   { title: "Newborn", link: "/newborn", img: img1 },
@@ -87,6 +88,9 @@ const Services = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="services__packages--contact"
+          onClick={() =>
+            trackQuoteClick("home_packages", "best_selling", quoteHref)
+          }
         >
           {quoteLabel}
         </Link>

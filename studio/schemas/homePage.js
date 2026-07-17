@@ -17,7 +17,8 @@ export default {
       type: 'array',
       group: 'heroes',
       description:
-        'Add, remove, or reorder cards. Upload a photo for each. Link like /newborn or /maternity.',
+        'Add, remove, or reorder cards. Each card shows a thumbnail. Upload a photo for each.',
+      options: {layout: 'grid'},
       of: [
         {
           type: 'object',

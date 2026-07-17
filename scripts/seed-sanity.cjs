@@ -1,14 +1,20 @@
 /**
- * Seeds Sanity with existing site content so the client can edit it in Studio.
- * Run once: SANITY_TOKEN=your_write_token node scripts/seed-sanity.cjs
+ * Seeds Sanity with existing site content + uploads local images.
  *
- * Get a token: sanity.io/manage → Your project → API → Tokens → Add API token.
- * Token MUST have Editor or Administrator permission (not Viewer).
+ * PowerShell:
+ *   $env:SANITY_TOKEN="your_editor_token"
+ *   npm run seed:cms
+ *
+ * Token must be Editor or Administrator (not Viewer).
  */
 
+const fs = require('fs');
+const path = require('path');
 const { createClient } = require('@sanity/client');
 const {
   homePageHeroCards,
+  serviceImagePaths,
+  aboutPortraitPath,
   bestSellingPackages,
   greyServices,
   aboutPage,
@@ -22,6 +28,7 @@ const {
 const projectId = 'q7ct7sx2';
 const dataset = 'production';
 const token = process.env.SANITY_TOKEN;
+const root = path.join(__dirname, '..');
 
 if (!token) {
   console.error('Missing SANITY_TOKEN. Create one at sanity.io/manage → API → Tokens, then run:');
@@ -37,32 +44,107 @@ const client = createClient({
   useCdn: false,
 });
 
+/** Cache so the same file is only uploaded once */
+const assetCache = new Map();
+
+function resolveLocal(relPath) {
+  return path.join(root, relPath);
+}
+
+async function uploadImage(relPath) {
+  if (!relPath) return null;
+  if (assetCache.has(relPath)) return assetCache.get(relPath);
+
+  const abs = resolveLocal(relPath);
+  if (!fs.existsSync(abs)) {
+    console.warn(`  ⚠ Missing file, skipped: ${relPath}`);
+    return null;
+  }
+
+  const filename = path.basename(abs);
+  const stream = fs.createReadStream(abs);
+  const asset = await client.assets.upload('image', stream, { filename });
+  const imageField = {
+    _type: 'image',
+    asset: { _type: 'reference', _ref: asset._id },
+  };
+  assetCache.set(relPath, imageField);
+  console.log(`  ↑ uploaded ${filename}`);
+  return imageField;
+}
+
+async function imageWithAlt(relPath, alt) {
+  const img = await uploadImage(relPath);
+  if (!img) return undefined;
+  return { ...img, alt: alt || '' };
+}
+
+async function cleanupDuplicateServices() {
+  // Keep one canonical service doc per slug: service-<slug>
+  const rows = await client.fetch(
+    '*[_type=="service" && defined(slug.current)]{_id, "slug": slug.current}'
+  );
+
+  const toDelete = [];
+  for (const row of rows) {
+    const canonicalId = `service-${row.slug}`;
+    if (row._id !== canonicalId) {
+      toDelete.push(row._id);
+    }
+  }
+
+  if (!toDelete.length) {
+    console.log('✓ Service docs are already clean (no duplicates)');
+    return;
+  }
+
+  for (const id of toDelete) {
+    await client.delete(id);
+    console.log(`  - removed duplicate service doc: ${id}`);
+  }
+  console.log(`✓ Removed ${toDelete.length} duplicate service doc(s)`);
+}
+
 async function seed() {
-  console.log('Seeding Sanity with existing content…\n');
+  console.log('Seeding Sanity with content + images…\n');
+  console.log('(First run uploads many photos — may take a few minutes.)\n');
+
+  await cleanupDuplicateServices();
 
   await client.createOrReplace({
     _id: 'siteSettings',
     _type: 'siteSettings',
     ...siteSettings,
   });
-  console.log('✓ Contact & Business Info');
+  console.log('✓ Contact & Business Info (+ brand colors)');
 
+  const portrait = await imageWithAlt(aboutPortraitPath, 'Anandita');
   await client.createOrReplace({
     _id: 'aboutPage',
     _type: 'aboutPage',
     ...aboutPage,
+    ...(portrait ? { portrait } : {}),
   });
-  console.log('✓ About Page (upload portrait photo in Studio)');
+  console.log('✓ About Page');
 
-  await client.createOrReplace({
-    _id: 'homePage',
-    _type: 'homePage',
-    heroCards: homePageHeroCards.map((card, i) => ({
+  console.log('Uploading home hero card images…');
+  const heroCards = [];
+  for (let i = 0; i < homePageHeroCards.length; i++) {
+    const card = homePageHeroCards[i];
+    const image = await imageWithAlt(card.imagePath, card.title);
+    heroCards.push({
       _type: 'heroCard',
       _key: `hero-${i}`,
       title: card.title,
       link: card.link,
-    })),
+      ...(image ? { image } : {}),
+    });
+  }
+
+  await client.createOrReplace({
+    _id: 'homePage',
+    _type: 'homePage',
+    heroCards,
     packagesTitle: 'BEST SELLING PACKAGES',
     packagesQuoteLabel: 'GET A QUOTE',
     bestSellingPackages: bestSellingPackages.map((p, i) => ({
@@ -86,15 +168,31 @@ async function seed() {
     featuredTestimonials: [],
     instaHeading: 'WRIGGLY MOMENTS ON INSTA',
   });
-  console.log('✓ Home Page (hero cards, packages, grey services — add images in Studio)');
+  console.log('✓ Home Page (hero photos included)');
 
   for (const s of services) {
+    console.log(`Uploading images for service: ${s.slug}…`);
+    const paths = serviceImagePaths[s.slug] || {};
+    const hero = paths.hero
+      ? await imageWithAlt(paths.hero, `${s.title} hero`)
+      : undefined;
+
+    const carousel = [];
+    for (let i = 0; i < (paths.carousel || []).length; i++) {
+      const img = await imageWithAlt(paths.carousel[i], `Gallery ${i + 1}`);
+      if (img) {
+        carousel.push({ ...img, _key: `carousel-${s.slug}-${i}` });
+      }
+    }
+
     await client.createOrReplace({
       _id: `service-${s.slug}`,
       _type: 'service',
       title: s.title,
       slug: { _type: 'slug', current: s.slug },
       introTitle: s.introTitle,
+      ...(hero ? { hero } : {}),
+      ...(carousel.length ? { carousel } : {}),
       pricingHeading: s.pricingHeading,
       pricingPlans: s.pricingPlans.map((p, i) => ({
         _type: 'pricingPlan',
@@ -116,7 +214,7 @@ async function seed() {
       faqsHeading: s.faqsHeading,
       faqs: [],
     });
-    console.log(`✓ Service: ${s.slug}`);
+    console.log(`✓ Service: ${s.slug} (${carousel.length} gallery photos)`);
   }
 
   for (let i = 0; i < faqs.length; i++) {
@@ -166,10 +264,9 @@ async function seed() {
     console.log(`✓ Blog post: ${p.slug}`);
   }
 
-  console.log('\nDone! Next:');
-  console.log('  1. cd studio && npm install && npm run dev');
-  console.log('  2. Open Studio, upload photos, edit text, Publish.');
-  console.log('  3. In another terminal: npm run dev  (website)');
+  console.log(`\nDone. Uploaded ${assetCache.size} unique image file(s).`);
+  console.log('Refresh Sanity Studio — open a Service → Photos to see gallery thumbnails.');
+  console.log('Drag photos to reorder, then Publish.');
 }
 
 seed().catch((err) => {

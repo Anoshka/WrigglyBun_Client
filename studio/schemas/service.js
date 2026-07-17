@@ -53,7 +53,11 @@ export default {
       title: 'Photo gallery / carousel',
       type: 'array',
       group: 'photos',
-      description: 'Add more photos, drag to reorder, or delete any photo',
+      description:
+        'Each photo shows a thumbnail. Drag to reorder. Click to replace/crop. Use ⋮ to delete.',
+      options: {
+        layout: 'grid',
+      },
       of: [
         {
           type: 'image',

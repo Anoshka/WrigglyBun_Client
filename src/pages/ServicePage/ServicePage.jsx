@@ -13,6 +13,11 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import "./ServicePage.scss";
+import {
+  trackServiceView,
+  trackQuoteClick,
+  trackPricingCta,
+} from "../../services/analytics";
 
 /*
   Reusable Service Page
@@ -110,6 +115,11 @@ const ServicePage = ({ data }) => {
 
   const images = useMemo(() => data?.carousel || [], [data]);
   const total = images.length;
+
+  useEffect(() => {
+    if (!data?.title && !data?.slug) return;
+    trackServiceView(data?.title || data?.slug, data?.slug || "");
+  }, [data?.title, data?.slug]);
 
   // render list includes head clones to avoid tail gap
   const renderImages = useMemo(() => {
@@ -351,6 +361,13 @@ const ServicePage = ({ data }) => {
               className="service-page__mini-cta"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackQuoteClick(
+                  "service_get_quote",
+                  data?.slug || data?.title || "",
+                  whatsappHref
+                )
+              }
             >
               Get a Quote
             </a>
@@ -373,6 +390,13 @@ const ServicePage = ({ data }) => {
                   className="service-page__plan-cta"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackPricingCta(
+                      plan?.name || "plan",
+                      data?.slug || data?.title || "",
+                      plan?.cta?.href || ""
+                    )
+                  }
                 >
                   {plan?.cta?.label || "Get Started"}
                 </a>
@@ -397,6 +421,13 @@ const ServicePage = ({ data }) => {
               className="service-page__custom-link"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackQuoteClick(
+                  "service_custom_plan",
+                  data?.slug || data?.title || "",
+                  whatsappHref
+                )
+              }
             >
               <span>Custom plan in mind? Reach out!</span>
             </a>

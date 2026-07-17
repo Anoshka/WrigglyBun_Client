@@ -1,13 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { sanity } from "./sanityClient";
-import { urlFor } from "./imageUrl";
+import { useCmsClient } from "./useCmsClient";
+import { useImageUrl } from "./useImageUrl";
 import { serviceBySlugQuery } from "./queries";
 
-function toImgUrl(img, width = 1600) {
-  return img ? urlFor(img).width(width).auto("format").url() : null;
-}
-
 export function useService(slug) {
+  const client = useCmsClient();
+  const toImgUrl = useImageUrl();
   const [raw, setRaw] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,12 +13,12 @@ export function useService(slug) {
   useEffect(() => {
     if (!slug) return;
     setLoading(true);
-    sanity
+    client
       .fetch(serviceBySlugQuery, { slug })
       .then(setRaw)
       .catch(setError)
       .finally(() => setLoading(false));
-  }, [slug]);
+  }, [client, slug]);
 
   const data = useMemo(() => {
     if (!raw) return null;
@@ -45,7 +43,7 @@ export function useService(slug) {
       faqsHeading: raw.faqsHeading,
       faqs: (raw.faqs || []).map((f) => ({ q: f.question, a: f.answer })),
     };
-  }, [raw]);
+  }, [raw, toImgUrl]);
 
   return { data, loading, error };
 }

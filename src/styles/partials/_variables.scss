@@ -12,7 +12,7 @@ $yellow-white: #fefefa;
 //$cream: #f5f4cf; //grey cream prev
 //$cream: #d2b48c; //yellow cream
 //$cream: #fdfbf6;
-$cream: #fff;
+$cream: var(--wb-bg, #fff);
 $baby-blue: #e1eef2;
 $light-blue: #d8ebf2;
 $mid-blue: #c3e0ea;
@@ -21,11 +21,13 @@ $gum-pink: #f2c2c2;
 $white: #fff;
 $light-mint: #e4f7ec;
 $baby-grey: #0c1931;
-$sunshine: #fac532;
+$sunshine: var(--wb-accent, #fac532);
 $black: #000000;
 $mango-yellow: #f78547;
 $mustard-yellow: #ffdb58;
-$dark-brown: #26110d;
+/* Hex kept for Sass color functions (rgba/darken). Live site uses --wb-brown via ThemeFromCms. */
+$dark-brown-hex: #26110d;
+$dark-brown: var(--wb-brown, #26110d);
 
 //font weight
 $primary-font: "Rubik", Arial, Helvetica, sans-serif;

@@ -59,7 +59,11 @@ export const siteSettingsQuery = `
   mapsUrl,
   addressLines,
   contactPageTitle,
-  sessionOptions
+  sessionOptions,
+  colorBrown,
+  colorAccent,
+  colorBackground,
+  colorText
 }
 `;
 

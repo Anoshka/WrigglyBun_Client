@@ -275,14 +275,14 @@
   }
 
   &__plan {
-    border: 1px solid rgba($dark-brown, 0.25);
+    border: 1px solid rgba($dark-brown-hex, 0.25);
     background-color: $white;
     border-radius: 0.75rem;
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
     font-family: $primary-font; /* standard site font */
-    box-shadow: 0 1px 0 rgba($dark-brown, 0.05);
+    box-shadow: 0 1px 0 rgba($dark-brown-hex, 0.05);
   }
 
   &__plan-name {
@@ -326,7 +326,7 @@
     justify-content: center;
     padding: 0.6rem 1.25rem;
     border-radius: 999px;
-    border: 1px solid rgba($dark-brown, 0.6);
+    border: 1px solid rgba($dark-brown-hex, 0.6);
     background: $white;
     color: $dark-brown;
     font-family: $primary-font;
@@ -411,7 +411,7 @@
     font-size: 0.95rem;
 
     &:hover {
-      background-color: darken($dark-brown, 6%);
+      background-color: darken($dark-brown-hex, 6%);
     }
   }
 
@@ -467,7 +467,7 @@
       display: block;
       height: 1px;
       width: 3.5rem;
-      background: rgba($dark-brown, 0.7);
+      background: rgba($dark-brown-hex, 0.7);
     }
   }
 
@@ -489,7 +489,7 @@
     height: 3rem;
     font-size: 2rem;
     &:hover {
-      background-color: rgba($dark-brown, 0.05);
+      background-color: rgba($dark-brown-hex, 0.05);
     }
   }
 
@@ -504,7 +504,7 @@
     font-family: $primary-font;
     font-size: 0.8rem;
     color: $dark-brown;
-    border: 1px solid rgba($dark-brown, 0.7);
+    border: 1px solid rgba($dark-brown-hex, 0.7);
     background: transparent;
     white-space: nowrap;
     margin-bottom: 0.5rem;

@@ -4,6 +4,7 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useFaqs } from "../../cms/useFaqs";
 import { useSiteSettings } from "../../cms/useSiteSettings";
+import { trackEngagement } from "../../services/analytics";
 
 const FAQPage = () => {
   const { faqs } = useFaqs();
@@ -45,7 +46,11 @@ const FAQPage = () => {
       <p className="faq__contact">
         Got more questions? We’re here to help! Reach out to us anytime at{" "}
         {s.phoneDisplay} via call or WhatsApp, or
-        <Link to="/contact" className="faq__link">
+        <Link
+          to="/contact"
+          className="faq__link"
+          onClick={() => trackEngagement("click_contact", "faq_cta", "faq_page")}
+        >
           {" "}
           click here.
         </Link>

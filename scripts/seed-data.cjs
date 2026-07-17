@@ -6,12 +6,122 @@
 const BASE_WA = 'https://wa.me/919820591096';
 
 const homePageHeroCards = [
-  { title: 'Newborn', link: '/newborn' },
-  { title: 'Maternity', link: '/maternity' },
-  { title: '6 Months & Above', link: '/6months' },
-  { title: 'Family', link: '/family' },
-  { title: 'Special Occasions', link: '/special-events' },
+  {
+    title: 'Newborn',
+    link: '/newborn',
+    imagePath: 'src/assets/images/landingpage_images/baby_3_edit_01.png',
+  },
+  {
+    title: 'Maternity',
+    link: '/maternity',
+    imagePath: 'src/assets/images/landingpage_images/maternity_03.png',
+  },
+  {
+    title: '6 Months & Above',
+    link: '/6months',
+    imagePath: 'src/assets/images/tiny_triumphs.jpg',
+  },
+  {
+    title: 'Family',
+    link: '/family',
+    imagePath: 'src/assets/images/landingpage_images/family_02_edit.jpg',
+  },
+  {
+    title: 'Special Occasions',
+    link: '/special-events',
+    imagePath: 'src/assets/images/landingpage_images/family_01.png',
+  },
 ];
+
+const serviceImagePaths = {
+  maternity: {
+    hero: 'src/assets/images/landscapes/8.jpg',
+    carousel: [
+      'src/assets/images/landscapes/1.jpg',
+      'src/assets/images/landscapes/2.jpg',
+      'src/assets/images/landscapes/3.jpg',
+      'src/assets/images/landscapes/4.jpg',
+      'src/assets/images/landscapes/5.jpg',
+      'src/assets/images/landscapes/6.jpg',
+      'src/assets/images/landscapes/7.jpg',
+      'src/assets/images/landscapes/8.jpg',
+      'src/assets/images/landscapes/9.jpg',
+      'src/assets/images/landscapes/10.jpg',
+      'src/assets/images/landscapes/11.jpg',
+      'src/assets/images/landscapes/12.jpg',
+    ],
+  },
+  newborn: {
+    hero: 'src/assets/images/landscapes/10.jpg',
+    carousel: [
+      'src/assets/images/landscapes/1.jpg',
+      'src/assets/images/landscapes/2.jpg',
+      'src/assets/images/landscapes/3.jpg',
+      'src/assets/images/landscapes/4.jpg',
+      'src/assets/images/landscapes/5.jpg',
+      'src/assets/images/landscapes/6.jpg',
+      'src/assets/images/landscapes/7.jpg',
+      'src/assets/images/landscapes/8.jpg',
+      'src/assets/images/landscapes/9.jpg',
+      'src/assets/images/landscapes/10.jpg',
+      'src/assets/images/landscapes/11.jpg',
+      'src/assets/images/landscapes/12.jpg',
+    ],
+  },
+  '6months': {
+    hero: 'src/assets/images/landscapes/11.jpg',
+    carousel: [
+      'src/assets/images/landscapes/1.jpg',
+      'src/assets/images/landscapes/2.jpg',
+      'src/assets/images/landscapes/3.jpg',
+      'src/assets/images/landscapes/4.jpg',
+      'src/assets/images/landscapes/5.jpg',
+      'src/assets/images/landscapes/6.jpg',
+      'src/assets/images/landscapes/7.jpg',
+      'src/assets/images/landscapes/8.jpg',
+      'src/assets/images/landscapes/9.jpg',
+      'src/assets/images/landscapes/10.jpg',
+      'src/assets/images/landscapes/11.jpg',
+      'src/assets/images/landscapes/12.jpg',
+    ],
+  },
+  family: {
+    hero: 'src/assets/images/landscapes/10.jpg',
+    carousel: [
+      'src/assets/images/landscapes/1.jpg',
+      'src/assets/images/landscapes/2.jpg',
+      'src/assets/images/landscapes/3.jpg',
+      'src/assets/images/landscapes/4.jpg',
+      'src/assets/images/landscapes/5.jpg',
+      'src/assets/images/landscapes/6.jpg',
+      'src/assets/images/landscapes/7.jpg',
+      'src/assets/images/landscapes/8.jpg',
+      'src/assets/images/landscapes/9.jpg',
+      'src/assets/images/landscapes/10.jpg',
+      'src/assets/images/landscapes/11.jpg',
+      'src/assets/images/landscapes/12.jpg',
+    ],
+  },
+  'special-events': {
+    hero: 'src/assets/images/landscapes/10.jpg',
+    carousel: [
+      'src/assets/images/landscapes/1.jpg',
+      'src/assets/images/landscapes/2.jpg',
+      'src/assets/images/landscapes/3.jpg',
+      'src/assets/images/landscapes/4.jpg',
+      'src/assets/images/landscapes/5.jpg',
+      'src/assets/images/landscapes/6.jpg',
+      'src/assets/images/landscapes/7.jpg',
+      'src/assets/images/landscapes/8.jpg',
+      'src/assets/images/landscapes/9.jpg',
+      'src/assets/images/landscapes/10.jpg',
+      'src/assets/images/landscapes/11.jpg',
+      'src/assets/images/landscapes/12.jpg',
+    ],
+  },
+};
+
+const aboutPortraitPath = 'src/assets/images/Anandita_placeholder.jpg';
 
 const bestSellingPackages = [
   { title: 'Maternity Yearly Plan', link: '/maternity', buttonLabel: 'KNOW MORE' },
@@ -103,6 +213,11 @@ const siteSettings = {
     'Styled Stories',
     'General Inquiry',
   ],
+  // Brand colors (hex) — editable in Studio
+  colorBrown: '#26110d',
+  colorAccent: '#fac532',
+  colorBackground: '#ffffff',
+  colorText: '#26110d',
 };
 
 const faqs = [
@@ -252,6 +367,8 @@ const blogPosts = [
 
 module.exports = {
   homePageHeroCards,
+  serviceImagePaths,
+  aboutPortraitPath,
   bestSellingPackages,
   greyServices,
   aboutPage,

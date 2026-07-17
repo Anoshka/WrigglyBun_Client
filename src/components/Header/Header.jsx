@@ -2,6 +2,7 @@ import "./Header.scss";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import logo from "../../assets/images/icons/camera_icon _01.png";
+import { trackEngagement } from "../../services/analytics";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -142,7 +143,14 @@ function Header() {
             Blog
           </NavLink>
 
-          <NavLink to="/contact" className="header__link" onClick={closeMenu}>
+          <NavLink
+            to="/contact"
+            className="header__link"
+            onClick={() => {
+              trackEngagement("click_contact", "header_nav", "header");
+              closeMenu();
+            }}
+          >
             Contact
           </NavLink>
         </nav>

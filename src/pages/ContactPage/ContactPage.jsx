@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import {
   trackFormSubmission,
-  trackSocialClick,
+  trackContactClick,
 } from "../../services/analytics";
 import { useSiteSettings } from "../../cms/useSiteSettings";
 
@@ -65,10 +65,6 @@ const Contact = () => {
           trackFormSubmission("contact", "error", formData.session);
         }
       );
-  };
-
-  const handleSocialClick = (platform, url) => {
-    trackSocialClick(platform, url);
   };
 
   return (
@@ -155,7 +151,9 @@ const Contact = () => {
               to={s.instagramUrl}
               className="socials__link"
               target="blank"
-              onClick={() => handleSocialClick("Instagram", s.instagramUrl)}
+              onClick={() =>
+                trackContactClick("instagram", "contact_page", s.instagramUrl)
+              }
             >
               <FaInstagram className="socials__icon" />
               <p className="socials__name">{s.instagramHandle}</p>
@@ -165,14 +163,23 @@ const Contact = () => {
             <Link
               to={s.emailMailto}
               className="socials__link"
-              onClick={() => handleSocialClick("Email", s.emailMailto)}
+              onClick={() =>
+                trackContactClick("email", "contact_page", s.emailMailto)
+              }
             >
               <FaEnvelope className="socials__icon" />
               <p className="socials__name">{s.email}</p>
             </Link>
           </div>
           <div className="socials__item">
-            <Link to={s.mapsUrl} className="socials__link" target="blank">
+            <Link
+              to={s.mapsUrl}
+              className="socials__link"
+              target="blank"
+              onClick={() =>
+                trackContactClick("maps", "contact_page", s.mapsUrl)
+              }
+            >
               <FaMapMarkerAlt className="socials__icon" />
               <div className="socials__address">
                 {s.addressLines.map((line) => (
@@ -184,7 +191,13 @@ const Contact = () => {
             </Link>
           </div>
           <div className="socials__item">
-            <Link to={s.whatsappUrl} className="socials__link">
+            <Link
+              to={s.whatsappUrl}
+              className="socials__link"
+              onClick={() =>
+                trackContactClick("whatsapp", "contact_page", s.whatsappUrl)
+              }
+            >
               <FaWhatsapp className="socials__icon" />
               <p className="socials__name">{s.phoneDisplay}</p>
             </Link>
