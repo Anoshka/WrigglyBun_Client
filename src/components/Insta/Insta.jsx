@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
 import "./Insta.scss";
 
-const Insta = () => {
+const Insta = ({ heading }) => {
   useEffect(() => {
-    // If Elfsight uses any JavaScript for initialization, we can ensure it's loaded.
     const script = document.createElement("script");
-    <script
-      src="https://static.elfsight.com/platform/platform.js"
-      async
-    ></script>; // Elfsight platform script
+    script.src = "https://static.elfsight.com/platform/platform.js";
     script.async = true;
     document.body.appendChild(script);
 
     return () => {
-      // Clean up the script when the component unmounts
-      document.body.removeChild(script);
+      if (script.parentNode) {
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
@@ -24,7 +21,9 @@ const Insta = () => {
 
   return (
     <div>
-      <h1 className=" insta__title">WRIGGLY MOMENTS ON INSTA</h1>
+      <h1 className="insta__title">
+        {heading || "WRIGGLY MOMENTS ON INSTA"}
+      </h1>
       <div
         className="elfsight-instagram-widget"
         dangerouslySetInnerHTML={{ __html: elfsightEmbedCode }}

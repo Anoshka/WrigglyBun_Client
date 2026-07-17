@@ -26,6 +26,12 @@ export function useLanding() {
         img: toImgUrl(card.image, 800),
         alt: card.image?.alt || card.title,
       })),
+      packagesTitle: raw.packagesTitle,
+      packagesQuoteLabel: raw.packagesQuoteLabel,
+      bestSellingPackages: raw.bestSellingPackages || [],
+      greyServicesTitle: raw.greyServicesTitle,
+      greyServices: raw.greyServices || [],
+      featuredTestimonialsHeading: raw.featuredTestimonialsHeading || 'What clients say',
       featuredTestimonials: (raw.featuredTestimonials || []).map((t) => ({
         name: t.name,
         rating: t.rating,
@@ -33,6 +39,7 @@ export function useLanding() {
         image: t.image ? toImgUrl(t.image, 400) : null,
         alt: t.image?.alt || t.name,
       })),
+      instaHeading: raw.instaHeading,
     }
   }, [raw])
 

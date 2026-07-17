@@ -3,6 +3,7 @@ export const serviceBySlugQuery = `
 *[_type == "service" && slug.current == $slug][0]{
   title,
   "slug": slug.current,
+  subtitle,
   introTitle,
   hero{..., "alt": coalesce(alt, title)},
   carousel[]{..., "alt": coalesce(alt, "Image")},
@@ -23,7 +24,50 @@ export const homePageQuery = `
     link,
     image{..., "alt": coalesce(alt, title)}
   },
-  featuredTestimonials[]->{name, rating, review, image{..., "alt": coalesce(alt, name)}}
+  packagesTitle,
+  packagesQuoteLabel,
+  bestSellingPackages[]{title, link, buttonLabel},
+  greyServicesTitle,
+  greyServices[]{id, title, description, link, linkLabel},
+  featuredTestimonialsHeading,
+  featuredTestimonials[]->{name, rating, review, image{..., "alt": coalesce(alt, name)}},
+  instaHeading
+}
+`;
+
+export const aboutPageQuery = `
+*[_type == "aboutPage"][0]{
+  landingTitle,
+  landingText,
+  landingButtonLabel,
+  landingButtonLink,
+  portrait{..., "alt": coalesce(alt, "About")},
+  paragraphs
+}
+`;
+
+export const siteSettingsQuery = `
+*[_type == "siteSettings"][0]{
+  businessName,
+  phone,
+  phoneDisplay,
+  email,
+  whatsappNumber,
+  whatsappMessage,
+  instagramUrl,
+  instagramHandle,
+  mapsUrl,
+  addressLines,
+  contactPageTitle,
+  sessionOptions
+}
+`;
+
+export const faqsForPageQuery = `
+*[_type == "faq" && (showOnFaqPage == true || category == "Misc")] | order(_createdAt asc){
+  question,
+  answer,
+  category
 }
 `;
 

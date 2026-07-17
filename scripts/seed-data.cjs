@@ -13,6 +13,135 @@ const homePageHeroCards = [
   { title: 'Special Occasions', link: '/special-events' },
 ];
 
+const bestSellingPackages = [
+  { title: 'Maternity Yearly Plan', link: '/maternity', buttonLabel: 'KNOW MORE' },
+  { title: 'Newborn Yearly Plan', link: '/newborn', buttonLabel: 'KNOW MORE' },
+  { title: '6 Months and Above Yearly Plan', link: '/6months', buttonLabel: 'KNOW MORE' },
+  { title: 'Family Plan', link: '/family', buttonLabel: 'KNOW MORE' },
+];
+
+const greyServices = [
+  {
+    id: '01',
+    title: 'Newborn',
+    link: '/newborn',
+    linkLabel: 'READ MORE →',
+    description:
+      "Each moment, from the tiniest fingers, softest yawns, and the pure wonder of your newborn’s first days, is a treasure. Let us capture these irreplaceable memories so you can hold onto them forever.",
+  },
+  {
+    id: '02',
+    title: 'Maternity',
+    link: '/maternity',
+    linkLabel: 'READ MORE →',
+    description:
+      'Celebrate the journey of life as it begins, capturing the glow of motherhood and the anticipation of meeting your little one. These timeless maternity portraits honor the love, strength, and beauty of this special chapter.',
+  },
+  {
+    id: '03',
+    title: '6 Months & Above',
+    link: '/6months',
+    linkLabel: 'READ MORE →',
+    description:
+      "From the first laugh to tiny milestones like sitting up or crawling, these joyful phases of growth deserve to be remembered. Our milestone sessions beautifully document your baby’s journey, one triumph at a time.",
+  },
+  {
+    id: '04',
+    title: 'Family',
+    link: '/family',
+    linkLabel: 'READ MORE →',
+    description:
+      'The love shared within a family is the foundation of everything. Our family portraits celebrate your bond, creating lasting keepsakes of the laughter and connection you share.',
+  },
+  {
+    id: '05',
+    title: 'Special Events',
+    link: '/special-events',
+    linkLabel: 'READ MORE →',
+    description:
+      'Preserve the memories of your special events with stunning photos that capture the joy, emotion, and celebration.',
+  },
+];
+
+const aboutPage = {
+  landingTitle: 'ABOUT US',
+  landingText:
+    'At WrigglyBun, we go beyond photography. It’s about honoring your journey, celebrating your story, and creating an experience as special as the memories themselves.',
+  landingButtonLabel: 'WRIGGLYBUN PHOTOGRAPHY',
+  landingButtonLink: '/about',
+  paragraphs: [
+    'Anandita, the heart and soul behind this venture, fell in love with photography as a child. Armed with a humble Kodak camera loaded with a 36 exposures reel, she eagerly captured moments on yearly family trips across India. Those trips ignited her passion for storytelling through images, each frame speaking volumes.',
+    'Over the years, Anandita explored multiple photography genres. Her artistic eye sharpened during her time photographing Bharatnatyam dance performances, a demanding art form that calls for impeccable timing, rhythm, and the ability to anticipate fleeting moments. As a former Bharatnatyam student herself, this background honed her observational skills, enabling her to capture candid moments that resonate across all ages.',
+  ],
+};
+
+const siteSettings = {
+  businessName: 'WrigglyBun Photography',
+  phone: '+919820591096',
+  phoneDisplay: '+91 982 059 1096',
+  email: 'wrigglybun@gmail.com',
+  whatsappNumber: '919820591096',
+  whatsappMessage: "Hi Anandita, I'd like to book a photoshoot!",
+  instagramUrl: 'https://www.instagram.com/wrigglybunphotography/',
+  instagramHandle: 'wrigglybunphotography',
+  mapsUrl: 'https://maps.app.goo.gl/KRzKScyNmm6bmgSn8',
+  addressLines: [
+    'Tower 2, Prestige Dolce Vita, Ecc Rd, near Prestige',
+    'Bougainvillea, Dodsworth Layout, Whitefield, Bengaluru,',
+    'Karnataka 560066, India',
+  ],
+  contactPageTitle: 'Contact Us',
+  sessionOptions: [
+    'Little Bun Moments',
+    'First Wriggles',
+    'Tiny Triumphs',
+    'Wriggly Explorers',
+    'Youthful Charms',
+    'Forever Frames',
+    'Bun-tastic Celebrations',
+    'Birth & Beyond',
+    'Styled Stories',
+    'General Inquiry',
+  ],
+};
+
+const faqs = [
+  {
+    category: 'Misc',
+    showOnFaqPage: true,
+    question: 'Do you travel outside Bangalore for photoshoots?',
+    answer: 'Yes, we’re happy to travel based on your requirements.',
+  },
+  {
+    category: 'Misc',
+    showOnFaqPage: true,
+    question: 'How long does a photoshoot take?',
+    answer:
+      'The duration depends on the type of session. Maternity, toddler, and cake smash sessions typically take 2-3 hours, while a newborn session can last up to 4 hours to accommodate breaks and the baby’s comfort.',
+  },
+  {
+    category: 'Misc',
+    showOnFaqPage: true,
+    question: 'Do you offer baby books or photo albums?',
+    answer:
+      'Yes, we create custom-designed baby books and photo albums upon request, helping you preserve these special memories beautifully.',
+  },
+  {
+    category: 'Misc',
+    showOnFaqPage: true,
+    question: 'Will my images be shared on social media or your website?',
+    answer:
+      'Yes, sharing our work allows us to showcase our photography. However, we respect your privacy and don’t tag or name your baby unless you request us to.',
+  },
+  {
+    category: 'Misc',
+    showOnFaqPage: true,
+    question: 'When will I receive my images?',
+    answer:
+      'Your carefully edited images will be delivered within 20-25 days from the date of your session.',
+  },
+];
+
 const services = [
   {
     slug: 'maternity',
@@ -121,4 +250,14 @@ const blogPosts = [
   { title: 'Freezing those special moments in time', slug: 'freezing-special-moments', description: "We know the fragility of these special moments, and here we explore how you can freeze these moments forever", link: 'https://wrigglybunphotography.pixieset.com/familyportraits/', publishedAt: new Date().toISOString() },
 ];
 
-module.exports = { homePageHeroCards, services, testimonials, blogPosts };
+module.exports = {
+  homePageHeroCards,
+  bestSellingPackages,
+  greyServices,
+  aboutPage,
+  siteSettings,
+  faqs,
+  services,
+  testimonials,
+  blogPosts,
+};

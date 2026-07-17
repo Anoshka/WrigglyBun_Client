@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:cms": "node scripts/verify-sanity.js",
-    "seed:cms": "node scripts/seed-sanity.cjs"
+    "seed:cms": "node scripts/seed-sanity.cjs",
+    "studio": "npm run dev --prefix studio",
+    "studio:install": "npm install --prefix studio"
   },
   "dependencies": {
     "@sanity/client": "^6.22.0",

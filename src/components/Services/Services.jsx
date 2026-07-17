@@ -6,6 +6,7 @@ import img3 from "../../assets/images/tiny_triumphs.jpg";
 import img4 from "../../assets/images/landingpage_images/family_01.png";
 import img5 from "../../assets/images/landingpage_images/family_02_edit.jpg";
 import { useLanding } from "../../cms/useLanding";
+import { useSiteSettings } from "../../cms/useSiteSettings";
 
 const FALLBACK_CARDS = [
   { title: "Newborn", link: "/newborn", img: img1 },
@@ -15,23 +16,49 @@ const FALLBACK_CARDS = [
   { title: "Special Occasions", link: "/special-events", img: img4 },
 ];
 
+const FALLBACK_PACKAGES = [
+  { title: "Maternity Yearly Plan", link: "/maternity", buttonLabel: "KNOW MORE" },
+  { title: "Newborn Yearly Plan", link: "/newborn", buttonLabel: "KNOW MORE" },
+  {
+    title: "6 Months and Above Yearly Plan",
+    link: "/6months",
+    buttonLabel: "KNOW MORE",
+  },
+  { title: "Family Plan", link: "/family", buttonLabel: "KNOW MORE" },
+];
+
 const Services = () => {
   const { data } = useLanding();
-  const cards = data?.heroCards?.length === 5
-    ? data.heroCards.map((c) => ({ title: c.title, link: c.link, img: c.img, alt: c.alt }))
-    : FALLBACK_CARDS;
+  const { data: settings } = useSiteSettings();
+
+  const cards =
+    data?.heroCards?.length > 0
+      ? data.heroCards.map((c, i) => ({
+          title: c.title,
+          link: c.link,
+          img: c.img || FALLBACK_CARDS[i % FALLBACK_CARDS.length]?.img,
+          alt: c.alt,
+        }))
+      : FALLBACK_CARDS;
+
+  const packages =
+    data?.bestSellingPackages?.length > 0
+      ? data.bestSellingPackages
+      : FALLBACK_PACKAGES;
+  const packagesTitle = data?.packagesTitle || "BEST SELLING PACKAGES";
+  const quoteLabel = data?.packagesQuoteLabel || "GET A QUOTE";
+  const quoteHref = settings?.whatsappUrl;
 
   return (
     <section className="services">
       <div className="services__container">
         {cards.map((service, i) => (
-          <Link to={service.link} className="services__card" key={service.title}>
+          <Link to={service.link} className="services__card" key={`${service.title}-${i}`}>
             <img
               src={service.img}
               alt={service.alt || service.title}
               className={
-                "services__img" +
-                (i === 0 ? " services__img--stretch" : "")
+                "services__img" + (i === 0 ? " services__img--stretch" : "")
               }
             />
             <div className="services__overlay">
@@ -42,53 +69,26 @@ const Services = () => {
       </div>
 
       <div className="services__packages">
-        <div className="services__packages--header">
-          {/* <Link
-            to="https://wa.me/919820591096?text=Hi%20Anandita,%20I'd%20like%20to%20book%20a%20photoshoot!"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="services__packages--contact services__packages--contact-outside"
-          >
-            GET A QUOTE
-          </Link> */}
-        </div>
-        <h1 className="services__packages--title">BEST SELLING PACKAGES</h1>
-        
+        <div className="services__packages--header" />
+        <h1 className="services__packages--title">{packagesTitle}</h1>
+
         <div className="services__packages--cards">
-        <div className="services__packages--container">
-            <h2 className="services__packages--subtitle">Maternity Yearly Plan</h2>
-            <Link to="/maternity" className="services__packages--link">
-              KNOW MORE
-            </Link>
-          </div>
-          <div className="services__packages--container services__packages--contact-inside">
-            <h2 className="services__packages--subtitle">
-              Newborn Yearly Plan
-            </h2>
-            <Link to="/newborn" className="services__packages--link">
-              KNOW MORE
-            </Link>
-          </div>
-          <div className="services__packages--container">
-            <h2 className="services__packages--subtitle">6 Months and Above Yearly Plan</h2>
-            <Link to="/6months" className="services__packages--link">
-              KNOW MORE
-            </Link>
-          </div>
-          <div className="services__packages--container">
-            <h2 className="services__packages--subtitle">Family Plan</h2>
-            <Link to="/family" className="services__packages--link">
-              KNOW MORE
-            </Link>
-          </div>
+          {packages.map((pkg) => (
+            <div className="services__packages--container" key={pkg.title}>
+              <h2 className="services__packages--subtitle">{pkg.title}</h2>
+              <Link to={pkg.link || "#"} className="services__packages--link">
+                {pkg.buttonLabel || "KNOW MORE"}
+              </Link>
+            </div>
+          ))}
         </div>
         <Link
-          to="https://wa.me/919820591096?text=Hi%20Anandita,%20I'd%20like%20to%20book%20a%20photoshoot!"
+          to={quoteHref}
           target="_blank"
           rel="noopener noreferrer"
           className="services__packages--contact"
         >
-          GET A QUOTE
+          {quoteLabel}
         </Link>
       </div>
     </section>

@@ -27,6 +27,7 @@ export function useService(slug) {
     return {
       slug: raw.slug,
       title: raw.title,
+      subtitle: raw.subtitle,
       introTitle: raw.introTitle || raw.title,
       hero: {
         src: toImgUrl(raw.hero, 1920),

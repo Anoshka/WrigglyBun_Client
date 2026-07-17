@@ -357,7 +357,7 @@ const ServicePage = ({ data }) => {
           </div>
 
           <div className="service-page__title-container">
-          <h4 className="service-page__h4">Pricing Packages 
+          <h4 className="service-page__h4">{data?.pricingHeading || "Pricing Packages"}
           </h4>
           {data?.slug !== "special-events" && (
             <h5 className="service-page__h5">(In Studio)</h5>
@@ -368,16 +368,6 @@ const ServicePage = ({ data }) => {
             {(data?.pricingPlans || []).map((plan, i) => (
               <div className="service-page__plan" key={plan?.name || i}>
                 <h3 className="service-page__plan-name">{plan?.name}</h3>
-                <div className="service-page__plan-price">
-                  <span className="service-page__price">
-                    {plan?.priceLabel}
-                  </span>
-                  {plan?.periodLabel && (
-                    <span className="service-page__period">
-                      {plan?.periodLabel}
-                    </span>
-                  )}
-                </div>
                 <a
                   href={plan?.cta?.href || "#"}
                   className="service-page__plan-cta"

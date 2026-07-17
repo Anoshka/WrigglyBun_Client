@@ -3,7 +3,6 @@ import emailjs from "emailjs-com";
 import "./ContactPage.scss";
 import {
   FaInstagram,
-  FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
   FaWhatsapp,
@@ -13,8 +12,10 @@ import {
   trackFormSubmission,
   trackSocialClick,
 } from "../../services/analytics";
+import { useSiteSettings } from "../../cms/useSiteSettings";
 
 const Contact = () => {
+  const { data: s } = useSiteSettings();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,7 +26,6 @@ const Contact = () => {
 
   const [status, setStatus] = useState("");
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -34,26 +34,22 @@ const Contact = () => {
     });
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Your EmailJS public key (replace with your actual public key)
     const publicKey = "ibCMc6CKU4ANFipwI";
 
-    // Using EmailJS service to send the form data
     emailjs
       .sendForm(
-        "service_hbu5nye", // Replace with your EmailJS service ID
-        "template_kxg7j9d", // Replace with your EmailJS template ID
+        "service_hbu5nye",
+        "template_kxg7j9d",
         e.target,
-        publicKey // Use the public key instead of the user ID
+        publicKey
       )
       .then(
         (result) => {
           console.log(result.text);
           setStatus("Your message has been sent successfully!");
-          // Track successful submission
           trackFormSubmission("contact", "success", formData.session);
           setFormData({
             name: "",
@@ -66,20 +62,18 @@ const Contact = () => {
         (error) => {
           console.log(error.text);
           setStatus("There was an error. Please try again.");
-          // Track failed submission
           trackFormSubmission("contact", "error", formData.session);
         }
       );
   };
 
-  // Add social click tracking
   const handleSocialClick = (platform, url) => {
     trackSocialClick(platform, url);
   };
 
   return (
     <main>
-      <h2 className="contact__title">Contact Us</h2>
+      <h2 className="contact__title">{s.contactPageTitle}</h2>
       <section className="contact">
         <div className="contact-page">
           <form onSubmit={handleSubmit} className="contact-form">
@@ -107,7 +101,6 @@ const Contact = () => {
               />
             </div>
 
-            {/* Optional phone number field */}
             <div className="contact-form__field">
               <label htmlFor="phone">Phone (Optional):</label>
               <input
@@ -129,18 +122,11 @@ const Contact = () => {
                 required
               >
                 <option value="">Select a session type</option>
-                <option value="Little Bun Moments">Little Bun Moments</option>
-                <option value="First Wriggles">First Wriggles</option>
-                <option value="Tiny Triumphs">Tiny Triumphs</option>
-                <option value="Wriggly Explorers">Wriggly Explorers</option>
-                <option value="Youthful Charms">Youthful Charms</option>
-                <option value="Forever Frames">Forever Frames</option>
-                <option value="Bun-tastic Celebrations">
-                  Bun-tastic Celebrations
-                </option>
-                <option value="Birth & Beyond">Birth & Beyond</option>
-                <option value="Styled Stories">Styled Stories</option>
-                <option value="General Inquiry">General Inquiry</option>
+                {s.sessionOptions.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -163,61 +149,44 @@ const Contact = () => {
           </form>
         </div>
 
-        {/* Social Media Icons */}
         <div className="socials">
           <div className="socials__item">
             <Link
-              to="https://www.instagram.com/wrigglybunphotography/"
+              to={s.instagramUrl}
               className="socials__link"
               target="blank"
-              onClick={() =>
-                handleSocialClick(
-                  "Instagram",
-                  "https://www.instagram.com/wrigglybunphotography/"
-                )
-              }
+              onClick={() => handleSocialClick("Instagram", s.instagramUrl)}
             >
               <FaInstagram className="socials__icon" />
-              <p className="socials__name">wrigglybunphotography</p>
+              <p className="socials__name">{s.instagramHandle}</p>
             </Link>
           </div>
           <div className="socials__item">
             <Link
-              to="mailto:wrigglybun@gmail.com"
+              to={s.emailMailto}
               className="socials__link"
-              onClick={() =>
-                handleSocialClick("Email", "mailto:wrigglybun@gmail.com")
-              }
+              onClick={() => handleSocialClick("Email", s.emailMailto)}
             >
               <FaEnvelope className="socials__icon" />
-              <p className="socials__name">wrigglybun@gmail.com</p>
+              <p className="socials__name">{s.email}</p>
             </Link>
           </div>
           <div className="socials__item">
-            <Link
-              to="https://maps.app.goo.gl/KRzKScyNmm6bmgSn8"
-              className="socials__link"
-              target="blank"
-            >
+            <Link to={s.mapsUrl} className="socials__link" target="blank">
               <FaMapMarkerAlt className="socials__icon" />
               <div className="socials__address">
-                <p className="socials__name">
-                  Tower 2, Prestige Dolce Vita, Ecc Rd, near Prestige
-                </p>
-                <p className="socials__name">
-                  Bougainvillea, Dodsworth Layout, Whitefield, Bengaluru,
-                </p>
-                <p className="socials__name">Karnataka 560066, India</p>
+                {s.addressLines.map((line) => (
+                  <p className="socials__name" key={line}>
+                    {line}
+                  </p>
+                ))}
               </div>
             </Link>
           </div>
           <div className="socials__item">
-            <Link
-              to="https://wa.me/919820591096?text=Hi%20Anandita,%20I'd%20like%20to%20book%20a%20photoshoot!"
-              className="socials__link"
-            >
+            <Link to={s.whatsappUrl} className="socials__link">
               <FaWhatsapp className="socials__icon" />
-              <p className="socials__name">+91 982 059 1096</p>
+              <p className="socials__name">{s.phoneDisplay}</p>
             </Link>
           </div>
         </div>
