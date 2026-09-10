@@ -24,17 +24,21 @@ export function useLanding() {
     return {
       heroCards: (raw.heroCards || []).map((card) => ({
         title: card.title,
+        font: card.font,
         link: card.link || "#",
         img: toImgUrl(card.image, 800),
         alt: card.image?.alt || card.title,
       })),
       packagesTitle: raw.packagesTitle,
+      packagesTitleFont: raw.packagesTitleFont,
       packagesQuoteLabel: raw.packagesQuoteLabel,
       bestSellingPackages: raw.bestSellingPackages || [],
       greyServicesTitle: raw.greyServicesTitle,
+      greyServicesTitleFont: raw.greyServicesTitleFont,
       greyServices: raw.greyServices || [],
       featuredTestimonialsHeading:
         raw.featuredTestimonialsHeading || "What clients say",
+      featuredTestimonialsHeadingFont: raw.featuredTestimonialsHeadingFont,
       featuredTestimonials: (raw.featuredTestimonials || []).map((t) => ({
         name: t.name,
         rating: t.rating,
@@ -43,8 +47,10 @@ export function useLanding() {
         alt: t.image?.alt || t.name,
       })),
       instaHeading: raw.instaHeading,
+      instaHeadingFont: raw.instaHeadingFont,
       faqEyebrow: raw.faqEyebrow,
       faqTitle: raw.faqTitle,
+      faqTitleFont: raw.faqTitleFont,
       faqContactText: raw.faqContactText,
       homeFaqs: (raw.homeFaqs || [])
         .filter((f) => f?.question)

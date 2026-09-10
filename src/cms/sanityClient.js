@@ -33,8 +33,9 @@ export function createPreviewClient() {
     token: token || undefined,
     perspective: "previewDrafts",
     ignoreBrowserTokenWarning: true,
+    /* Stega + overlays wash out cards/buttons. Preview should look like live. */
     stega: {
-      enabled: true,
+      enabled: false,
       studioUrl,
     },
   });

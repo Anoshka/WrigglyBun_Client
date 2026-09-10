@@ -5,6 +5,7 @@ import Services from "../../components/Services/Services";
 import GreyServices from "../../components/GreyServices/GreyServices";
 import FAQs from "../FAQPage/FAQPage";
 import { useLanding } from "../../cms/useLanding";
+import { fontStyle } from "../../cms/fontStyle";
 import "./LandingPage.scss";
 
 function LandingPage() {
@@ -20,10 +21,17 @@ function LandingPage() {
       )}
       {data?.showAbout !== false && <About />}
       {data?.showGreyServices !== false && <GreyServices />}
-      {data?.showInsta !== false && <Insta heading={data?.instaHeading} />}
+      {data?.showInsta !== false && (
+        <Insta heading={data?.instaHeading} headingFont={data?.instaHeadingFont} />
+      )}
       {data?.showFeaturedTestimonials !== false && featured.length > 0 && (
         <section className="landing-testimonials">
-          <h2 className="landing-testimonials__title">{featuredHeading}</h2>
+          <h2
+            className="landing-testimonials__title"
+            style={fontStyle(data?.featuredTestimonialsHeadingFont)}
+          >
+            {featuredHeading}
+          </h2>
           <div className="landing-testimonials__grid">
             {featured.map((t, i) => (
               <div key={i} className="landing-testimonial">

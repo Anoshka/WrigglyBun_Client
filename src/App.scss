@@ -15,15 +15,40 @@ h3,
   font-family: var(--wb-heading-font, #{$header-font});
 }
 
-.is-preview {
-  a[class*="contact"],
-  a[class*="link"],
-  .services__packages--contact,
-  .about__contact {
-    background-color: #fff;
-    opacity: 1;
-    visibility: visible;
-  }
+/* Hide click-to-edit overlays that wash cards/buttons to white */
+html.is-studio-iframe sanity-visual-editing,
+html.is-studio-iframe [data-sanity-overlay],
+html.is-studio-iframe [data-sanity-highlight] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Presentation is a phone-width frame: show the real mobile header + hamburger */
+html.is-studio-iframe .header {
+  display: block !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 50 !important;
+  background-color: #fff !important;
+}
+
+html.is-studio-iframe .header__hamburger {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 60 !important;
+}
+
+html.is-studio-iframe .header__hamburger .line {
+  background-color: #26110d !important;
+}
+
+html.is-studio-iframe .header__nav {
+  display: none;
+}
+
+html.is-studio-iframe .header__nav.open {
+  display: flex !important;
 }
 *,
 *::before,

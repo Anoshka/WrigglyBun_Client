@@ -23,7 +23,9 @@ export function useAbout() {
     if (!raw) return null;
     return {
       landingTitle: raw.landingTitle,
+      landingTitleFont: raw.landingTitleFont,
       landingText: raw.landingText,
+      landingTextFont: raw.landingTextFont,
       landingButtonLabel: raw.landingButtonLabel,
       landingButtonLink: raw.landingButtonLink || "/about",
       portrait: raw.portrait
@@ -34,6 +36,7 @@ export function useAbout() {
         .map((b) => ({
           type: b._type === "heading" ? "heading" : "paragraph",
           text: b.text,
+          font: b.font,
         })),
       paragraphs: (raw.paragraphs || []).filter(Boolean),
       showTestimonials: raw.showTestimonials !== false,

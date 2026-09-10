@@ -146,6 +146,7 @@
     z-index: 11; /* Above nav so it stays clickable */
     padding-top: 1rem;
     margin-top: 1.5rem;
+    flex-shrink: 0;
 
     .line {
       width: 100%;

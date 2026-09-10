@@ -6,6 +6,7 @@ import img3 from "../../assets/images/tiny_triumphs.jpg";
 import img4 from "../../assets/images/landingpage_images/family_01.png";
 import img5 from "../../assets/images/landingpage_images/family_02_edit.jpg";
 import { useLanding } from "../../cms/useLanding";
+import { fontStyle } from "../../cms/fontStyle";
 import { useSiteSettings } from "../../cms/useSiteSettings";
 import { trackQuoteClick } from "../../services/analytics";
 
@@ -36,6 +37,7 @@ const Services = () => {
     data?.heroCards?.length > 0
       ? data.heroCards.map((c, i) => ({
           title: c.title,
+          font: c.font,
           link: c.link,
           img: c.img || FALLBACK_CARDS[i % FALLBACK_CARDS.length]?.img,
           alt: c.alt,
@@ -64,7 +66,9 @@ const Services = () => {
               }
             />
             <div className="services__overlay">
-              <span className="services__title">{service.title}</span>
+              <span className="services__title" style={fontStyle(service.font)}>
+                {service.title}
+              </span>
             </div>
           </Link>
         ))}
@@ -74,7 +78,12 @@ const Services = () => {
       {data?.showPackages !== false && (
       <div className="services__packages">
         <div className="services__packages--header" />
-        <h1 className="services__packages--title">{packagesTitle}</h1>
+        <h1
+          className="services__packages--title"
+          style={fontStyle(data?.packagesTitleFont)}
+        >
+          {packagesTitle}
+        </h1>
 
         <div className="services__packages--cards">
           {packages.map((pkg) => (

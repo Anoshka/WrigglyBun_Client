@@ -1,6 +1,7 @@
 import placeholder from "../../assets/images/Anandita_placeholder.jpg";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import { useAbout } from "../../cms/useAbout";
+import { fontStyle } from "../../cms/fontStyle";
 import "./AboutPage.scss";
 
 const FALLBACK_PARAGRAPHS = [
@@ -32,11 +33,19 @@ function AboutPage() {
         <div className="about-page__text">
           {blocks.map((block, i) =>
             block.type === "heading" ? (
-              <h2 className="about-page__heading" key={`h-${i}`}>
+              <h2
+                className="about-page__heading"
+                key={`h-${i}`}
+                style={fontStyle(block.font)}
+              >
                 {block.text}
               </h2>
             ) : (
-              <p className="about-page__description" key={`p-${i}`}>
+              <p
+                className="about-page__description"
+                key={`p-${i}`}
+                style={fontStyle(block.font)}
+              >
                 {block.text}
               </p>
             )

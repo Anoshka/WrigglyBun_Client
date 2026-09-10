@@ -1,3 +1,5 @@
+import {fontField} from './fontField'
+
 // Contact details, WhatsApp, socials, and simple brand colors
 export default {
   name: 'siteSettings',
@@ -7,7 +9,6 @@ export default {
     {name: 'header', title: 'Top bar (header)'},
     {name: 'contact', title: 'Contact'},
     {name: 'colors', title: 'Brand colors'},
-    {name: 'fonts', title: 'Fonts'},
   ],
   fields: [
     {
@@ -33,6 +34,7 @@ export default {
       group: 'header',
       initialValue: 'Photography',
     },
+    fontField({group: 'header', name: 'headerFont', title: 'Font for the header name'}),
     {
       name: 'navLinks',
       title: 'Header menu links',
@@ -207,43 +209,6 @@ export default {
           name: 'hex',
           invert: false,
         }).warning('Use a hex color, e.g. #26110d'),
-    },
-    {
-      name: 'headingFont',
-      title: 'Heading font',
-      type: 'string',
-      group: 'fonts',
-      description:
-        'Used for titles and the header name. Pick one of the site fonts — custom uploads / per-word styling is not supported.',
-      options: {
-        list: [
-          {title: 'Site default', value: 'default'},
-          {title: 'Forum (header style)', value: 'Forum, Arial, sans-serif'},
-          {title: 'Grandstander', value: 'Grandstander, Arial, sans-serif'},
-          {title: 'Montserrat', value: 'Montserrat, Arial, sans-serif'},
-          {title: 'League Spartan', value: '"New Day", Arial, sans-serif'},
-          {title: 'Rubik (body style)', value: 'Rubik, Arial, sans-serif'},
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'default',
-    },
-    {
-      name: 'bodyFont',
-      title: 'Body font',
-      type: 'string',
-      group: 'fonts',
-      description: 'Used for paragraphs and most page text.',
-      options: {
-        list: [
-          {title: 'Site default', value: 'default'},
-          {title: 'Rubik', value: 'Rubik, Arial, sans-serif'},
-          {title: 'Montserrat', value: 'Montserrat, Arial, sans-serif'},
-          {title: 'Grandstander', value: 'Grandstander, Arial, sans-serif'},
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'default',
     },
   ],
   preview: {

@@ -1,3 +1,5 @@
+import {fontField} from './fontField'
+
 // Landing “About Us” strip + full About page
 export default {
   name: 'aboutPage',
@@ -15,6 +17,7 @@ export default {
       group: 'landing',
       initialValue: 'ABOUT US',
     },
+    fontField({group: 'landing', name: 'landingTitleFont', title: 'Font for this title'}),
     {
       name: 'landingText',
       title: 'Home — short paragraph',
@@ -23,6 +26,7 @@ export default {
       group: 'landing',
       description: 'The blurb under About Us on the home page',
     },
+    fontField({group: 'landing', name: 'landingTextFont', title: 'Font for this paragraph'}),
     {
       name: 'landingButtonLabel',
       title: 'Home — button text',
@@ -66,6 +70,7 @@ export default {
               title: 'Heading text',
               validation: (r) => r.required(),
             },
+            fontField(),
           ],
           preview: {
             select: {title: 'text'},
@@ -84,6 +89,7 @@ export default {
               rows: 5,
               validation: (r) => r.required(),
             },
+            fontField(),
           ],
           preview: {
             select: {title: 'text'},

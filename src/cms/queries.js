@@ -21,19 +21,25 @@ export const homePageQuery = `
 *[_type == "homePage"][0]{
   heroCards[]{
     title,
+    font,
     link,
     image{..., "alt": coalesce(alt, title)}
   },
   packagesTitle,
+  packagesTitleFont,
   packagesQuoteLabel,
   bestSellingPackages[]{title, link, buttonLabel},
   greyServicesTitle,
+  greyServicesTitleFont,
   greyServices[]{id, title, description, link, linkLabel},
   featuredTestimonialsHeading,
+  featuredTestimonialsHeadingFont,
   featuredTestimonials[]->{name, rating, review, image{..., "alt": coalesce(alt, name)}},
   instaHeading,
+  instaHeadingFont,
   faqEyebrow,
   faqTitle,
+  faqTitleFont,
   faqContactText,
   homeFaqs[]->{question, answer},
   showHeroes,
@@ -50,11 +56,13 @@ export const homePageQuery = `
 export const aboutPageQuery = `
 *[_type == "aboutPage"][0]{
   landingTitle,
+  landingTitleFont,
   landingText,
+  landingTextFont,
   landingButtonLabel,
   landingButtonLink,
   portrait{..., "alt": coalesce(alt, "About")},
-  blocks[]{_type, text},
+  blocks[]{_type, text, font},
   paragraphs,
   showTestimonials
 }
@@ -78,11 +86,10 @@ export const siteSettingsQuery = `
   colorAccent,
   colorBackground,
   colorText,
-  headingFont,
-  bodyFont,
   logo{..., "alt": coalesce(alt, "Logo")},
   headerLine1,
   headerLine2,
+  headerFont,
   navLinks[]{label, href}
 }
 `;

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import logoFallback from "../../assets/images/icons/camera_icon _01.png";
 import { trackEngagement } from "../../services/analytics";
 import { useSiteSettings } from "../../cms/useSiteSettings";
+import { fontStyle } from "../../cms/fontStyle";
 import { useImageUrl } from "../../cms/useImageUrl";
 
 function Header() {
@@ -46,7 +47,7 @@ function Header() {
               alt={s.logo?.alt || "WrigglyBun Photography"}
               loading="lazy"
             />
-            <span className="header__title">
+            <span className="header__title" style={fontStyle(s.headerFont)}>
               <span className="header__title-line header__title-line__one">
                 {line1}
               </span>

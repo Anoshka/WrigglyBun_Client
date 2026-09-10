@@ -50,6 +50,8 @@ export function PreviewProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.classList.toggle("is-preview", isPreview);
+    const inIframe = window.self !== window.top;
+    document.documentElement.classList.toggle("is-studio-iframe", inIframe);
   }, [isPreview]);
 
   return (

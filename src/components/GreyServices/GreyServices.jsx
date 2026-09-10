@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./GreyServices.scss";
 import { useLanding } from "../../cms/useLanding";
+import { fontStyle } from "../../cms/fontStyle";
 
 const FALLBACK = [
   {
@@ -53,7 +54,12 @@ const GreyServices = () => {
 
   return (
     <section className="grey-services">
-      <h1 className="grey-services__title">{title}</h1>
+      <h1
+        className="grey-services__title"
+        style={fontStyle(data?.greyServicesTitleFont)}
+      >
+        {title}
+      </h1>
       <div className="grey-services__wrap">
         {services.map((service) => (
           <div className="grey-services__card" key={service.title}>

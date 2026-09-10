@@ -14,13 +14,22 @@ export const structure = (S) =>
         .id('aboutPage')
         .child(S.document().schemaType('aboutPage').documentId('aboutPage').title('About Page')),
       S.listItem()
-        .title('Contact, header & colors')
+        .title('Header & top bar')
+        .id('siteSettingsHeader')
+        .child(
+          S.document()
+            .schemaType('siteSettings')
+            .documentId('siteSettings')
+            .title('Header & top bar'),
+        ),
+      S.listItem()
+        .title('Contact & colors')
         .id('siteSettings')
         .child(
           S.document()
             .schemaType('siteSettings')
             .documentId('siteSettings')
-            .title('Contact, header & colors'),
+            .title('Contact & colors'),
         ),
       S.divider(),
       S.documentTypeListItem('service').title('Services (pricing & photos)'),

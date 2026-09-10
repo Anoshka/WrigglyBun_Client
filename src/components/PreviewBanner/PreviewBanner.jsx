@@ -4,8 +4,11 @@ import "./PreviewBanner.scss";
 
 export default function PreviewBanner() {
   const { isPreview } = usePreview();
+  const inIframe =
+    typeof window !== "undefined" && window.self !== window.top;
 
-  if (!isPreview) return null;
+  /* Keep Presentation looking like the live site — no extra banner in the iframe */
+  if (!isPreview || inIframe) return null;
 
   return (
     <div className="preview-banner" role="status">

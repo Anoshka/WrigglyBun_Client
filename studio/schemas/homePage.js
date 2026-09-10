@@ -1,3 +1,5 @@
+import {fontField} from './fontField'
+
 // Home page: hero photos, service blurbs, best-selling packages, testimonials
 export default {
   name: 'homePage',
@@ -27,6 +29,7 @@ export default {
           name: 'heroCard',
           fields: [
             {name: 'title', type: 'string', title: 'Title on the photo', validation: (r) => r.required()},
+            fontField(),
             {
               name: 'link',
               type: 'string',
@@ -55,6 +58,7 @@ export default {
       group: 'packages',
       initialValue: 'BEST SELLING PACKAGES',
     },
+    fontField({group: 'packages', name: 'packagesTitleFont', title: 'Font for this heading'}),
     {
       name: 'packagesQuoteLabel',
       title: 'Get a quote — button text',
@@ -100,6 +104,7 @@ export default {
       group: 'grey',
       initialValue: 'Our Services',
     },
+    fontField({group: 'grey', name: 'greyServicesTitleFont', title: 'Font for this heading'}),
     {
       name: 'greyServices',
       title: 'Our Services cards (grey section)',
@@ -140,6 +145,11 @@ export default {
       group: 'testimonials',
       initialValue: 'What clients say',
     },
+    fontField({
+      group: 'testimonials',
+      name: 'featuredTestimonialsHeadingFont',
+      title: 'Font for this heading',
+    }),
     {
       name: 'featuredTestimonials',
       title: 'Featured testimonials on home page',
@@ -155,6 +165,7 @@ export default {
       group: 'insta',
       initialValue: 'WRIGGLY MOMENTS ON INSTA',
     },
+    fontField({group: 'insta', name: 'instaHeadingFont', title: 'Font for this heading'}),
     {
       name: 'faqEyebrow',
       title: 'FAQs — small label above the title',
@@ -169,6 +180,7 @@ export default {
       group: 'faqs',
       initialValue: 'Frequently Asked Questions',
     },
+    fontField({group: 'faqs', name: 'faqTitleFont', title: 'Font for this heading'}),
     {
       name: 'homeFaqs',
       title: 'FAQs in this section',

@@ -15,6 +15,7 @@ export function useFaqs() {
   const [faqs, setFaqs] = useState(FALLBACK_FAQS);
   const [eyebrow, setEyebrow] = useState("----- FAQS -----");
   const [title, setTitle] = useState("Frequently Asked Questions");
+  const [titleFont, setTitleFont] = useState("");
   const [contactText, setContactText] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,6 +26,7 @@ export function useFaqs() {
       .then(([home, rows]) => {
         if (home?.faqEyebrow) setEyebrow(home.faqEyebrow);
         if (home?.faqTitle) setTitle(home.faqTitle);
+        if (home?.faqTitleFont) setTitleFont(home.faqTitleFont);
         if (home?.faqContactText) setContactText(home.faqContactText);
 
         const ordered = (home?.homeFaqs || []).filter((f) => f?.question);
@@ -44,5 +46,5 @@ export function useFaqs() {
       .finally(() => setLoading(false));
   }, [client]);
 
-  return { faqs, eyebrow, title, contactText, loading, error };
+  return { faqs, eyebrow, title, titleFont, contactText, loading, error };
 }

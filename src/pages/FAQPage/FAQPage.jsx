@@ -3,12 +3,13 @@ import "./FAQPage.scss";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useFaqs } from "../../cms/useFaqs";
+import { fontStyle } from "../../cms/fontStyle";
 import { useSiteSettings } from "../../cms/useSiteSettings";
 import { trackEngagement } from "../../services/analytics";
 import FaqJsonLd from "../../components/FaqJsonLd";
 
 const FAQPage = () => {
-  const { faqs, eyebrow, title, contactText } = useFaqs();
+  const { faqs, eyebrow, title, titleFont, contactText } = useFaqs();
   const { data: s } = useSiteSettings();
   const [expandedQuestion, setExpandedQuestion] = useState(null);
 
@@ -20,7 +21,9 @@ const FAQPage = () => {
     <div className="faq">
       <FaqJsonLd faqs={faqs} />
       <h3 className="faq__top">{eyebrow}</h3>
-      <h2 className="faq__title">{title}</h2>
+      <h2 className="faq__title" style={fontStyle(titleFont)}>
+        {title}
+      </h2>
       <section className="faq__section">
         <div className="faq__questions">
           {faqs.map((item, index) => (
