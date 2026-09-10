@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "./BlogPage.scss";
 import { useBlogPost } from "../../cms/useBlog";
+import CmsRichText from "../../components/CmsRichText";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -24,7 +25,7 @@ const BlogPostPage = () => {
         </div>
       )}
       {post.body && (
-        <div className="blog-post-page__body">{post.body.split("\n").map((p, i) => (p.trim() ? <p key={i}>{p}</p> : null))}</div>
+        <CmsRichText value={post.body} className="blog-post-page__body" />
       )}
       {post.link && (
         <a href={post.link} target="_blank" rel="noopener noreferrer" className="blog-post__link">

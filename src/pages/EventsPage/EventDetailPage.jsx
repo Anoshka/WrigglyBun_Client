@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "./EventsPage.scss";
 import { useEvent } from "../../cms/useEvents";
+import CmsRichText from "../../components/CmsRichText";
 
 const EventDetailPage = () => {
   const { slug } = useParams();
@@ -25,7 +26,7 @@ const EventDetailPage = () => {
         </div>
       )}
       {event.body && (
-        <div className="event-detail-page__body">{event.body.split("\n").map((p, i) => (p.trim() ? <p key={i}>{p}</p> : null))}</div>
+        <CmsRichText value={event.body} className="event-detail-page__body" />
       )}
       {event.link && (
         <a href={event.link} target="_blank" rel="noopener noreferrer" className="event-detail-page__link">

@@ -56,4 +56,12 @@
   &__description {
     padding-bottom: 1.5rem;
   }
+
+  &__heading {
+    font-family: var(--wb-heading-font, #{$header-font});
+    font-size: 1.25rem;
+    letter-spacing: 0.06em;
+    margin: 0 0 1.25rem;
+    color: $dark-brown;
+  }
 }

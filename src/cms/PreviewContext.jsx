@@ -19,10 +19,12 @@ function activatePreviewFromQuery() {
   if (!expected) return false;
 
   const params = new URLSearchParams(window.location.search);
-  const fromQuery = params.get("sanity-preview");
+  const fromQuery =
+    params.get("sanity-preview") || params.get("sanity-preview-secret");
   if (fromQuery && fromQuery === expected) {
     sessionStorage.setItem(STORAGE_KEY, expected);
     params.delete("sanity-preview");
+    params.delete("sanity-preview-secret");
     const next = `${window.location.pathname}${
       params.toString() ? `?${params}` : ""
     }${window.location.hash}`;
@@ -45,6 +47,10 @@ export function PreviewProvider({ children }) {
   }, []);
 
   const value = useMemo(() => ({ isPreview, setIsPreview }), [isPreview]);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("is-preview", isPreview);
+  }, [isPreview]);
 
   return (
     <PreviewContext.Provider value={value}>{children}</PreviewContext.Provider>

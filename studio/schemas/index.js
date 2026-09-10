@@ -6,6 +6,7 @@ import aboutPage from './aboutPage'
 import siteSettings from './siteSettings'
 import blogPost from './blogPost'
 import event from './event'
+import portableText from './portableText'
 
 export const schemaTypes = [
   homePage,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   testimonial,
   blogPost,
   event,
+  portableText,
 ]

@@ -15,11 +15,13 @@ function LandingPage() {
 
   return (
     <div>
-      <Services />
-      <About />
-      <GreyServices />
-      <Insta heading={data?.instaHeading} />
-      {featured.length > 0 && (
+      {(data?.showHeroes !== false || data?.showPackages !== false) && (
+        <Services />
+      )}
+      {data?.showAbout !== false && <About />}
+      {data?.showGreyServices !== false && <GreyServices />}
+      {data?.showInsta !== false && <Insta heading={data?.instaHeading} />}
+      {data?.showFeaturedTestimonials !== false && featured.length > 0 && (
         <section className="landing-testimonials">
           <h2 className="landing-testimonials__title">{featuredHeading}</h2>
           <div className="landing-testimonials__grid">
@@ -43,8 +45,8 @@ function LandingPage() {
           </div>
         </section>
       )}
-      <Testimonials />
-      <FAQs />
+      {data?.showTestimonials !== false && <Testimonials />}
+      {data?.showFaqs !== false && <FAQs />}
     </div>
   );
 }

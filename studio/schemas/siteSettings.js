@@ -4,10 +4,73 @@ export default {
   title: 'Contact & Business Info',
   type: 'document',
   groups: [
+    {name: 'header', title: 'Top bar (header)'},
     {name: 'contact', title: 'Contact'},
     {name: 'colors', title: 'Brand colors'},
+    {name: 'fonts', title: 'Fonts'},
   ],
   fields: [
+    {
+      name: 'logo',
+      title: 'Header logo',
+      type: 'image',
+      group: 'header',
+      options: {hotspot: true},
+      fields: [{name: 'alt', type: 'string', title: 'Alt text'}],
+      description: 'Small camera / brand mark next to the site name. Leave empty to keep the current icon.',
+    },
+    {
+      name: 'headerLine1',
+      title: 'Header — first line',
+      type: 'string',
+      group: 'header',
+      initialValue: 'WrigglyBun',
+    },
+    {
+      name: 'headerLine2',
+      title: 'Header — second line',
+      type: 'string',
+      group: 'header',
+      initialValue: 'Photography',
+    },
+    {
+      name: 'navLinks',
+      title: 'Header menu links',
+      type: 'array',
+      group: 'header',
+      description:
+        'This is the top bar. Add, rename, reorder, or delete links. Use paths like /about or /maternity.',
+      of: [
+        {
+          type: 'object',
+          name: 'navLink',
+          fields: [
+            {name: 'label', type: 'string', title: 'Label', validation: (r) => r.required()},
+            {
+              name: 'href',
+              type: 'string',
+              title: 'Link',
+              description: 'e.g. /  /about  /contact  /maternity',
+              validation: (r) => r.required(),
+            },
+          ],
+          preview: {
+            select: {title: 'label', subtitle: 'href'},
+          },
+        },
+      ],
+      initialValue: [
+        { _type: 'navLink', label: 'Home', href: '/' },
+        { _type: 'navLink', label: 'About', href: '/about' },
+        { _type: 'navLink', label: 'Maternity', href: '/maternity' },
+        { _type: 'navLink', label: 'Newborn', href: '/newborn' },
+        { _type: 'navLink', label: '6 Months & Above', href: '/6months' },
+        { _type: 'navLink', label: 'Family', href: '/family' },
+        { _type: 'navLink', label: 'Special Occasions', href: '/special-events' },
+        { _type: 'navLink', label: 'Blog', href: '/blog' },
+        { _type: 'navLink', label: 'Contact', href: '/contact' },
+      ],
+    },
     {
       name: 'businessName',
       title: 'Business name',
@@ -144,6 +207,43 @@ export default {
           name: 'hex',
           invert: false,
         }).warning('Use a hex color, e.g. #26110d'),
+    },
+    {
+      name: 'headingFont',
+      title: 'Heading font',
+      type: 'string',
+      group: 'fonts',
+      description:
+        'Used for titles and the header name. Pick one of the site fonts — custom uploads / per-word styling is not supported.',
+      options: {
+        list: [
+          {title: 'Site default', value: 'default'},
+          {title: 'Forum (header style)', value: 'Forum, Arial, sans-serif'},
+          {title: 'Grandstander', value: 'Grandstander, Arial, sans-serif'},
+          {title: 'Montserrat', value: 'Montserrat, Arial, sans-serif'},
+          {title: 'League Spartan', value: '"New Day", Arial, sans-serif'},
+          {title: 'Rubik (body style)', value: 'Rubik, Arial, sans-serif'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'default',
+    },
+    {
+      name: 'bodyFont',
+      title: 'Body font',
+      type: 'string',
+      group: 'fonts',
+      description: 'Used for paragraphs and most page text.',
+      options: {
+        list: [
+          {title: 'Site default', value: 'default'},
+          {title: 'Rubik', value: 'Rubik, Arial, sans-serif'},
+          {title: 'Montserrat', value: 'Montserrat, Arial, sans-serif'},
+          {title: 'Grandstander', value: 'Grandstander, Arial, sans-serif'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'default',
     },
   ],
   preview: {

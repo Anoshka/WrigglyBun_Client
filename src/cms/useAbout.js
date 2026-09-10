@@ -29,7 +29,14 @@ export function useAbout() {
       portrait: raw.portrait
         ? { src: toImgUrl(raw.portrait, 900), alt: raw.portrait.alt || "About" }
         : null,
+      blocks: (raw.blocks || [])
+        .filter((b) => b?.text)
+        .map((b) => ({
+          type: b._type === "heading" ? "heading" : "paragraph",
+          text: b.text,
+        })),
       paragraphs: (raw.paragraphs || []).filter(Boolean),
+      showTestimonials: raw.showTestimonials !== false,
     };
   }, [raw, toImgUrl]);
 

@@ -34,6 +34,21 @@ const FALLBACK = {
   colorAccent: "#fac532",
   colorBackground: "#ffffff",
   colorText: "#26110d",
+  headingFont: "default",
+  bodyFont: "default",
+  headerLine1: "WrigglyBun",
+  headerLine2: "Photography",
+  navLinks: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Maternity", href: "/maternity" },
+    { label: "Newborn", href: "/newborn" },
+    { label: "6 Months & Above", href: "/6months" },
+    { label: "Family", href: "/family" },
+    { label: "Special Occasions", href: "/special-events" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
+  ],
 };
 
 function buildWhatsAppUrl(number, message) {
@@ -78,6 +93,12 @@ export function useSiteSettings() {
       colorAccent: s.colorAccent || FALLBACK.colorAccent,
       colorBackground: s.colorBackground || FALLBACK.colorBackground,
       colorText: s.colorText || FALLBACK.colorText,
+      headingFont: s.headingFont || FALLBACK.headingFont,
+      bodyFont: s.bodyFont || FALLBACK.bodyFont,
+      logo: s.logo || null,
+      headerLine1: s.headerLine1 || FALLBACK.headerLine1,
+      headerLine2: s.headerLine2 || FALLBACK.headerLine2,
+      navLinks: s.navLinks?.length ? s.navLinks : FALLBACK.navLinks,
     };
     return {
       ...merged,

@@ -47,9 +47,9 @@ export default {
     {
       name: 'body',
       title: 'Write-up (main text)',
-      type: 'text',
-      rows: 12,
-      description: 'Full article text — edit freely',
+      type: 'portableText',
+      description:
+        'Write the article here. To link to another page: select the words → click the link icon → type a path like /maternity or /about.',
     },
     {
       name: 'link',

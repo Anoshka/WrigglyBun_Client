@@ -46,8 +46,9 @@ export default {
     {
       name: 'body',
       title: 'Write-up',
-      type: 'text',
-      rows: 10,
+      type: 'portableText',
+      description:
+        'To link to another page: select the words → click the link icon → type a path like /maternity or /about.',
     },
     {
       name: 'link',

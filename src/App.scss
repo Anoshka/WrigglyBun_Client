@@ -3,9 +3,27 @@
 
 html {
   font-size: 100%;
-  font-family: $primary-font;
+  font-family: var(--wb-body-font, #{$primary-font});
   background-color: $cream;
   color: var(--wb-text, #26110d);
+}
+
+h1,
+h2,
+h3,
+.header__title {
+  font-family: var(--wb-heading-font, #{$header-font});
+}
+
+.is-preview {
+  a[class*="contact"],
+  a[class*="link"],
+  .services__packages--contact,
+  .about__contact {
+    background-color: #fff;
+    opacity: 1;
+    visibility: visible;
+  }
 }
 *,
 *::before,

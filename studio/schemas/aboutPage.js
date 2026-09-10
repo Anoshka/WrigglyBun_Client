@@ -48,12 +48,67 @@ export default {
       description: 'Upload or replace Anandita’s photo here',
     },
     {
-      name: 'paragraphs',
-      title: 'About page paragraphs',
+      name: 'blocks',
+      title: 'About page content (headings & paragraphs)',
       type: 'array',
       group: 'page',
+      description:
+        'Add a Heading or Paragraph, drag to reorder, or delete an item. Example: add a Heading “Meet the photographer”, then paragraphs under it.',
+      of: [
+        {
+          type: 'object',
+          name: 'heading',
+          title: 'Heading',
+          fields: [
+            {
+              name: 'text',
+              type: 'string',
+              title: 'Heading text',
+              validation: (r) => r.required(),
+            },
+          ],
+          preview: {
+            select: {title: 'text'},
+            prepare: ({title}) => ({title: title || 'Heading', subtitle: 'Heading'}),
+          },
+        },
+        {
+          type: 'object',
+          name: 'paragraph',
+          title: 'Paragraph',
+          fields: [
+            {
+              name: 'text',
+              type: 'text',
+              title: 'Paragraph text',
+              rows: 5,
+              validation: (r) => r.required(),
+            },
+          ],
+          preview: {
+            select: {title: 'text'},
+            prepare: ({title}) => ({
+              title: title ? title.slice(0, 80) : 'Paragraph',
+              subtitle: 'Paragraph',
+            }),
+          },
+        },
+      ],
+    },
+    {
+      name: 'paragraphs',
+      title: 'Old paragraphs (used only if the content list above is empty)',
+      type: 'array',
+      group: 'page',
+      hidden: true,
       of: [{type: 'text', rows: 5}],
-      description: 'Add, reorder, edit, or delete paragraphs. Each item = one paragraph on the page.',
+    },
+    {
+      name: 'showTestimonials',
+      title: 'Show testimonials at the bottom of the About page',
+      type: 'boolean',
+      group: 'page',
+      initialValue: true,
     },
   ],
   preview: {

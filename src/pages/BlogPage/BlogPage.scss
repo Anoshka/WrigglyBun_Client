@@ -100,4 +100,10 @@
   margin-top: 1rem;
   line-height: 1.6;
   p { margin: 0.5rem 0; }
+  a,
+  .cms-rich-text__link {
+    color: $dark-brown;
+    text-decoration: underline;
+    &:hover { color: $sunshine; }
+  }
 }

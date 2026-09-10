@@ -1,10 +1,14 @@
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import logo from "../../assets/images/icons/camera_icon _01.png";
+import logoFallback from "../../assets/images/icons/camera_icon _01.png";
 import { trackEngagement } from "../../services/analytics";
+import { useSiteSettings } from "../../cms/useSiteSettings";
+import { useImageUrl } from "../../cms/useImageUrl";
 
 function Header() {
+  const { data: s } = useSiteSettings();
+  const toImgUrl = useImageUrl();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -26,31 +30,33 @@ function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleMouseEnter = () => {};
-  const handleMouseLeave = () => {};
+  const logoSrc = s.logo ? toImgUrl(s.logo, 200) : logoFallback;
+  const line1 = s.headerLine1 || "WrigglyBun";
+  const line2 = s.headerLine2 || "Photography";
+  const links = s.navLinks || [];
 
   return (
     <header className="header">
       <section className="header__container">
-        {/* Logo */}
         <div className="header__left">
           <NavLink to="/" className="header__logo">
-            <img src={logo} className="header__img" loading="lazy" />
-            <p className="header__title">
-              <p className="header__title-line header__title-line__one">
-              WrigglyBun
-              </p>
-              <p className="header__title-line header__title-line__two">
-              Photography
-              </p>
-            </p>
+            <img
+              src={logoSrc}
+              className="header__img"
+              alt={s.logo?.alt || "WrigglyBun Photography"}
+              loading="lazy"
+            />
+            <span className="header__title">
+              <span className="header__title-line header__title-line__one">
+                {line1}
+              </span>
+              <span className="header__title-line header__title-line__two">
+                {line2}
+              </span>
+            </span>
           </NavLink>
-          {/* <p className="header__description">
-            Capturing joy, innocence, and everything in between!
-          </p> */}
         </div>
 
-        {/* Hamburger Icon for Mobile */}
         <div
           className={`header__hamburger ${isMenuOpen ? "open" : ""}`}
           onClick={toggleMenu}
@@ -60,99 +66,29 @@ function Header() {
           <div className="line"></div>
         </div>
 
-        {/* Navigation Links */}
         <nav
           ref={menuRef}
           className={`header__nav ${isMenuOpen ? "open" : ""}`}
         >
-          <NavLink to="/" className="header__link" onClick={closeMenu}>
-            Home
-          </NavLink>
-
-          {/* About Link with Dropdown on Tablet and Desktop */}
-          <div
-            className="header__link header__about"
-            onMouseEnter={handleMouseEnter} // Open dropdown on hover
-            onMouseLeave={handleMouseLeave} // Close dropdown on hover leave
-          >
+          {links.map((link) => (
             <NavLink
-              to="/about"
-              className="header__link--about"
-              onClick={closeMenu}
+              key={`${link.label}-${link.href}`}
+              to={link.href || "/"}
+              className={
+                link.href === "/about"
+                  ? "header__link header__link--about"
+                  : "header__link"
+              }
+              onClick={() => {
+                if (link.href === "/contact") {
+                  trackEngagement("click_contact", "header_nav", "header");
+                }
+                closeMenu();
+              }}
             >
-              About
+              {link.label}
             </NavLink>
-            {/* Dropdown on Tablet and Desktop */}
-            {/* <div className={`header__dropdown ${isDropdownOpen ? "open" : ""}`}>
-              <div className="header__dropdown-content">
-                <NavLink
-                  to="/about"
-                  className="header__link"
-                  onClick={closeDropdownAndMenu} // Close both dropdown and menu
-                >
-                  About Me
-                </NavLink>
-                <NavLink
-                  to="/the-studio"
-                  className="header__link"
-                  onClick={closeDropdownAndMenu} // Close both dropdown and menu
-                >
-                  The Studio
-                </NavLink>
-                <NavLink
-                  to="/testimonials"
-                  className="header__link"
-                  onClick={closeDropdownAndMenu} // Close both dropdown and menu
-                >
-                  Testimonials
-                </NavLink>
-              </div>
-            </div> */}
-          </div>
-
-          {/* <NavLink
-            to="/testimonials"
-            className="header__link"
-            onClick={closeMenu}
-          >
-            Testimonials
-          </NavLink> */}
-          <NavLink to="/maternity" className="header__link" onClick={closeMenu}>
-            Maternity
-          </NavLink>
-          <NavLink to="/newborn" className="header__link" onClick={closeMenu}>
-            Newborn
-          </NavLink>
-          <NavLink to="/6months" className="header__link" onClick={closeMenu}>
-            6 Months & Above
-          </NavLink>
-          <NavLink to="/family" className="header__link" onClick={closeMenu}>
-            Family
-          </NavLink>
-          <NavLink
-            to="/special-events"
-            className="header__link"
-            onClick={closeMenu}
-          >
-            Special Occasions
-          </NavLink>
-          {/* <NavLink to="/events" className="header__link" onClick={closeMenu}>
-            Upcoming Events
-          </NavLink> */}
-          <NavLink to="/blog" className="header__link" onClick={closeMenu}>
-            Blog
-          </NavLink>
-
-          <NavLink
-            to="/contact"
-            className="header__link"
-            onClick={() => {
-              trackEngagement("click_contact", "header_nav", "header");
-              closeMenu();
-            }}
-          >
-            Contact
-          </NavLink>
+          ))}
         </nav>
       </section>
     </header>

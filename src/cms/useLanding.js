@@ -43,6 +43,20 @@ export function useLanding() {
         alt: t.image?.alt || t.name,
       })),
       instaHeading: raw.instaHeading,
+      faqEyebrow: raw.faqEyebrow,
+      faqTitle: raw.faqTitle,
+      faqContactText: raw.faqContactText,
+      homeFaqs: (raw.homeFaqs || [])
+        .filter((f) => f?.question)
+        .map((f) => ({ question: f.question, answer: f.answer })),
+      showHeroes: raw.showHeroes !== false,
+      showPackages: raw.showPackages !== false,
+      showAbout: raw.showAbout !== false,
+      showGreyServices: raw.showGreyServices !== false,
+      showInsta: raw.showInsta !== false,
+      showFeaturedTestimonials: raw.showFeaturedTestimonials !== false,
+      showTestimonials: raw.showTestimonials !== false,
+      showFaqs: raw.showFaqs !== false,
     };
   }, [raw, toImgUrl]);
 

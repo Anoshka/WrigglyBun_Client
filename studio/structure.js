@@ -14,13 +14,13 @@ export const structure = (S) =>
         .id('aboutPage')
         .child(S.document().schemaType('aboutPage').documentId('aboutPage').title('About Page')),
       S.listItem()
-        .title('Contact & Business Info')
+        .title('Contact, header & colors')
         .id('siteSettings')
         .child(
           S.document()
             .schemaType('siteSettings')
             .documentId('siteSettings')
-            .title('Contact & Business Info'),
+            .title('Contact, header & colors'),
         ),
       S.divider(),
       S.documentTypeListItem('service').title('Services (pricing & photos)'),

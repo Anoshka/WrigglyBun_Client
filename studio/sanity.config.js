@@ -4,6 +4,7 @@ import {presentationTool} from 'sanity/presentation'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {structure} from './structure'
+import {presentationResolve} from './presentation'
 
 const previewOrigin =
   // eslint-disable-next-line no-undef -- Sanity Studio injects process.env at build time
@@ -18,6 +19,7 @@ export default defineConfig({
 
   plugins: [
     presentationTool({
+      resolve: presentationResolve,
       previewUrl: {
         origin: previewOrigin,
         previewMode: {

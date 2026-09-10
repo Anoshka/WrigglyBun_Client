@@ -31,7 +31,19 @@ export const homePageQuery = `
   greyServices[]{id, title, description, link, linkLabel},
   featuredTestimonialsHeading,
   featuredTestimonials[]->{name, rating, review, image{..., "alt": coalesce(alt, name)}},
-  instaHeading
+  instaHeading,
+  faqEyebrow,
+  faqTitle,
+  faqContactText,
+  homeFaqs[]->{question, answer},
+  showHeroes,
+  showPackages,
+  showAbout,
+  showGreyServices,
+  showInsta,
+  showFeaturedTestimonials,
+  showTestimonials,
+  showFaqs
 }
 `;
 
@@ -42,7 +54,9 @@ export const aboutPageQuery = `
   landingButtonLabel,
   landingButtonLink,
   portrait{..., "alt": coalesce(alt, "About")},
-  paragraphs
+  blocks[]{_type, text},
+  paragraphs,
+  showTestimonials
 }
 `;
 
@@ -63,7 +77,13 @@ export const siteSettingsQuery = `
   colorBrown,
   colorAccent,
   colorBackground,
-  colorText
+  colorText,
+  headingFont,
+  bodyFont,
+  logo{..., "alt": coalesce(alt, "Logo")},
+  headerLine1,
+  headerLine2,
+  navLinks[]{label, href}
 }
 `;
 

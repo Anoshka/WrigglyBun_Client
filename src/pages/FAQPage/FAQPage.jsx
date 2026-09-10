@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { useFaqs } from "../../cms/useFaqs";
 import { useSiteSettings } from "../../cms/useSiteSettings";
 import { trackEngagement } from "../../services/analytics";
+import FaqJsonLd from "../../components/FaqJsonLd";
 
 const FAQPage = () => {
-  const { faqs } = useFaqs();
+  const { faqs, eyebrow, title, contactText } = useFaqs();
   const { data: s } = useSiteSettings();
   const [expandedQuestion, setExpandedQuestion] = useState(null);
 
@@ -17,8 +18,9 @@ const FAQPage = () => {
 
   return (
     <div className="faq">
-      <h3 className="faq__top">----- FAQS -----</h3>
-      <h2 className="faq__title">Frequently Asked Questions</h2>
+      <FaqJsonLd faqs={faqs} />
+      <h3 className="faq__top">{eyebrow}</h3>
+      <h2 className="faq__title">{title}</h2>
       <section className="faq__section">
         <div className="faq__questions">
           {faqs.map((item, index) => (
@@ -44,16 +46,22 @@ const FAQPage = () => {
         </div>
       </section>
       <p className="faq__contact">
-        Got more questions? We’re here to help! Reach out to us anytime at{" "}
-        {s.phoneDisplay} via call or WhatsApp, or
-        <Link
-          to="/contact"
-          className="faq__link"
-          onClick={() => trackEngagement("click_contact", "faq_cta", "faq_page")}
-        >
-          {" "}
-          click here.
-        </Link>
+        {contactText || (
+          <>
+            Got more questions? We’re here to help! Reach out to us anytime at{" "}
+            {s.phoneDisplay} via call or WhatsApp, or
+            <Link
+              to="/contact"
+              className="faq__link"
+              onClick={() =>
+                trackEngagement("click_contact", "faq_cta", "faq_page")
+              }
+            >
+              {" "}
+              click here.
+            </Link>
+          </>
+        )}
       </p>
     </div>
   );

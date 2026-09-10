@@ -52,6 +52,7 @@ const Services = () => {
 
   return (
     <section className="services">
+      {data?.showHeroes !== false && (
       <div className="services__container">
         {cards.map((service, i) => (
           <Link to={service.link} className="services__card" key={`${service.title}-${i}`}>
@@ -68,7 +69,9 @@ const Services = () => {
           </Link>
         ))}
       </div>
+      )}
 
+      {data?.showPackages !== false && (
       <div className="services__packages">
         <div className="services__packages--header" />
         <h1 className="services__packages--title">{packagesTitle}</h1>
@@ -77,14 +80,17 @@ const Services = () => {
           {packages.map((pkg) => (
             <div className="services__packages--container" key={pkg.title}>
               <h2 className="services__packages--subtitle">{pkg.title}</h2>
-              <Link to={pkg.link || "#"} className="services__packages--link">
-                {pkg.buttonLabel || "KNOW MORE"}
-              </Link>
+        <Link
+          to={pkg.link || "#"}
+          className="services__packages--link"
+        >
+          {pkg.buttonLabel || "KNOW MORE"}
+        </Link>
             </div>
           ))}
         </div>
-        <Link
-          to={quoteHref}
+        <a
+          href={quoteHref}
           target="_blank"
           rel="noopener noreferrer"
           className="services__packages--contact"
@@ -93,8 +99,9 @@ const Services = () => {
           }
         >
           {quoteLabel}
-        </Link>
+        </a>
       </div>
+      )}
     </section>
   );
 };

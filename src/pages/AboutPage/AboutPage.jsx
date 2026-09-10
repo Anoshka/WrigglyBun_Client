@@ -12,8 +12,13 @@ function AboutPage() {
   const { data } = useAbout();
   const portraitSrc = data?.portrait?.src || placeholder;
   const portraitAlt = data?.portrait?.alt || "Anandita's photo";
-  const paragraphs =
-    data?.paragraphs?.length > 0 ? data.paragraphs : FALLBACK_PARAGRAPHS;
+  const blocks =
+    data?.blocks?.length > 0
+      ? data.blocks
+      : (data?.paragraphs?.length > 0
+          ? data.paragraphs
+          : FALLBACK_PARAGRAPHS
+        ).map((text) => ({ type: "paragraph", text }));
 
   return (
     <div className="about-page">
@@ -25,14 +30,22 @@ function AboutPage() {
           loading="lazy"
         />
         <div className="about-page__text">
-          {paragraphs.map((text, i) => (
-            <p className="about-page__description" key={i}>
-              {text}
-            </p>
-          ))}
+          {blocks.map((block, i) =>
+            block.type === "heading" ? (
+              <h2 className="about-page__heading" key={`h-${i}`}>
+                {block.text}
+              </h2>
+            ) : (
+              <p className="about-page__description" key={`p-${i}`}>
+                {block.text}
+              </p>
+            )
+          )}
         </div>
       </div>
-      <Testimonials className="about-page__testimonials" />
+      {data?.showTestimonials !== false && (
+        <Testimonials className="about-page__testimonials" />
+      )}
     </div>
   );
 }
