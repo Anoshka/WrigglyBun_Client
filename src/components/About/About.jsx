@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./About.scss";
 import { useAbout } from "../../cms/useAbout";
-import { fontStyle } from "../../cms/fontStyle";
+import { textStyle } from "../../cms/fontStyle";
 
 const FALLBACK = {
   landingTitle: "ABOUT US",
@@ -20,13 +20,26 @@ function About() {
 
   return (
     <div className="about">
-      <h3 className="about__title" style={fontStyle(data?.landingTitleFont)}>
+      <h3
+        className="about__title"
+        style={textStyle(data?.landingTitleFont, data?.landingTitleColor)}
+      >
         {title}
       </h3>
-      <p className="about__description" style={fontStyle(data?.landingTextFont)}>
+      <p
+        className="about__description"
+        style={textStyle(data?.landingTextFont, data?.landingTextColor)}
+      >
         {text}
       </p>
-      <Link to={buttonLink} className="about__contact">
+      <Link
+        to={buttonLink}
+        className="about__contact"
+        style={textStyle(
+          data?.landingButtonLabelFont,
+          data?.landingButtonLabelColor
+        )}
+      >
         {buttonLabel}
       </Link>
     </div>

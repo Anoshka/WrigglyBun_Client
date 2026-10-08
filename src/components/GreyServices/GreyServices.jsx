@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./GreyServices.scss";
 import { useLanding } from "../../cms/useLanding";
-import { fontStyle } from "../../cms/fontStyle";
+import { textStyle } from "../../cms/fontStyle";
 
 const FALLBACK = [
   {
@@ -56,18 +56,37 @@ const GreyServices = () => {
     <section className="grey-services">
       <h1
         className="grey-services__title"
-        style={fontStyle(data?.greyServicesTitleFont)}
+        style={textStyle(data?.greyServicesTitleFont, data?.greyServicesTitleColor)}
       >
         {title}
       </h1>
       <div className="grey-services__wrap">
         {services.map((service) => (
           <div className="grey-services__card" key={service.title}>
-            <h3 className="grey-services__card--id">{service.id}</h3>
+            <h3
+              className="grey-services__card--id"
+              style={textStyle(service.idFont, service.idColor)}
+            >
+              {service.id}
+            </h3>
             <div className="grey-services__container">
-              <span className="grey-services__service">{service.title}</span>
-              <p className="grey-services__description">{service.description}</p>
-              <Link to={service.link || "#"} className="grey-services__link">
+              <span
+                className="grey-services__service"
+                style={textStyle(service.titleFont, service.titleColor)}
+              >
+                {service.title}
+              </span>
+              <p
+                className="grey-services__description"
+                style={textStyle(service.descriptionFont, service.descriptionColor)}
+              >
+                {service.description}
+              </p>
+              <Link
+                to={service.link || "#"}
+                className="grey-services__link"
+                style={textStyle(service.linkLabelFont, service.linkLabelColor)}
+              >
                 {service.linkLabel || "READ MORE →"}
               </Link>
             </div>

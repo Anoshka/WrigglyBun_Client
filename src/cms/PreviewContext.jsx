@@ -4,11 +4,22 @@ const PreviewContext = createContext({ isPreview: false });
 
 const STORAGE_KEY = "sanity-preview";
 
+function inIframe() {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.self !== window.top;
+  } catch {
+    return true;
+  }
+}
+
 function readStoredPreview() {
   const expected = import.meta.env.VITE_SANITY_PREVIEW_SECRET;
-  if (!expected) return false;
   try {
-    return sessionStorage.getItem(STORAGE_KEY) === expected;
+    const stored = sessionStorage.getItem(STORAGE_KEY);
+    if (!stored) return false;
+    if (!expected) return stored === "on";
+    return stored === expected || stored === "on";
   } catch {
     return false;
   }
@@ -36,12 +47,16 @@ function activatePreviewFromQuery() {
 
 export function PreviewProvider({ children }) {
   const [isPreview, setIsPreview] = useState(() => {
+    if (inIframe()) {
+      enablePreviewMode();
+      return true;
+    }
     if (activatePreviewFromQuery()) return true;
     return readStoredPreview();
   });
 
   useEffect(() => {
-    const onStorage = () => setIsPreview(readStoredPreview());
+    const onStorage = () => setIsPreview(readStoredPreview() || inIframe());
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
@@ -50,8 +65,7 @@ export function PreviewProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.classList.toggle("is-preview", isPreview);
-    const inIframe = window.self !== window.top;
-    document.documentElement.classList.toggle("is-studio-iframe", inIframe);
+    document.documentElement.classList.toggle("is-studio-iframe", inIframe());
   }, [isPreview]);
 
   return (
@@ -64,9 +78,12 @@ export function usePreview() {
 }
 
 export function enablePreviewMode() {
-  const expected = import.meta.env.VITE_SANITY_PREVIEW_SECRET;
-  if (!expected) return false;
-  sessionStorage.setItem(STORAGE_KEY, expected);
+  try {
+    const expected = import.meta.env.VITE_SANITY_PREVIEW_SECRET;
+    sessionStorage.setItem(STORAGE_KEY, expected || "on");
+  } catch {
+    /* ignore */
+  }
   return true;
 }
 

@@ -13,6 +13,7 @@ import {
   trackContactClick,
 } from "../../services/analytics";
 import { useSiteSettings } from "../../cms/useSiteSettings";
+import { textStyle } from "../../cms/fontStyle";
 
 const Contact = () => {
   const { data: s } = useSiteSettings();
@@ -69,7 +70,12 @@ const Contact = () => {
 
   return (
     <main>
-      <h2 className="contact__title">{s.contactPageTitle}</h2>
+      <h2
+        className="contact__title"
+        style={textStyle(s.contactPageTitleFont, s.contactPageTitleColor)}
+      >
+        {s.contactPageTitle}
+      </h2>
       <section className="contact">
         <div className="contact-page">
           <form onSubmit={handleSubmit} className="contact-form">
@@ -199,7 +205,12 @@ const Contact = () => {
               }
             >
               <FaWhatsapp className="socials__icon" />
-              <p className="socials__name">{s.phoneDisplay}</p>
+              <p
+                className="socials__name"
+                style={textStyle(s.phoneDisplayFont, s.phoneDisplayColor)}
+              >
+                {s.phoneDisplay}
+              </p>
             </Link>
           </div>
         </div>

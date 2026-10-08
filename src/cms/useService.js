@@ -25,8 +25,14 @@ export function useService(slug) {
     return {
       slug: raw.slug,
       title: raw.title,
+      titleFont: raw.titleFont,
+      titleColor: raw.titleColor,
       subtitle: raw.subtitle,
+      subtitleFont: raw.subtitleFont,
+      subtitleColor: raw.subtitleColor,
       introTitle: raw.introTitle || raw.title,
+      introTitleFont: raw.introTitleFont,
+      introTitleColor: raw.introTitleColor,
       hero: {
         src: toImgUrl(raw.hero, 1920),
         alt: raw.hero?.alt || raw.title,
@@ -36,12 +42,25 @@ export function useService(slug) {
         alt: img?.alt,
       })),
       pricingHeading: raw.pricingHeading,
+      pricingHeadingFont: raw.pricingHeadingFont,
+      pricingHeadingColor: raw.pricingHeadingColor,
       pricingPlans: raw.pricingPlans || [],
       customPricingCta: raw.customPricingCta,
       notesHeading: raw.notesHeading,
+      notesHeadingFont: raw.notesHeadingFont,
+      notesHeadingColor: raw.notesHeadingColor,
       notesSections: raw.notesSections || [],
       faqsHeading: raw.faqsHeading,
-      faqs: (raw.faqs || []).map((f) => ({ q: f.question, a: f.answer })),
+      faqsHeadingFont: raw.faqsHeadingFont,
+      faqsHeadingColor: raw.faqsHeadingColor,
+      faqs: (raw.faqs || []).map((f) => ({
+        q: f.question,
+        qFont: f.questionFont,
+        qColor: f.questionColor,
+        a: f.answer,
+        aFont: f.answerFont,
+        aColor: f.answerColor,
+      })),
     };
   }, [raw, toImgUrl]);
 

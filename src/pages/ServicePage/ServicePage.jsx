@@ -6,6 +6,7 @@ import React, {
   useRef,
 } from "react";
 import { Link } from "react-router-dom";
+import { textStyle } from "../../cms/fontStyle";
 import {
   FaArrowLeft,
   FaChevronLeft,
@@ -253,7 +254,10 @@ const ServicePage = ({ data }) => {
       >
         <div className="service-page__hero-overlay" />
         <div className="service-page__hero-content is-centered">
-          <h1 className="service-page__title">
+          <h1
+            className="service-page__title"
+            style={textStyle(data?.introTitleFont, data?.introTitleColor)}
+          >
             {data?.introTitle || data?.title}
           </h1>
 
@@ -269,8 +273,18 @@ const ServicePage = ({ data }) => {
           <p className="service-page__kicker-outside is-uppercase">
             {data?.ourServiceHeading || "Our Service"}
           </p>
-          <h2 className="service-page__h2">{data?.title}</h2>
-          <h3 className="service-page__h3">{data?.subtitle}</h3>
+          <h2
+            className="service-page__h2"
+            style={textStyle(data?.titleFont, data?.titleColor)}
+          >
+            {data?.title}
+          </h2>
+          <h3
+            className="service-page__h3"
+            style={textStyle(data?.subtitleFont, data?.subtitleColor)}
+          >
+            {data?.subtitle}
+          </h3>
         </div>
 
         {/* Carousel */}
@@ -374,7 +388,11 @@ const ServicePage = ({ data }) => {
           </div>
 
           <div className="service-page__title-container">
-          <h4 className="service-page__h4">{data?.pricingHeading || "Pricing Packages"}
+          <h4
+            className="service-page__h4"
+            style={textStyle(data?.pricingHeadingFont, data?.pricingHeadingColor)}
+          >
+            {data?.pricingHeading || "Pricing Packages"}
           </h4>
           {data?.slug !== "special-events" && (
             <h5 className="service-page__h5">(In Studio)</h5>
@@ -384,10 +402,16 @@ const ServicePage = ({ data }) => {
           <div className="service-page__plans">
             {(data?.pricingPlans || []).map((plan, i) => (
               <div className="service-page__plan" key={plan?.name || i}>
-                <h3 className="service-page__plan-name">{plan?.name}</h3>
+                <h3
+                  className="service-page__plan-name"
+                  style={textStyle(plan?.nameFont, plan?.nameColor)}
+                >
+                  {plan?.name}
+                </h3>
                 <a
                   href={plan?.cta?.href || "#"}
                   className="service-page__plan-cta"
+                  style={textStyle(plan?.cta?.labelFont, plan?.cta?.labelColor)}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() =>
@@ -439,7 +463,12 @@ const ServicePage = ({ data }) => {
           <section className="service-page__notes">
             {data.notesSections.map((section, i) => (
               <div key={i} className="service-page__notes-section">
-                <h3 className="service-page__notes-title">{section.title}</h3>
+                <h3
+                  className="service-page__notes-title"
+                  style={textStyle(section.titleFont, section.titleColor)}
+                >
+                  {section.title}
+                </h3>
                 <ul className="service-page__notes-list">
                   {(section.items || []).map((n, idx) => (
                     <li key={idx} className="service-page__note">
@@ -454,7 +483,10 @@ const ServicePage = ({ data }) => {
           Array.isArray(data?.notes) &&
           data.notes.length > 0 && (
             <section className="service-page__notes">
-              <h3 className="service-page__notes-title">
+              <h3
+                className="service-page__notes-title"
+                style={textStyle(data?.notesHeadingFont, data?.notesHeadingColor)}
+              >
                 {data?.notesHeading || "Points to Note"}
               </h3>
               <ul className="service-page__notes-list">
@@ -471,7 +503,10 @@ const ServicePage = ({ data }) => {
         {/* FAQs */}
         {Array.isArray(data?.faqs) && data.faqs.length > 0 && (
           <section className="service-page__faqs">
-            <h3 className="service-page__faqs-title">
+            <h3
+              className="service-page__faqs-title"
+              style={textStyle(data?.faqsHeadingFont, data?.faqsHeadingColor)}
+            >
               {data?.faqsHeading || "FAQs"}
             </h3>
             <div className="service-page__faq-list">
@@ -487,10 +522,10 @@ const ServicePage = ({ data }) => {
                       onClick={() => setOpenFaq(isOpen ? null : i)}
                       aria-expanded={isOpen}
                     >
-                      {f.q}
+                      <span style={textStyle(f.qFont, f.qColor)}>{f.q}</span>
                     </button>
                     <div className="service-page__faq-a" role="region">
-                      <p>{f.a}</p>
+                      <p style={textStyle(f.aFont, f.aColor)}>{f.a}</p>
                     </div>
                   </div>
                 );

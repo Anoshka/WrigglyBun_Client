@@ -7,8 +7,15 @@ export default function PreviewBanner() {
   const inIframe =
     typeof window !== "undefined" && window.self !== window.top;
 
-  /* Keep Presentation looking like the live site — no extra banner in the iframe */
-  if (!isPreview || inIframe) return null;
+  if (!isPreview) return null;
+
+  if (inIframe) {
+    return (
+      <div className="preview-banner preview-banner--iframe" role="status">
+        Draft preview — click text to edit it
+      </div>
+    );
+  }
 
   return (
     <div className="preview-banner" role="status">

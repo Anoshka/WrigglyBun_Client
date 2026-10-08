@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import "./BlogPage.scss";
 import { useBlogPost } from "../../cms/useBlog";
 import CmsRichText from "../../components/CmsRichText";
+import { textStyle } from "../../cms/fontStyle";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -14,8 +15,20 @@ const BlogPostPage = () => {
   return (
     <article className="blog-page blog-post-page">
       <Link to="/blog" className="blog-post-page__back">← Back to Blog</Link>
-      <h1 className="blog-post-page__title">{post.title}</h1>
-      {post.description && <p className="blog-post-page__description">{post.description}</p>}
+      <h1
+        className="blog-post-page__title"
+        style={textStyle(post.titleFont, post.titleColor)}
+      >
+        {post.title}
+      </h1>
+      {post.description && (
+        <p
+          className="blog-post-page__description"
+          style={textStyle(post.descriptionFont, post.descriptionColor)}
+        >
+          {post.description}
+        </p>
+      )}
       {post.thumbnail && <img src={post.thumbnail} alt={post.title} className="blog-post-page__thumb" />}
       {post.images?.length > 0 && (
         <div className="blog-post-page__images">

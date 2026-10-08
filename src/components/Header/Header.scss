@@ -192,7 +192,7 @@
     justify-content: center;
   }
 
-  /* Tablet: same dropdown as mobile (hamburger + dropdown menu) */
+  /* Tablet and up: regular horizontal header. Phone width keeps the hamburger. */
   @include tablet {
     .header__logo {
       font-size: 2rem;
@@ -201,7 +201,7 @@
       margin: 0 1rem 0 0;
     }
     .header__title {
-      font-size: 1rem;
+      font-size: 1.2rem;
       padding: 0;
     }
 
@@ -212,22 +212,6 @@
     .header__container {
       justify-content: space-between;
       align-items: center;
-    }
-    /* Keep hamburger and dropdown nav on tablet – no horizontal bar */
-  }
-
-  @include desktop {
-    /* Desktop: horizontal nav, reduced gap, no extra background, original font styles */
-    .header__logo {
-      font-size: 2rem;
-    }
-    .header__title {
-      font-size: 1.2rem;
-      padding: 0;
-    }
-
-    .header__left {
-      padding: 1rem 1rem 0;
     }
 
     .header__nav {
@@ -245,18 +229,17 @@
       padding: 0 1rem 0 0;
     }
 
+    .header__nav.open {
+      display: flex;
+    }
+
     .header__link {
-      margin: 0 0rem;
-      font-size: 0.9rem;
-      padding: 1rem 1rem 0 0;
+      margin: 0;
+      font-size: 0.85rem;
+      padding: 1rem 0.65rem 0 0;
       text-align: right;
       text-decoration: none;
       color: $dark-brown;
-    }
-
-    .header__container {
-      justify-content: space-between;
-      align-items: center;
     }
 
     .header__hamburger {
@@ -274,6 +257,13 @@
 
     .header__about:hover .header__dropdown-content {
       display: block;
+    }
+  }
+
+  @include desktop {
+    .header__link {
+      font-size: 0.9rem;
+      padding: 1rem 1rem 0 0;
     }
   }
 }

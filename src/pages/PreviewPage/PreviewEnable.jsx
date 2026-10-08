@@ -21,17 +21,6 @@ function safeRedirectPath() {
 export default function PreviewEnable() {
   useEffect(() => {
     enablePreviewMode();
-    const params = new URLSearchParams(window.location.search);
-    const expected = import.meta.env.VITE_SANITY_PREVIEW_SECRET;
-    const fromQuery =
-      params.get("sanity-preview-secret") || params.get("sanity-preview");
-    if (expected && fromQuery === expected) {
-      try {
-        sessionStorage.setItem("sanity-preview", expected);
-      } catch {
-        /* ignore */
-      }
-    }
     window.location.replace(safeRedirectPath());
   }, []);
 

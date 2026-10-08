@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./BlogPage.scss";
 import { useBlogPosts } from "../../cms/useBlog";
+import { textStyle } from "../../cms/fontStyle";
 import forever_frames from "../../assets/images/forever_frames_01.jpg";
 import youthful_charms from "../../assets/images/youthful_charms.jpg";
 
@@ -38,8 +39,10 @@ const BlogPage = () => {
           className={`blog-post ${index % 2 === 0 ? "left" : "right"}`}
         >
           <div className="blog-post__content">
-            <h2>{blog.title}</h2>
-            <p>{blog.description}</p>
+            <h2 style={textStyle(blog.titleFont, blog.titleColor)}>{blog.title}</h2>
+            <p style={textStyle(blog.descriptionFont, blog.descriptionColor)}>
+              {blog.description}
+            </p>
             {blog.isFallback && blog.link ? (
               <a
                 href={blog.link}

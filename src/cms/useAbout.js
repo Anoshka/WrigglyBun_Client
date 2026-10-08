@@ -24,9 +24,13 @@ export function useAbout() {
     return {
       landingTitle: raw.landingTitle,
       landingTitleFont: raw.landingTitleFont,
+      landingTitleColor: raw.landingTitleColor,
       landingText: raw.landingText,
       landingTextFont: raw.landingTextFont,
+      landingTextColor: raw.landingTextColor,
       landingButtonLabel: raw.landingButtonLabel,
+      landingButtonLabelFont: raw.landingButtonLabelFont,
+      landingButtonLabelColor: raw.landingButtonLabelColor,
       landingButtonLink: raw.landingButtonLink || "/about",
       portrait: raw.portrait
         ? { src: toImgUrl(raw.portrait, 900), alt: raw.portrait.alt || "About" }
@@ -37,6 +41,7 @@ export function useAbout() {
           type: b._type === "heading" ? "heading" : "paragraph",
           text: b.text,
           font: b.font,
+          color: b.color,
         })),
       paragraphs: (raw.paragraphs || []).filter(Boolean),
       showTestimonials: raw.showTestimonials !== false,

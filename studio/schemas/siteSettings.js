@@ -1,4 +1,4 @@
-import {fontField} from './fontField'
+import {styleFields} from './fontField'
 
 // Contact details, WhatsApp, socials, and simple brand colors
 export default {
@@ -27,6 +27,7 @@ export default {
       group: 'header',
       initialValue: 'WrigglyBun',
     },
+    ...styleFields({group: 'header', prefix: 'headerLine1'}),
     {
       name: 'headerLine2',
       title: 'Header — second line',
@@ -34,30 +35,29 @@ export default {
       group: 'header',
       initialValue: 'Photography',
     },
-    fontField({group: 'header', name: 'headerFont', title: 'Font for the header name'}),
+    ...styleFields({group: 'header', prefix: 'headerLine2'}),
     {
       name: 'navLinks',
       title: 'Header menu links',
       type: 'array',
       group: 'header',
-      description:
-        'This is the top bar. Add, rename, reorder, or delete links. Use paths like /about or /maternity.',
+      description: 'Rename or reorder the menu items. Do not add or delete items.',
       of: [
         {
           type: 'object',
           name: 'navLink',
           fields: [
             {name: 'label', type: 'string', title: 'Label', validation: (r) => r.required()},
+            ...styleFields(),
             {
               name: 'href',
               type: 'string',
               title: 'Link',
-              description: 'e.g. /  /about  /contact  /maternity',
-              validation: (r) => r.required(),
+              hidden: true,
             },
           ],
           preview: {
-            select: {title: 'label', subtitle: 'href'},
+            select: {title: 'label'},
           },
         },
       ],
@@ -81,6 +81,7 @@ export default {
       description: 'Shown in the footer copyright and About button',
       initialValue: 'WrigglyBun Photography',
     },
+    ...styleFields({group: 'contact', prefix: 'businessName'}),
     {
       name: 'phone',
       title: 'Phone number',
@@ -95,6 +96,7 @@ export default {
       group: 'contact',
       description: 'e.g. +91 982 059 1096',
     },
+    ...styleFields({group: 'contact', prefix: 'phoneDisplay'}),
     {
       name: 'email',
       title: 'Email',
@@ -150,6 +152,7 @@ export default {
       group: 'contact',
       initialValue: 'Contact Us',
     },
+    ...styleFields({group: 'contact', prefix: 'contactPageTitle'}),
     {
       name: 'sessionOptions',
       title: 'Contact form — session types',

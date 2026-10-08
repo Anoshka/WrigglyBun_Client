@@ -1,4 +1,4 @@
-/** Rich text with links to pages on this site or the web. */
+/** Rich text. Links are hidden so site paths cannot be broken. */
 const portableText = {
   name: 'portableText',
   title: 'Write-up',
@@ -15,23 +15,7 @@ const portableText = {
           {title: 'Bold', value: 'strong'},
           {title: 'Italic', value: 'em'},
         ],
-        annotations: [
-          {
-            name: 'link',
-            type: 'object',
-            title: 'Link',
-            fields: [
-              {
-                name: 'href',
-                type: 'string',
-                title: 'Page or URL',
-                description:
-                  'Another page on this site: /maternity  /about  /blog  /contact — or a full web address starting with https://',
-                validation: (r) => r.required(),
-              },
-            ],
-          },
-        ],
+        annotations: [],
       },
     },
   ],

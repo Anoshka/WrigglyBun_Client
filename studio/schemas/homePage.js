@@ -1,4 +1,4 @@
-import {fontField} from './fontField'
+import {styleFields} from './fontField'
 
 // Home page: hero photos, service blurbs, best-selling packages, testimonials
 export default {
@@ -29,12 +29,12 @@ export default {
           name: 'heroCard',
           fields: [
             {name: 'title', type: 'string', title: 'Title on the photo', validation: (r) => r.required()},
-            fontField(),
+            ...styleFields(),
             {
               name: 'link',
               type: 'string',
               title: 'Where it goes when clicked',
-              description: 'e.g. /newborn, /maternity, /family',
+              hidden: true,
             },
             {
               name: 'image',
@@ -58,7 +58,7 @@ export default {
       group: 'packages',
       initialValue: 'BEST SELLING PACKAGES',
     },
-    fontField({group: 'packages', name: 'packagesTitleFont', title: 'Font for this heading'}),
+    ...styleFields({group: 'packages', prefix: 'packagesTitle'}),
     {
       name: 'packagesQuoteLabel',
       title: 'Get a quote — button text',
@@ -66,6 +66,7 @@ export default {
       group: 'packages',
       initialValue: 'GET A QUOTE',
     },
+    ...styleFields({group: 'packages', prefix: 'packagesQuoteLabel'}),
     {
       name: 'bestSellingPackages',
       title: 'Best selling packages',
@@ -78,11 +79,12 @@ export default {
           name: 'packageCard',
           fields: [
             {name: 'title', type: 'string', title: 'Package name', validation: (r) => r.required()},
+            ...styleFields({prefix: 'title'}),
             {
               name: 'link',
               type: 'string',
-              title: 'Link (e.g. /maternity)',
-              validation: (r) => r.required(),
+              title: 'Link',
+              hidden: true,
             },
             {
               name: 'buttonLabel',
@@ -90,9 +92,10 @@ export default {
               title: 'Button text',
               initialValue: 'KNOW MORE',
             },
+            ...styleFields({prefix: 'buttonLabel'}),
           ],
           preview: {
-            select: {title: 'title', subtitle: 'link'},
+            select: {title: 'title'},
           },
         },
       ],
@@ -104,7 +107,7 @@ export default {
       group: 'grey',
       initialValue: 'Our Services',
     },
-    fontField({group: 'grey', name: 'greyServicesTitleFont', title: 'Font for this heading'}),
+    ...styleFields({group: 'grey', prefix: 'greyServicesTitle'}),
     {
       name: 'greyServices',
       title: 'Our Services cards (grey section)',
@@ -122,15 +125,19 @@ export default {
               title: 'Number label',
               description: 'e.g. 01, 02, 03',
             },
+            ...styleFields({prefix: 'id'}),
             {name: 'title', type: 'string', title: 'Service name', validation: (r) => r.required()},
+            ...styleFields({prefix: 'title'}),
             {name: 'description', type: 'text', title: 'Short description', rows: 4},
-            {name: 'link', type: 'string', title: 'Link (e.g. /newborn)'},
+            ...styleFields({prefix: 'description'}),
+            {name: 'link', type: 'string', title: 'Link', hidden: true},
             {
               name: 'linkLabel',
               type: 'string',
               title: 'Link text',
               initialValue: 'READ MORE →',
             },
+            ...styleFields({prefix: 'linkLabel'}),
           ],
           preview: {
             select: {title: 'title', subtitle: 'id'},
@@ -145,11 +152,7 @@ export default {
       group: 'testimonials',
       initialValue: 'What clients say',
     },
-    fontField({
-      group: 'testimonials',
-      name: 'featuredTestimonialsHeadingFont',
-      title: 'Font for this heading',
-    }),
+    ...styleFields({group: 'testimonials', prefix: 'featuredTestimonialsHeading'}),
     {
       name: 'featuredTestimonials',
       title: 'Featured testimonials on home page',
@@ -165,7 +168,7 @@ export default {
       group: 'insta',
       initialValue: 'WRIGGLY MOMENTS ON INSTA',
     },
-    fontField({group: 'insta', name: 'instaHeadingFont', title: 'Font for this heading'}),
+    ...styleFields({group: 'insta', prefix: 'instaHeading'}),
     {
       name: 'faqEyebrow',
       title: 'FAQs — small label above the title',
@@ -173,6 +176,7 @@ export default {
       group: 'faqs',
       initialValue: '----- FAQS -----',
     },
+    ...styleFields({group: 'faqs', prefix: 'faqEyebrow'}),
     {
       name: 'faqTitle',
       title: 'FAQs — section title',
@@ -180,7 +184,7 @@ export default {
       group: 'faqs',
       initialValue: 'Frequently Asked Questions',
     },
-    fontField({group: 'faqs', name: 'faqTitleFont', title: 'Font for this heading'}),
+    ...styleFields({group: 'faqs', prefix: 'faqTitle'}),
     {
       name: 'homeFaqs',
       title: 'FAQs in this section',
@@ -198,6 +202,7 @@ export default {
       group: 'faqs',
       description: 'Leave blank to use the default “Got more questions…” line.',
     },
+    ...styleFields({group: 'faqs', prefix: 'faqContactText'}),
     {
       name: 'showHeroes',
       title: 'Show big photo cards',

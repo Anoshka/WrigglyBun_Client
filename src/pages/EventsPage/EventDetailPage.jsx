@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import "./EventsPage.scss";
 import { useEvent } from "../../cms/useEvents";
 import CmsRichText from "../../components/CmsRichText";
+import { textStyle } from "../../cms/fontStyle";
 
 const EventDetailPage = () => {
   const { slug } = useParams();
@@ -14,9 +15,21 @@ const EventDetailPage = () => {
   return (
     <article className="events-page event-detail-page">
       <Link to="/events" className="event-detail-page__back">← Back to Events</Link>
-      <h1 className="event-detail-page__title">{event.title}</h1>
+      <h1
+        className="event-detail-page__title"
+        style={textStyle(event.titleFont, event.titleColor)}
+      >
+        {event.title}
+      </h1>
       {event.eventDate && <p className="event-detail-page__date">{new Date(event.eventDate).toLocaleDateString()}</p>}
-      {event.description && <p className="event-detail-page__description">{event.description}</p>}
+      {event.description && (
+        <p
+          className="event-detail-page__description"
+          style={textStyle(event.descriptionFont, event.descriptionColor)}
+        >
+          {event.description}
+        </p>
+      )}
       {event.thumbnail && <img src={event.thumbnail} alt={event.title} className="event-detail-page__thumb" />}
       {event.images?.length > 0 && (
         <div className="event-detail-page__images">

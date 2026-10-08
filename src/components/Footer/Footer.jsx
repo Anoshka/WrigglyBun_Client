@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSiteSettings } from "../../cms/useSiteSettings";
+import { textStyle } from "../../cms/fontStyle";
 import { trackContactClick } from "../../services/analytics";
 
 const Footer = () => {
@@ -76,7 +77,10 @@ const Footer = () => {
       </div>
       <div className="footer__copyright">
         <p>
-          &copy; {new Date().getFullYear()} {s.businessName}
+          &copy; {new Date().getFullYear()}{" "}
+          <span style={textStyle(s.businessNameFont, s.businessNameColor)}>
+            {s.businessName}
+          </span>
         </p>
       </div>
 

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import logoFallback from "../../assets/images/icons/camera_icon _01.png";
 import { trackEngagement } from "../../services/analytics";
 import { useSiteSettings } from "../../cms/useSiteSettings";
-import { fontStyle } from "../../cms/fontStyle";
+import { textStyle } from "../../cms/fontStyle";
 import { useImageUrl } from "../../cms/useImageUrl";
 
 function Header() {
@@ -47,11 +47,17 @@ function Header() {
               alt={s.logo?.alt || "WrigglyBun Photography"}
               loading="lazy"
             />
-            <span className="header__title" style={fontStyle(s.headerFont)}>
-              <span className="header__title-line header__title-line__one">
+            <span className="header__title">
+              <span
+                className="header__title-line header__title-line__one"
+                style={textStyle(s.headerLine1Font, s.headerLine1Color)}
+              >
                 {line1}
               </span>
-              <span className="header__title-line header__title-line__two">
+              <span
+                className="header__title-line header__title-line__two"
+                style={textStyle(s.headerLine2Font, s.headerLine2Color)}
+              >
                 {line2}
               </span>
             </span>
@@ -80,6 +86,7 @@ function Header() {
                   ? "header__link header__link--about"
                   : "header__link"
               }
+              style={textStyle(link.font, link.color)}
               onClick={() => {
                 if (link.href === "/contact") {
                   trackEngagement("click_contact", "header_nav", "header");

@@ -1,3 +1,5 @@
+import {styleFields} from './fontField'
+
 export default {
   name: 'service',
   title: 'Service',
@@ -17,14 +19,15 @@ export default {
       validation: (r) => r.required(),
       description: 'e.g. Maternity, Newborn',
     },
+    ...styleFields({group: 'basics', prefix: 'title'}),
     {
       name: 'slug',
       title: 'URL slug',
       type: 'slug',
       group: 'basics',
+      hidden: true,
       options: {source: 'title', maxLength: 96},
       validation: (r) => r.required(),
-      description: 'Must match the page URL: maternity, newborn, 6months, family, special-events',
     },
     {
       name: 'subtitle',
@@ -32,6 +35,7 @@ export default {
       type: 'string',
       group: 'basics',
     },
+    ...styleFields({group: 'basics', prefix: 'subtitle'}),
     {
       name: 'introTitle',
       title: 'Page heading',
@@ -39,6 +43,7 @@ export default {
       group: 'basics',
       description: 'Big title at the top of this service page',
     },
+    ...styleFields({group: 'basics', prefix: 'introTitle'}),
     {
       name: 'hero',
       title: 'Hero photo (top of page)',
@@ -73,6 +78,7 @@ export default {
       group: 'pricing',
       initialValue: 'Pricing Packages',
     },
+    ...styleFields({group: 'pricing', prefix: 'pricingHeading'}),
     {
       name: 'pricingPlans',
       title: 'Pricing plans',
@@ -85,15 +91,19 @@ export default {
           name: 'pricingPlan',
           fields: [
             {name: 'name', type: 'string', title: 'Plan name'},
+            ...styleFields({prefix: 'name'}),
             {name: 'priceLabel', type: 'string', title: 'Price (e.g. ₹ 19,000)'},
+            ...styleFields({prefix: 'priceLabel'}),
             {name: 'periodLabel', type: 'string', title: 'Period (e.g. / Package)'},
+            ...styleFields({prefix: 'periodLabel'}),
             {
               name: 'cta',
               title: 'Button',
               type: 'object',
               fields: [
                 {name: 'label', type: 'string', title: 'Button text'},
-                {name: 'href', type: 'url', title: 'Button link (WhatsApp or web)'},
+                ...styleFields({prefix: 'label'}),
+                {name: 'href', type: 'url', title: 'Button link', hidden: true},
               ],
             },
             {
@@ -117,7 +127,8 @@ export default {
       group: 'pricing',
       fields: [
         {name: 'label', type: 'string', title: 'Button text'},
-        {name: 'href', type: 'url', title: 'Link'},
+        ...styleFields({prefix: 'label'}),
+        {name: 'href', type: 'url', title: 'Link', hidden: true},
         {name: 'text', type: 'string', title: 'WhatsApp message starter'},
       ],
     },
@@ -127,6 +138,7 @@ export default {
       type: 'string',
       group: 'notes',
     },
+    ...styleFields({group: 'notes', prefix: 'notesHeading'}),
     {
       name: 'notesSections',
       title: 'Notes sections',
@@ -139,6 +151,7 @@ export default {
           name: 'notesSection',
           fields: [
             {name: 'title', type: 'string', title: 'Section title'},
+            ...styleFields({prefix: 'title'}),
             {name: 'items', type: 'array', of: [{type: 'string'}], title: 'Bullet points'},
           ],
           preview: {
@@ -154,6 +167,7 @@ export default {
       group: 'notes',
       initialValue: 'FAQs',
     },
+    ...styleFields({group: 'notes', prefix: 'faqsHeading'}),
     {
       name: 'faqs',
       title: 'FAQs for this service',

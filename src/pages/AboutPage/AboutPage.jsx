@@ -1,7 +1,7 @@
 import placeholder from "../../assets/images/Anandita_placeholder.jpg";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import { useAbout } from "../../cms/useAbout";
-import { fontStyle } from "../../cms/fontStyle";
+import { textStyle } from "../../cms/fontStyle";
 import "./AboutPage.scss";
 
 const FALLBACK_PARAGRAPHS = [
@@ -36,7 +36,7 @@ function AboutPage() {
               <h2
                 className="about-page__heading"
                 key={`h-${i}`}
-                style={fontStyle(block.font)}
+                style={textStyle(block.font, block.color)}
               >
                 {block.text}
               </h2>
@@ -44,7 +44,7 @@ function AboutPage() {
               <p
                 className="about-page__description"
                 key={`p-${i}`}
-                style={fontStyle(block.font)}
+                style={textStyle(block.font, block.color)}
               >
                 {block.text}
               </p>

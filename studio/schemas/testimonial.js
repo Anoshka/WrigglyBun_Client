@@ -1,3 +1,5 @@
+import {styleFields} from './fontField'
+
 export default {
   name: 'testimonial',
   title: 'Testimonial',
@@ -9,6 +11,7 @@ export default {
       type: 'string',
       validation: (r) => r.required(),
     },
+    ...styleFields({prefix: 'name'}),
     {
       name: 'rating',
       title: 'Star rating (1–5)',
@@ -24,6 +27,7 @@ export default {
       validation: (r) => r.required(),
       description: 'Edit wording anytime',
     },
+    ...styleFields({prefix: 'review'}),
     {
       name: 'image',
       title: 'Client photo (optional)',

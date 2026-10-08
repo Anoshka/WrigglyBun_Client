@@ -18,7 +18,13 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
+    structureTool({
+      structure,
+      title: 'Edit website',
+    }),
     presentationTool({
+      name: 'preview',
+      title: 'Preview site',
       resolve: presentationResolve,
       previewUrl: {
         origin: previewOrigin,
@@ -28,8 +34,7 @@ export default defineConfig({
         },
       },
     }),
-    structureTool({structure}),
-    visionTool(),
+    visionTool({title: 'Debug'}),
   ],
 
   schema: {

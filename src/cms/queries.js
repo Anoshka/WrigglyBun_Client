@@ -2,18 +2,36 @@
 export const serviceBySlugQuery = `
 *[_type == "service" && slug.current == $slug][0]{
   title,
+  titleFont,
+  titleColor,
   "slug": slug.current,
   subtitle,
+  subtitleFont,
+  subtitleColor,
   introTitle,
+  introTitleFont,
+  introTitleColor,
   hero{..., "alt": coalesce(alt, title)},
   carousel[]{..., "alt": coalesce(alt, "Image")},
   pricingHeading,
-  pricingPlans[]{name, priceLabel, periodLabel, cta{label, href}, features},
-  customPricingCta{label, href, text},
+  pricingHeadingFont,
+  pricingHeadingColor,
+  pricingPlans[]{
+    name, nameFont, nameColor,
+    priceLabel, priceLabelFont, priceLabelColor,
+    periodLabel, periodLabelFont, periodLabelColor,
+    cta{label, labelFont, labelColor, href},
+    features
+  },
+  customPricingCta{label, labelFont, labelColor, href, text},
   notesHeading,
-  notesSections[]{title, items},
+  notesHeadingFont,
+  notesHeadingColor,
+  notesSections[]{title, titleFont, titleColor, items},
   faqsHeading,
-  faqs[]->{question, answer}
+  faqsHeadingFont,
+  faqsHeadingColor,
+  faqs[]->{question, questionFont, questionColor, answer, answerFont, answerColor}
 }
 `;
 
@@ -22,26 +40,53 @@ export const homePageQuery = `
   heroCards[]{
     title,
     font,
+    color,
     link,
     image{..., "alt": coalesce(alt, title)}
   },
   packagesTitle,
   packagesTitleFont,
+  packagesTitleColor,
   packagesQuoteLabel,
-  bestSellingPackages[]{title, link, buttonLabel},
+  packagesQuoteLabelFont,
+  packagesQuoteLabelColor,
+  bestSellingPackages[]{
+    title, titleFont, titleColor,
+    link,
+    buttonLabel, buttonLabelFont, buttonLabelColor
+  },
   greyServicesTitle,
   greyServicesTitleFont,
-  greyServices[]{id, title, description, link, linkLabel},
+  greyServicesTitleColor,
+  greyServices[]{
+    id, idFont, idColor,
+    title, titleFont, titleColor,
+    description, descriptionFont, descriptionColor,
+    link,
+    linkLabel, linkLabelFont, linkLabelColor
+  },
   featuredTestimonialsHeading,
   featuredTestimonialsHeadingFont,
-  featuredTestimonials[]->{name, rating, review, image{..., "alt": coalesce(alt, name)}},
+  featuredTestimonialsHeadingColor,
+  featuredTestimonials[]->{
+    name, nameFont, nameColor,
+    rating,
+    review, reviewFont, reviewColor,
+    image{..., "alt": coalesce(alt, name)}
+  },
   instaHeading,
   instaHeadingFont,
+  instaHeadingColor,
   faqEyebrow,
+  faqEyebrowFont,
+  faqEyebrowColor,
   faqTitle,
   faqTitleFont,
+  faqTitleColor,
   faqContactText,
-  homeFaqs[]->{question, answer},
+  faqContactTextFont,
+  faqContactTextColor,
+  homeFaqs[]->{question, questionFont, questionColor, answer, answerFont, answerColor},
   showHeroes,
   showPackages,
   showAbout,
@@ -57,12 +102,16 @@ export const aboutPageQuery = `
 *[_type == "aboutPage"][0]{
   landingTitle,
   landingTitleFont,
+  landingTitleColor,
   landingText,
   landingTextFont,
+  landingTextColor,
   landingButtonLabel,
+  landingButtonLabelFont,
+  landingButtonLabelColor,
   landingButtonLink,
   portrait{..., "alt": coalesce(alt, "About")},
-  blocks[]{_type, text, font},
+  blocks[]{_type, text, font, color},
   paragraphs,
   showTestimonials
 }
@@ -71,8 +120,12 @@ export const aboutPageQuery = `
 export const siteSettingsQuery = `
 *[_type == "siteSettings"][0]{
   businessName,
+  businessNameFont,
+  businessNameColor,
   phone,
   phoneDisplay,
+  phoneDisplayFont,
+  phoneDisplayColor,
   email,
   whatsappNumber,
   whatsappMessage,
@@ -81,6 +134,8 @@ export const siteSettingsQuery = `
   mapsUrl,
   addressLines,
   contactPageTitle,
+  contactPageTitleFont,
+  contactPageTitleColor,
   sessionOptions,
   colorBrown,
   colorAccent,
@@ -88,16 +143,24 @@ export const siteSettingsQuery = `
   colorText,
   logo{..., "alt": coalesce(alt, "Logo")},
   headerLine1,
+  headerLine1Font,
+  headerLine1Color,
   headerLine2,
+  headerLine2Font,
+  headerLine2Color,
   headerFont,
-  navLinks[]{label, href}
+  navLinks[]{label, font, color, href}
 }
 `;
 
 export const faqsForPageQuery = `
 *[_type == "faq" && (showOnFaqPage == true || category == "Misc")] | order(_createdAt asc){
   question,
+  questionFont,
+  questionColor,
   answer,
+  answerFont,
+  answerColor,
   category
 }
 `;
@@ -105,8 +168,12 @@ export const faqsForPageQuery = `
 export const testimonialsQuery = `
 *[_type == "testimonial"] | order(_createdAt desc){
   name,
+  nameFont,
+  nameColor,
   rating,
   review,
+  reviewFont,
+  reviewColor,
   image{..., "alt": coalesce(alt, name)}
 }
 `;
@@ -114,8 +181,12 @@ export const testimonialsQuery = `
 export const blogPostsQuery = `
 *[_type == "blogPost"] | order(publishedAt desc){
   title,
+  titleFont,
+  titleColor,
   "slug": slug.current,
   description,
+  descriptionFont,
+  descriptionColor,
   thumbnail{..., "alt": coalesce(alt, title)},
   publishedAt
 }
@@ -124,8 +195,12 @@ export const blogPostsQuery = `
 export const blogPostBySlugQuery = `
 *[_type == "blogPost" && slug.current == $slug][0]{
   title,
+  titleFont,
+  titleColor,
   "slug": slug.current,
   description,
+  descriptionFont,
+  descriptionColor,
   thumbnail{..., "alt": coalesce(alt, title)},
   images[]{..., "alt": coalesce(alt, "Image")},
   body,
@@ -137,8 +212,12 @@ export const blogPostBySlugQuery = `
 export const eventsQuery = `
 *[_type == "event"] | order(eventDate desc){
   title,
+  titleFont,
+  titleColor,
   "slug": slug.current,
   description,
+  descriptionFont,
+  descriptionColor,
   thumbnail{..., "alt": coalesce(alt, title)},
   eventDate,
   publishedAt
@@ -148,8 +227,12 @@ export const eventsQuery = `
 export const eventBySlugQuery = `
 *[_type == "event" && slug.current == $slug][0]{
   title,
+  titleFont,
+  titleColor,
   "slug": slug.current,
   description,
+  descriptionFont,
+  descriptionColor,
   thumbnail{..., "alt": coalesce(alt, title)},
   images[]{..., "alt": coalesce(alt, "Image")},
   body,

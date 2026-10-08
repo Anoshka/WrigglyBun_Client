@@ -23,8 +23,12 @@ export function useTestimonials() {
     if (!raw) return [];
     return (raw || []).map((t) => ({
       name: t.name,
+      nameFont: t.nameFont,
+      nameColor: t.nameColor,
       rating: t.rating,
       text: t.review,
+      reviewFont: t.reviewFont,
+      reviewColor: t.reviewColor,
       image: t.image ? toImgUrl(t.image, 600) : null,
       alt: t.image?.alt || t.name,
     }));

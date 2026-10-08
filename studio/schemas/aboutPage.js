@@ -1,4 +1,4 @@
-import {fontField} from './fontField'
+import {styleFields} from './fontField'
 
 // Landing “About Us” strip + full About page
 export default {
@@ -17,7 +17,7 @@ export default {
       group: 'landing',
       initialValue: 'ABOUT US',
     },
-    fontField({group: 'landing', name: 'landingTitleFont', title: 'Font for this title'}),
+    ...styleFields({group: 'landing', prefix: 'landingTitle'}),
     {
       name: 'landingText',
       title: 'Home — short paragraph',
@@ -26,7 +26,7 @@ export default {
       group: 'landing',
       description: 'The blurb under About Us on the home page',
     },
-    fontField({group: 'landing', name: 'landingTextFont', title: 'Font for this paragraph'}),
+    ...styleFields({group: 'landing', prefix: 'landingText'}),
     {
       name: 'landingButtonLabel',
       title: 'Home — button text',
@@ -34,12 +34,13 @@ export default {
       group: 'landing',
       initialValue: 'WRIGGLYBUN PHOTOGRAPHY',
     },
+    ...styleFields({group: 'landing', prefix: 'landingButtonLabel'}),
     {
       name: 'landingButtonLink',
       title: 'Home — button link',
       type: 'string',
       group: 'landing',
-      description: 'Usually /about',
+      hidden: true,
       initialValue: '/about',
     },
     {
@@ -70,7 +71,7 @@ export default {
               title: 'Heading text',
               validation: (r) => r.required(),
             },
-            fontField(),
+            ...styleFields(),
           ],
           preview: {
             select: {title: 'text'},
@@ -89,7 +90,7 @@ export default {
               rows: 5,
               validation: (r) => r.required(),
             },
-            fontField(),
+            ...styleFields(),
           ],
           preview: {
             select: {title: 'text'},

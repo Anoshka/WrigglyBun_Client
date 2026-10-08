@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./EventsPage.scss";
 import { useEvents } from "../../cms/useEvents";
+import { textStyle } from "../../cms/fontStyle";
 
 const EventsPage = () => {
   const { events, loading } = useEvents();
@@ -17,9 +18,21 @@ const EventsPage = () => {
           <Link to={`/events/${event.slug}`} className="events-page__card" key={event.slug}>
             {event.image && <img src={event.image} alt={event.title} className="events-page__img" />}
             <div className="events-page__content">
-              <h2 className="events-page__card-title">{event.title}</h2>
+              <h2
+                className="events-page__card-title"
+                style={textStyle(event.titleFont, event.titleColor)}
+              >
+                {event.title}
+              </h2>
               {event.eventDate && <p className="events-page__date">{new Date(event.eventDate).toLocaleDateString()}</p>}
-              {event.description && <p className="events-page__desc">{event.description}</p>}
+              {event.description && (
+                <p
+                  className="events-page__desc"
+                  style={textStyle(event.descriptionFont, event.descriptionColor)}
+                >
+                  {event.description}
+                </p>
+              )}
               <span className="events-page__link">LEARN MORE →</span>
             </div>
           </Link>

@@ -15,40 +15,19 @@ h3,
   font-family: var(--wb-heading-font, #{$header-font});
 }
 
-/* Hide click-to-edit overlays that wash cards/buttons to white */
-html.is-studio-iframe sanity-visual-editing,
+/* Click-to-edit in Preview: outline only, do not paint cards white */
 html.is-studio-iframe [data-sanity-overlay],
 html.is-studio-iframe [data-sanity-highlight] {
-  opacity: 0 !important;
-  pointer-events: none !important;
+  background: transparent !important;
+  box-shadow: inset 0 0 0 2px rgba(38, 17, 13, 0.35);
 }
 
-/* Presentation is a phone-width frame: show the real mobile header + hamburger */
+/* Keep the real header in Presentation; width still controls hamburger vs bar */
 html.is-studio-iframe .header {
   display: block !important;
   visibility: visible !important;
   position: relative !important;
   z-index: 50 !important;
-  background-color: #fff !important;
-}
-
-html.is-studio-iframe .header__hamburger {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  z-index: 60 !important;
-}
-
-html.is-studio-iframe .header__hamburger .line {
-  background-color: #26110d !important;
-}
-
-html.is-studio-iframe .header__nav {
-  display: none;
-}
-
-html.is-studio-iframe .header__nav.open {
-  display: flex !important;
 }
 *,
 *::before,

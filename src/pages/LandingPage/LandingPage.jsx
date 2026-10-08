@@ -5,7 +5,7 @@ import Services from "../../components/Services/Services";
 import GreyServices from "../../components/GreyServices/GreyServices";
 import FAQs from "../FAQPage/FAQPage";
 import { useLanding } from "../../cms/useLanding";
-import { fontStyle } from "../../cms/fontStyle";
+import { textStyle } from "../../cms/fontStyle";
 import "./LandingPage.scss";
 
 function LandingPage() {
@@ -22,13 +22,20 @@ function LandingPage() {
       {data?.showAbout !== false && <About />}
       {data?.showGreyServices !== false && <GreyServices />}
       {data?.showInsta !== false && (
-        <Insta heading={data?.instaHeading} headingFont={data?.instaHeadingFont} />
+        <Insta
+          heading={data?.instaHeading}
+          headingFont={data?.instaHeadingFont}
+          headingColor={data?.instaHeadingColor}
+        />
       )}
       {data?.showFeaturedTestimonials !== false && featured.length > 0 && (
         <section className="landing-testimonials">
           <h2
             className="landing-testimonials__title"
-            style={fontStyle(data?.featuredTestimonialsHeadingFont)}
+            style={textStyle(
+              data?.featuredTestimonialsHeadingFont,
+              data?.featuredTestimonialsHeadingColor
+            )}
           >
             {featuredHeading}
           </h2>
@@ -43,8 +50,16 @@ function LandingPage() {
                   />
                 )}
                 <div className="landing-testimonial__content">
-                  <h3 className="landing-testimonial__name">{t.name}</h3>
-                  <p className="landing-testimonial__text">
+                  <h3
+                    className="landing-testimonial__name"
+                    style={textStyle(t.nameFont, t.nameColor)}
+                  >
+                    {t.name}
+                  </h3>
+                  <p
+                    className="landing-testimonial__text"
+                    style={textStyle(t.reviewFont, t.reviewColor)}
+                  >
                     &ldquo;{t.review}&rdquo;
                   </p>
                 </div>

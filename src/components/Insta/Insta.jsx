@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { fontStyle } from "../../cms/fontStyle";
+import { textStyle } from "../../cms/fontStyle";
 import "./Insta.scss";
 
-const Insta = ({ heading, headingFont }) => {
+const Insta = ({ heading, headingFont, headingColor }) => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://static.elfsight.com/platform/platform.js";
@@ -22,7 +22,7 @@ const Insta = ({ heading, headingFont }) => {
 
   return (
     <div>
-      <h1 className="insta__title" style={fontStyle(headingFont)}>
+      <h1 className="insta__title" style={textStyle(headingFont, headingColor)}>
         {heading || "WRIGGLY MOMENTS ON INSTA"}
       </h1>
       <div

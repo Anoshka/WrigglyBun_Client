@@ -1,3 +1,5 @@
+import {styleFields} from './fontField'
+
 export default {
   name: 'faq',
   title: 'FAQ',
@@ -24,6 +26,7 @@ export default {
       type: 'string',
       validation: (r) => r.required(),
     },
+    ...styleFields({prefix: 'question'}),
     {
       name: 'answer',
       title: 'Answer',
@@ -31,6 +34,7 @@ export default {
       rows: 5,
       validation: (r) => r.required(),
     },
+    ...styleFields({prefix: 'answer'}),
     {
       name: 'showOnFaqPage',
       title: 'Show on home / FAQ section',

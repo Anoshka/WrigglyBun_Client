@@ -3,13 +3,24 @@ import "./FAQPage.scss";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useFaqs } from "../../cms/useFaqs";
-import { fontStyle } from "../../cms/fontStyle";
+import { textStyle } from "../../cms/fontStyle";
 import { useSiteSettings } from "../../cms/useSiteSettings";
 import { trackEngagement } from "../../services/analytics";
 import FaqJsonLd from "../../components/FaqJsonLd";
 
 const FAQPage = () => {
-  const { faqs, eyebrow, title, titleFont, contactText } = useFaqs();
+  const {
+    faqs,
+    eyebrow,
+    eyebrowFont,
+    eyebrowColor,
+    title,
+    titleFont,
+    titleColor,
+    contactText,
+    contactTextFont,
+    contactTextColor,
+  } = useFaqs();
   const { data: s } = useSiteSettings();
   const [expandedQuestion, setExpandedQuestion] = useState(null);
 
@@ -20,8 +31,10 @@ const FAQPage = () => {
   return (
     <div className="faq">
       <FaqJsonLd faqs={faqs} />
-      <h3 className="faq__top">{eyebrow}</h3>
-      <h2 className="faq__title" style={fontStyle(titleFont)}>
+      <h3 className="faq__top" style={textStyle(eyebrowFont, eyebrowColor)}>
+        {eyebrow}
+      </h3>
+      <h2 className="faq__title" style={textStyle(titleFont, titleColor)}>
         {title}
       </h2>
       <section className="faq__section">
@@ -32,7 +45,9 @@ const FAQPage = () => {
                 className="faq__question"
                 onClick={() => toggleAnswer(index)}
               >
-                <h4>{item.question}</h4>
+                <h4 style={textStyle(item.questionFont, item.questionColor)}>
+                  {item.question}
+                </h4>
                 <span className="faq__arrow">
                   {expandedQuestion === index ? (
                     <FaChevronUp />
@@ -42,13 +57,21 @@ const FAQPage = () => {
                 </span>
               </div>
               {expandedQuestion === index && (
-                <p className="faq__answer">{item.answer}</p>
+                <p
+                  className="faq__answer"
+                  style={textStyle(item.answerFont, item.answerColor)}
+                >
+                  {item.answer}
+                </p>
               )}
             </div>
           ))}
         </div>
       </section>
-      <p className="faq__contact">
+      <p
+        className="faq__contact"
+        style={textStyle(contactTextFont, contactTextColor)}
+      >
         {contactText || (
           <>
             Got more questions? We’re here to help! Reach out to us anytime at{" "}

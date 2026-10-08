@@ -1,3 +1,5 @@
+import {styleFields} from './fontField'
+
 export default {
   name: 'event',
   title: 'Upcoming Event',
@@ -9,13 +11,14 @@ export default {
       type: 'string',
       validation: (r) => r.required(),
     },
+    ...styleFields({prefix: 'title'}),
     {
       name: 'slug',
-      title: 'URL slug',
+      title: 'Generate web address',
       type: 'slug',
       options: {source: 'title', maxLength: 96},
       validation: (r) => r.required(),
-      description: 'Click Generate — becomes /events/your-slug',
+      description: 'Click Generate after you write the title. Do not type paths.',
     },
     {
       name: 'description',
@@ -23,6 +26,7 @@ export default {
       type: 'text',
       rows: 3,
     },
+    ...styleFields({prefix: 'description'}),
     {
       name: 'thumbnail',
       title: 'Thumbnail',
@@ -47,13 +51,13 @@ export default {
       name: 'body',
       title: 'Write-up',
       type: 'portableText',
-      description:
-        'To link to another page: select the words → click the link icon → type a path like /maternity or /about.',
+      description: 'Write the event details here.',
     },
     {
       name: 'link',
       title: 'External link (optional)',
       type: 'url',
+      hidden: true,
     },
     {
       name: 'eventDate',

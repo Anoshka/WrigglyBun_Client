@@ -16,6 +16,13 @@
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
+  &--iframe {
+    justify-content: center;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+  }
+
   &__text {
     margin: 0;
     max-width: 52rem;
